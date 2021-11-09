@@ -15,23 +15,12 @@ frontend/MU-VR-Experience/[Ll]ogs/
 frontend/MU-VR-Experience/[Uu]ser[Ss]ettings/
 frontend/MU-VR-Experience/[Mm]emoryCaptures/
 frontend/MU-VR-Experience/[Aa]ssets/AssetStoreTools*
-frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit/Prefabs
-frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit/Demo
-frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit/Prefabs.meta
-frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit/ReadMe.pdf
-frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit/ReadMe.pdf.meta
-frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit/Demo.meta
-frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit/Art.meta
+frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets/*
+frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets.meta
 frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_Tools
 frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_Tools.meta
-frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets/ModernOffice_Interior/SampleScenes
-frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets/ModernOffice_Interior/SampleScenes.meta
-frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs
-frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs.meta
-frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets/SciFi_Industrial/SampleScenes
-frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets/SciFi_Industrial/SampleScenes.meta
-frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets/SciFi_Industrial/Prefabs
-frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets/SciFi_Industrial/Prefabs.meta
+frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit
+frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit.meta
 frontend/MU-VR-Experience/sysinfo.txt
 
 ## Other

@@ -15,10 +15,8 @@ frontend/MU-VR-Experience/[Ll]ogs/
 frontend/MU-VR-Experience/[Uu]ser[Ss]ettings/
 frontend/MU-VR-Experience/[Mm]emoryCaptures/
 frontend/MU-VR-Experience/[Aa]ssets/AssetStoreTools*
-frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets
-frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets.meta
-frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_Tools
-frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_Tools.meta
+frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals
+frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals.meta
 frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit
 frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit.meta
 frontend/MU-VR-Experience/sysinfo.txt

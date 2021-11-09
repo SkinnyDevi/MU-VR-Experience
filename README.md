@@ -9,5 +9,5 @@ This project uses free SNAPS Prototyping Assets from Unity Asset store, as well 
 To avoid uploading unused Prefabs, only the Materials folder is uploaded to provide the changed materials for the Prefabs, which can be obtained in the Unity Asset Store:  
 [Office Prototype](https://assetstore.unity.com/packages/3d/environments/snaps-prototype-office-137490)  
 [SciFi/Industrial Prototype](https://assetstore.unity.com/packages/3d/environments/sci-fi/snaps-prototype-sci-fi-industrial-136759)  
-[SciFi Construction Kit (Modular)](https://assetstore.unity.com/packages/3d/environments/sci-fi/sci-fi-construction-kit-modular-159280) 
+[SciFi Construction Kit (Modular)](https://assetstore.unity.com/packages/3d/environments/sci-fi/sci-fi-construction-kit-modular-159280)  
 *These prototypes go inside "_SNAPS_PrototypingAssets", except SciFI Warehouse Kit, which can be placed inside "Assets"* 

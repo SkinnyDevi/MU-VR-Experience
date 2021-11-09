@@ -1,0 +1,35 @@
+## Backend
+backend/unity-receiver
+backend/.env
+backend/node_modules
+
+## Frontend
+frontend/unity-external-assets
+frontend/MU-VR-Experience/.gradle
+frontend/MU-VR-Experience/[Ll]ibrary/
+frontend/MU-VR-Experience/[Tt]emp/
+frontend/MU-VR-Experience/[Oo]bj/
+frontend/MU-VR-Experience/[Bb]uild/
+frontend/MU-VR-Experience/[Bb]uilds/
+frontend/MU-VR-Experience/[Ll]ogs/
+frontend/MU-VR-Experience/[Uu]ser[Ss]ettings/
+frontend/MU-VR-Experience/[Mm]emoryCaptures/
+frontend/MU-VR-Experience/[Aa]ssets/AssetStoreTools*
+frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit
+frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit.meta
+frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_Tools
+frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_Tools.meta
+frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets/ModernOffice_Interior/SampleScenes
+frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets/ModernOffice_Interior/SampleScenes.meta
+frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs/SNAPS_NoHD
+frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs/SNAPS_NoHD.meta
+frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets/SciFi_Industrial/SampleScenes
+frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets/SciFi_Industrial/SampleScenes.meta
+frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets/SciFi_Industrial/Prefabs/SNAPS_NoHD
+frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals/_SNAPS_PrototypingAssets/SciFi_Industrial/Prefabs/SNAPS_NoHD.meta
+frontend/MU-VR-Experience/sysinfo.txt
+
+## Other
+.vscode
+.gradle
+.vs

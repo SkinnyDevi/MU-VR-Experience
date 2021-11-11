@@ -2,6 +2,8 @@
 A collaboration with *Manos Unidas* to create a VR experience for viewing short films in Virtual Reality.
 
 ## Backend
+Backend uses a combination of Express JS + MySQl and Sequelize as the ORM.  
+To install be sure to run previously the attached ```database-setup.sql``` file, as well as run ```npm install``` when cloning the project to install the required libraries.
 
 ## Frontend
 This project uses free SNAPS Prototyping Assets from Unity Asset store, as well as the [SNAPS Tool](https://assetstore.unity.com/packages/tools/integration/asset-swap-tool-151202?aid=1101lPGj&utm_campaign=unity_affiliate&utm_medium=affiliate&utm_source=partnerize-linkmaker), ProBuilder and ProGrids plugins. 

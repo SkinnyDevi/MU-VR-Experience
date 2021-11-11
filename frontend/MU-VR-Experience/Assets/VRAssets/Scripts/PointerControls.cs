@@ -1,29 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PointerControls : MonoBehaviour
 {
-    // Update is called once per frameººº
+	public Camera PlayerCamera;
+	public float RayLength = 4f;
+
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0))
 		{
 			RaycastHit hit;
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-			if (Physics.Raycast(ray, out hit, 50f))
+			if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out hit, RayLength))
 			{
-				if (hit.transform)
-				{
-					PrintObj(hit.transform.gameObject);
-				}
+				Debug.Log(hit.transform.name);
 			}
 		}
     }
-
-	void PrintObj(GameObject go)
-	{
-		print(go.name);
-	}
 }

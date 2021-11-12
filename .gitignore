@@ -5,6 +5,7 @@ backend/node_modules
 
 ## Frontend
 frontend/unity-external-assets
+frontend/MU-VR-Experience/sysinfo.txt
 frontend/MU-VR-Experience/.gradle
 frontend/MU-VR-Experience/[Ll]ibrary/
 frontend/MU-VR-Experience/[Tt]emp/
@@ -19,7 +20,8 @@ frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals
 frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals.meta
 frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit
 frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit.meta
-frontend/MU-VR-Experience/sysinfo.txt
+frontend/MU-VR-Experience/[Aa]ssets/TextMesh Pro
+frontend/MU-VR-Experience/[Aa]ssets/TextMesh Pro.meta
 
 ## Other
 .vscode

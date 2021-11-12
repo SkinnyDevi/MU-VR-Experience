@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class SettingsMenu : MonoBehaviour
@@ -50,4 +51,13 @@ public class SettingsMenu : MonoBehaviour
 	{
 		g.SetActive(state);
 	}
+
+	[DllImport("__Internal")]
+	private static extern string GetFromStorage(string key);
+
+	[DllImport("__Internal")]
+	private static extern void WriteToStorage(string key, string value);
+
+	[DllImport("__Internal")]
+	private static extern void DeleteFromStorage(string key); 
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
@@ -11,7 +9,6 @@ public class VolumeSlider : MonoBehaviour
     public AudioMixer AudioMixer;
     public TMP_Text VolumeValue;
 
-    // Start is called before the first frame update
     void Start()
     {
         VolumeSliderObject.onValueChanged.AddListener((v) => {

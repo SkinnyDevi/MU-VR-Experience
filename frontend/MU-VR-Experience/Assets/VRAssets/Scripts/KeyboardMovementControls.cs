@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class KeyboardMovementControls : MonoBehaviour
@@ -15,7 +13,6 @@ public class KeyboardMovementControls : MonoBehaviour
 	Vector3 velocity;
 	bool isGrounded;
 
-    // Update is called once per frame
     void Update()
     {
 		isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);

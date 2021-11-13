@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MouseLookControls : MonoBehaviour
 {
 	public float mouseSensitivity = 100f;
 	public Transform playerBody;
+	public TMP_Text SensitivityValue;
 	private float xRotation = 0f;
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,7 @@ public class MouseLookControls : MonoBehaviour
 		if (SettingsMenu.inSettings)
 		{
 			Cursor.lockState = CursorLockMode.None;
+			mouseSensitivity = float.Parse(SensitivityValue.text);
 		}
 		else
 		{

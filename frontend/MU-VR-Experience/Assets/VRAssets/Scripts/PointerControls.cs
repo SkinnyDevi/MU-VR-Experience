@@ -1,9 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
+using System;
 
 public class PointerControls : MonoBehaviour
 {
 	public Camera PlayerCamera;
 	public float RayLength = 4f;
+
+	string currentObject = "";
 
     void Update()
     {
@@ -12,8 +17,20 @@ public class PointerControls : MonoBehaviour
 			RaycastHit hit;
 			if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out hit, RayLength))
 			{
-				Debug.Log(hit.transform.name);
+				currentObject = hit.transform.name;
+				Debug.Log(currentObject);
 			}
 		}
     }
+
+	public string GetCurrentObject()
+	{
+		return currentObject;
+	}
+
+	public void TransitionFinished()
+	{
+		currentObject += "Exited";
+		Debug.Log(currentObject);
+	}
 }

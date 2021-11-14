@@ -3,44 +3,48 @@ using UnityEngine;
 
 public class SettingsMenu : MonoBehaviour
 {
-	public GameObject settingsMenu;
-	public static bool inSettings;
-	public GameObject crosshair;
+	public GameObject SettingsMenuObject;
+	public static bool InSettings;
+	public GameObject Crosshair;
 
     void Start()
     {
-		settingsMenu.SetActive(false);
+		SettingsMenuObject.SetActive(false);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+		if (!UserTransition.TransitionMade)
 		{
-			if (inSettings)
+			if (Input.GetKeyDown(KeyCode.K))
 			{
-				ResumeGame();
-			}
-			else
-			{
-				PauseGame();
+				if (InSettings)
+				{
+					ResumeGame();
+				}
+				else
+				{
+					PauseGame();
+				}
 			}
 		}
+			
     }
 
 	public void PauseGame()
 	{
-		SetState(crosshair, false);
-		SetState(settingsMenu, true);
+		SetState(Crosshair, false);
+		SetState(SettingsMenuObject, true);
 		Time.timeScale = 0f;
-		inSettings = true;
+		InSettings = true;
 	}
 
 	public void ResumeGame()
 	{
-		SetState(crosshair, true);
-		SetState(settingsMenu, false);
+		SetState(Crosshair, true);
+		SetState(SettingsMenuObject, false);
 		Time.timeScale = 1f;
-		inSettings = false;
+		InSettings = false;
 	}
 
 	public void SetState(GameObject g, bool state)

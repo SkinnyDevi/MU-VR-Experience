@@ -3,8 +3,8 @@ using TMPro;
 
 public class MouseLookControls : MonoBehaviour
 {
-	public float mouseSensitivity = 100f;
-	public Transform playerBody;
+	public float MouseSensitivity = 100f;
+	public Transform PlayerBody;
 	public TMP_Text SensitivityValue;
 	
 	float xRotation = 0f;
@@ -16,22 +16,22 @@ public class MouseLookControls : MonoBehaviour
 
     void Update()
     {
-		if (SettingsMenu.inSettings)
+		if (SettingsMenu.InSettings || UserTransition.TransitionMade)
 		{
 			Cursor.lockState = CursorLockMode.None;
-			mouseSensitivity = float.Parse(SensitivityValue.text);
+			MouseSensitivity = float.Parse(SensitivityValue.text);
 		}
 		else
 		{
 			Cursor.lockState = CursorLockMode.Locked;
-			float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-			float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+			float mouseX = Input.GetAxis("Mouse X") * MouseSensitivity * Time.deltaTime;
+			float mouseY = Input.GetAxis("Mouse Y") * MouseSensitivity * Time.deltaTime;
 
 			xRotation -= mouseY;
 			xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
 			transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-			playerBody.Rotate(Vector3.up * mouseX);
+			PlayerBody.Rotate(Vector3.up * mouseX);
 		}
     }
 }

@@ -1,5 +1,8 @@
 module.exports = (sequelize, Sequelize) => {
     const Clip = sequelize.define("clip", {
+        clid_id: {
+            type: Sequelize.INTEGER
+        },
         clip_name: {
             type: Sequelize.STRING
         },
@@ -10,14 +13,6 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.TEXT
         }
     });
-
-    Clip.associate = function(models) {
-        Clip.hasOne(models.rating, {
-            onDelete: "RESTRICT",
-            onUpdate: "CASCADE",
-            foreignKey: 'clipId'
-        });
-    }
 
     return Clip;
 }

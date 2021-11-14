@@ -1,5 +1,8 @@
 module.exports = (sequelize, Sequelize) => {
     const User = sequelize.define("user", {
+        user_id: {
+            type: Sequelize.INTEGER
+        },
         password: {
             type: Sequelize.STRING
         },
@@ -10,14 +13,6 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.BOOLEAN
         }
     });
-
-    User.associate = function(models) {
-        User.hasOne(models.rating, {
-            onDelete: "RESTRICT",
-            onUpdate: "CASCADE",
-            foreignKey: 'userId'
-        });
-    }
 
     return User;
 };

@@ -42,7 +42,7 @@ public class UserTransition : MonoBehaviour
     public IEnumerator MakeTransition()
     {
         transition.SetTrigger("StartTransition");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         Time.timeScale = 0f;
         Crosshair.SetActive(false);
         TransitionMade = true;

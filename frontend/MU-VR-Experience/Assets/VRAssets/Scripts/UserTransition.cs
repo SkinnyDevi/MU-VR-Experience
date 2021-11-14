@@ -9,6 +9,8 @@ public class UserTransition : MonoBehaviour
     public Canvas TransitionCanvas;
     public GameObject Crosshair;
     public static bool TransitionMade = false;
+    public GameObject LoginMenu;
+    public GameObject RegisterMenu;
 
     PointerControls rayCaster;
     Animator transition;
@@ -27,10 +29,6 @@ public class UserTransition : MonoBehaviour
             if (TransitionMade)
             {
                 StopAllCoroutines();
-                if (Input.GetKeyDown(KeyCode.Q))
-                {
-                    ExitTransition();
-                }
             }
             else
             {
@@ -45,6 +43,7 @@ public class UserTransition : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         Time.timeScale = 0f;
         Crosshair.SetActive(false);
+        LoginMenu.SetActive(true);
         TransitionMade = true;
         Debug.Log("Transition Made");
     }
@@ -55,6 +54,7 @@ public class UserTransition : MonoBehaviour
         transition.SetTrigger("FinishTransition");
         TransitionMade = false;
         Crosshair.SetActive(true);
+        LoginMenu.SetActive(false);
         rayCaster.TransitionFinished();
         Debug.Log("Transition Exited");
     }

@@ -14,6 +14,7 @@ public class UserTransition : MonoBehaviour
 
     PointerControls rayCaster;
     Animator transition;
+	bool menuOption;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class UserTransition : MonoBehaviour
         IEnumerator startTransition = MakeTransition();
         if (rayCaster.GetCurrentObject().Equals("Login") || rayCaster.GetCurrentObject().Equals("Register"))
         {
+			menuOption = rayCaster.GetCurrentObject().Equals("Login");
             if (TransitionMade)
             {
                 StopAllCoroutines();
@@ -43,7 +45,8 @@ public class UserTransition : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         Time.timeScale = 0f;
         Crosshair.SetActive(false);
-        LoginMenu.SetActive(true);
+        if (menuOption) LoginMenu.SetActive(true);
+		else RegisterMenu.SetActive(true);
         TransitionMade = true;
         Debug.Log("Transition Made");
     }
@@ -54,7 +57,8 @@ public class UserTransition : MonoBehaviour
         transition.SetTrigger("FinishTransition");
         TransitionMade = false;
         Crosshair.SetActive(true);
-        LoginMenu.SetActive(false);
+        if (menuOption) LoginMenu.SetActive(false);
+		else RegisterMenu.SetActive(false);
         rayCaster.TransitionFinished();
         Debug.Log("Transition Exited");
     }

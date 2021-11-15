@@ -3,6 +3,7 @@ A collaboration with *Manos Unidas* to create a VR experience for viewing short 
 
 ## Backend
 Backend uses a combination of Express JS + MySQl and Sequelize as the ORM.  
+
 How to install:  
 Having an open connection to a MySQL server, run the ```database-setup.sql``` file.  
 
@@ -12,7 +13,7 @@ An npm package called ```nodemon``` is used to reload changes automatically when
 
 The following commands must be run inside the backend directory:  
 To start the server, run ```npm start``` to start the server with nodemon.  
-To start the server, run ```npm run manual-start```to start the server and reloading it manually with ^C.
+To start the server manually, run ```npm run manual-start``` to launch the server and reload it with ^C.
 
 ## Frontend
 This project uses free SNAPS Prototyping Assets from Unity Asset store, as well as the [SNAPS Tool](https://assetstore.unity.com/packages/tools/integration/asset-swap-tool-151202?aid=1101lPGj&utm_campaign=unity_affiliate&utm_medium=affiliate&utm_source=partnerize-linkmaker), ProBuilder and ProGrids plugins. The project also uses TextMesh Pro, make sure to previously import it if you haven't. 

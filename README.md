@@ -2,7 +2,7 @@
 A collaboration with *Manos Unidas* to create a VR experience for viewing short films in Virtual Reality.
 
 ## Backend
-Backend uses a combination of Express JS + MySQl and Sequelize as the ORM.  
+Backend uses a combination of ExpressJS + MySQL and Sequelize as the ORM.  
 
 How to install:  
 Having an open connection to a MySQL server, run the ```database-setup.sql``` file.  

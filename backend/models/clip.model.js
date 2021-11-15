@@ -1,7 +1,8 @@
 module.exports = (sequelize, Sequelize) => {
     const Clip = sequelize.define("clip", {
         clid_id: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            primaryKey: true
         },
         clip_name: {
             type: Sequelize.STRING

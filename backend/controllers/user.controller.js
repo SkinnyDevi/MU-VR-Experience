@@ -14,8 +14,9 @@ exports.create = (req, res) => {
 
     // Create a User
     let user = {
+        email: req.body.username,
         password: req.body.password,
-        username: req.body.username,
+        username: utils.generateUsername(req.body.username),
         isAdmin: req.body.isAdmin ? req.body.isAdmin : false
     };
 
@@ -77,7 +78,7 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    User.findOne({ where: { id: id } }).then(data => {
+    User.findOne({ where: { user_id: id } }).then(data => {
         if (data) {
             const result = bcrypt.compareSync(req.body.password, data.password);
             if (!result) {
@@ -85,7 +86,7 @@ exports.update = (req, res) => {
             } else {
                 req.body.password = data.password;
             }
-            User.update(req.body, { where: { id: id } }).then(num => {
+            User.update(req.body, { where: { user_id: id } }).then(num => {
                 if (num == 1) {
                     res.send({
                         message: "User was updated successfully."
@@ -115,7 +116,7 @@ exports.delete = (req, res) => {
     const id = req.params.id;
 
     User.destroy({
-        where: { id: id }
+        where: { user_id: id }
     }).then(num => {
         if (num == 1) {
             res.send({
@@ -145,11 +146,11 @@ exports.findAllAdmin = (req, res) => {
 };
 
 // Find user by username and password
-exports.findUserByUsernameAndPassword = (req, res) => {
-    const user = req.body.username;
+exports.findUserByEmailAndPassword = (req, res) => {
+    const email = req.body.email;
     const pwd = req.body.password;
 
-    User.findOne({ where: { username: user, password: pwd } }).then(data => {
+    User.findOne({ where: { email: email, password: pwd } }).then(data => {
         res.send(data);
     }).catch(err => {
         res.status(500).send({

@@ -15,7 +15,14 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-db.sequelize.sync();
+
+try {
+    db.sequelize.authenticate();
+    console.log("Connection has been established successfully.");
+} catch (error) {
+    console.error("Unable to connect to the database: " + error);
+}
+
 
 app.use(function(req, res, next) {
     var token = req.headers['authorization'];

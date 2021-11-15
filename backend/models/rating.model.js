@@ -4,8 +4,9 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER,
             references: {
                 model: 'user',
-                key: 'user_id'
-            }
+                key: 'user_id',
+            },
+            primaryKey: true
         },
         clip_id: {
             type: Sequelize.INTEGER,
@@ -15,7 +16,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         rating: {
-            type: Sequelize.ENUM('Liked', 'Disliked')
+            type: Sequelize.ENUM('Liked', 'Regular', 'Disliked')
         }
     });
 

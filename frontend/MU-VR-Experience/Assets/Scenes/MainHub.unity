@@ -2165,6 +2165,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Url: http://localhost:6996/users/
+  Email: 
+  Username: 
+  Password: 
 --- !u!1 &193342510
 GameObject:
   m_ObjectHideFlags: 0
@@ -5773,6 +5776,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 476073916}
+  - component: {fileID: 476073917}
   m_Layer: 0
   m_Name: Login Menu
   m_TagString: Untagged
@@ -5795,6 +5799,18 @@ Transform:
   m_Father: {fileID: 193965900}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &476073917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476073915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d89d0be75c89cd4c86d01c6e8a7def8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &476297154
 GameObject:
   m_ObjectHideFlags: 0
@@ -8606,6 +8622,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EmailField: {fileID: 309664150}
+  EmailTextField: {fileID: 309664150}
+  PwdTextField: {fileID: 1256715155}
   SubmitButton: {fileID: 217817647}
 --- !u!1 &780029591
 GameObject:
@@ -14455,6 +14473,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EmailField: {fileID: 564064496}
+  EmailTextField: {fileID: 0}
+  PwdTextField: {fileID: 0}
   SubmitButton: {fileID: 294066599}
 --- !u!114 &1456269205
 MonoBehaviour:

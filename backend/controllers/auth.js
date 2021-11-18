@@ -27,9 +27,16 @@ exports.signin = (req, res) => {
 
         return res.json({ user: userObj, access_token: token });
     }).catch((err) => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while retrieving a certain user.",
-        });
+        if (err.message.includes("null")) {
+            res.status(404).send({
+                message: "User not found.",
+            });
+        } else {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving a certain user.",
+            });
+        }
+
     });
 };
 

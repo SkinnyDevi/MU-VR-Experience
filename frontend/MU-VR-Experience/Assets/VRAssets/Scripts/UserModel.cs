@@ -8,7 +8,7 @@ namespace UserModel
 		private string username;
 		private bool isAdmin;
 
-		public User(int id, string password, string email,string username, bool isAdmin)
+		public User(int id, string password, string email, string username, bool isAdmin)
 		{
 			this.id = id;
 			this.password = password;

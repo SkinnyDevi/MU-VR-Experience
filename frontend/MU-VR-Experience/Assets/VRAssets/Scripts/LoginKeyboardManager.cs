@@ -2,9 +2,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+using TMPro;
+
 public class LoginKeyboardManager : MonoBehaviour
 {
     public Selectable EmailField;
+    public TMP_InputField EmailTextField, PwdTextField;
     public Button SubmitButton;
 
     EventSystem system;
@@ -37,6 +40,6 @@ public class LoginKeyboardManager : MonoBehaviour
 
     public void SendData()
     {
-        Debug.Log("Send User Data To Backend");
+        StartCoroutine(LoginHandler.SignIn(EmailTextField.text, PwdTextField.text));
     }
 }

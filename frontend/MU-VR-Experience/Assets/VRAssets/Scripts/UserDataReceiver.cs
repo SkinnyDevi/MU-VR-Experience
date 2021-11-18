@@ -8,19 +8,42 @@ using UserModel;
 
 public class UserDataReceiver : MonoBehaviour
 {
-    public string Url, Email, Username, Password, Token;
+    public string Url, Email, Username, Password;
 
+	string token = "";
 	User player = new User();
 	List<User> users = new List<User>();
 
 	void Start()
 	{
-		player = new User(0, this.Password, this.Email, this.Username, false);
+		player = new User();
 		//StartCoroutine(CreateUser(url, this.player));
 		//StartCoroutine(GetUsers(url, token));
 		//StartCoroutine(GetUsers(url, token, true, 5));
 		//StartCoroutine(UpdateUser(url, token, this.player));
 		//StartCoroutine(DeleteUser(url, token, this.player));
+	}
+
+	public User CurrentPlayer()
+	{
+		return this.player;
+	}
+
+	public void SetEmail(string email)
+	{
+		this.player.SetEmail(email);
+		this.player.SetUsername(email.Split('@')[0].Replace(".", "_"));
+	}
+
+	public void SetPassword(string pwd)
+	{
+		this.player.SetEmail(pwd);
+	}
+	
+	public void SetToken(string tkn)
+	{
+		token = tkn;
+		Debug.Log(token);
 	}
 
 	// Get Users With or Without ID
@@ -84,9 +107,9 @@ public class UserDataReceiver : MonoBehaviour
 			{
 				Debug.Log("User created successfully.");
 				JSONNode success = JSON.Parse(post.downloadHandler.text);
-				this.Token = success["access_token"];
+				token = success["access_token"];
 
-				StartCoroutine(GetUsers(Url, Token, true, success["user"]["id"]));
+				StartCoroutine(GetUsers(Url, token, true, success["user"]["id"]));
 			}
 		}
 	}
@@ -104,7 +127,7 @@ public class UserDataReceiver : MonoBehaviour
 			else
 			{
 				Debug.Log("User was deleted successfully.");
-				StartCoroutine(GetUsers(Url, Token));
+				StartCoroutine(GetUsers(Url, token));
 			}
 		}
 	}
@@ -122,7 +145,7 @@ public class UserDataReceiver : MonoBehaviour
 			else
 			{
 				Debug.Log("User was updated successfully.");
-				StartCoroutine(GetUsers(Url, Token, true, currentUser.GetId()));
+				StartCoroutine(GetUsers(Url, token, true, currentUser.GetId()));
 			}
 		}
 	}

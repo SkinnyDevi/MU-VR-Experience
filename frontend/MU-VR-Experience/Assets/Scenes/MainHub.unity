@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571336, b: 0.3069219, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3785,8 +3785,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1456269204}
-        m_TargetAssemblyTypeName: LoginKeyboardManager, Assembly-CSharp
+      - m_Target: {fileID: 1456269207}
+        m_TargetAssemblyTypeName: RegisterKeyboardManager, Assembly-CSharp
         m_MethodName: SendData
         m_Mode: 1
         m_Arguments:
@@ -14428,7 +14428,7 @@ GameObject:
   - component: {fileID: 1456269203}
   - component: {fileID: 1456269206}
   - component: {fileID: 1456269205}
-  - component: {fileID: 1456269204}
+  - component: {fileID: 1456269207}
   m_Layer: 5
   m_Name: Main area
   m_TagString: Untagged
@@ -14460,22 +14460,6 @@ RectTransform:
   m_AnchoredPosition: {x: -15, y: -2.1742249}
   m_SizeDelta: {x: 430, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1456269204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456269202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5114b760dedfb1f4c935b1d7b6bcc9b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EmailField: {fileID: 564064496}
-  EmailTextField: {fileID: 0}
-  PwdTextField: {fileID: 0}
-  SubmitButton: {fileID: 294066599}
 --- !u!114 &1456269205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14514,6 +14498,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1456269202}
   m_CullTransparentMesh: 1
+--- !u!114 &1456269207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456269202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7396371579d154203ac41ef6e4beffcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmailField: {fileID: 564064496}
+  EmailTextField: {fileID: 564064496}
+  PwdTextField: {fileID: 200641559}
+  ConfirmPwdField: {fileID: 2132935163}
+  SubmitButton: {fileID: 294066599}
 --- !u!1001 &1461379513
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19052,6 +19053,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1974161188}
+  - component: {fileID: 1974161189}
   m_Layer: 0
   m_Name: Register Menu
   m_TagString: Untagged
@@ -19074,6 +19076,18 @@ Transform:
   m_Father: {fileID: 193965900}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1974161189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974161187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a256d0be95b45f9aaf59a2c8bc6179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1989593049 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6803822488984662077, guid: 9a2b5b071dd074aa489cae2a10b48e21,

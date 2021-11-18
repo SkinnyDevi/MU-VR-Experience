@@ -29,15 +29,10 @@ public class UserDataReceiver : MonoBehaviour
 		return this.player;
 	}
 
-	public void SetEmail(string email)
+	public void SetCurrentPlayer(User newPlayer)
 	{
-		this.player.SetEmail(email);
-		this.player.SetUsername(email.Split('@')[0].Replace(".", "_"));
-	}
-
-	public void SetPassword(string pwd)
-	{
-		this.player.SetEmail(pwd);
+		this.player = newPlayer;
+		Debug.Log(this.player.GetPassword());
 	}
 	
 	public void SetToken(string tkn)

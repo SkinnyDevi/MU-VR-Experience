@@ -18,7 +18,7 @@ exports.signin = (req, res) => {
     }
 
     // return 401 status if the credential is not match.
-    User.findOne({ where: { username: user } }).then((data) => {
+    User.findOne({ where: { email: user } }).then((data) => {
         const result = bcrypt.compareSync(pwd, data.password);
         if (!result) return res.status(401).send("Password is not valid.");
 

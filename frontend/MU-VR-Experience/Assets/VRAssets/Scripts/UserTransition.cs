@@ -7,59 +7,131 @@ using System.Collections;
 public class UserTransition : MonoBehaviour
 {
     public Canvas TransitionCanvas;
-    public GameObject Crosshair;
+    public GameObject Crosshair, LoginMenu, RegisterMenu, LoginMainArea, RegisterMainArea;
     public static bool TransitionMade = false;
-    public GameObject LoginMenu;
-    public GameObject RegisterMenu;
 
     PointerControls rayCaster;
     Animator transition;
-	bool menuOption;
+	bool menuOption, successExit;
 
     void Start()
     {
         rayCaster = Crosshair.GetComponent<PointerControls>();
         transition = TransitionCanvas.GetComponent<Animator>();
+        successExit = false;
     }
 
     void Update()
     {
-        IEnumerator startTransition = MakeTransition();
+        string currentAnimatorState = transition.GetCurrentAnimatorClipInfo(0)[0].clip.ToString().Split(' ')[0];
         if (rayCaster.GetCurrentObject().Equals("Login") || rayCaster.GetCurrentObject().Equals("Register"))
         {
-			menuOption = rayCaster.GetCurrentObject().Equals("Login");
-            if (TransitionMade)
+			menuOption = rayCaster.GetCurrentObject().Equals("Login"); // true = login, false = register
+            if (!TransitionMade)
             {
-                StopAllCoroutines();
+                MakeTransition();
             }
-            else
-            {
-                StartCoroutine(startTransition);
-            }   
+        }
+        
+        switch(currentAnimatorState)
+        {
+            case "Crossfade_In":
+                StopControls();
+                break;
+            case "Crossfade_Sleep_Blank":
+                if (!TransitionMade) {
+                    CloseMenu();
+                    Debug.Log(successExit + "HI");
+                    if (successExit) CleanFields();
+                    HideAlerts();
+                };
+                break;
+            case "Crossfade_Sleep_Blank_Out":
+                TransitionMade = false;
+                CleanFields();
+                HideAlerts();
+                CloseMenu();
+                break;
+            case "Crossfade_Out":   
+                successExit = true;
+                break;
+            case "Crossfade_Sleep":
+                if (successExit) // needed to not enter on enter->exit loop
+                {
+                    ResetTriggers(); 
+                    ResumeControls();
+                    successExit = false;
+                }
+                break;
         }
     }
 
-    public IEnumerator MakeTransition()
-    {
+    void MakeTransition()
+    {   
         transition.SetTrigger("StartTransition");
-        yield return new WaitForSeconds(0.5f);
-        Time.timeScale = 0f;
+        TransitionMade = true;
+
+        Debug.Log("Transition Made");
+    }
+
+    void StopControls()
+    {
         Crosshair.SetActive(false);
+        KeyboardMovementControls.IsInMenu = true;
+
         if (menuOption) LoginMenu.SetActive(true);
 		else RegisterMenu.SetActive(true);
-        TransitionMade = true;
-        Debug.Log("Transition Made");
+    }
+
+    void ResumeControls()
+    {
+        Crosshair.SetActive(true);
+        KeyboardMovementControls.IsInMenu = false;
     }
 
     public void ExitTransition()
     {
-        Time.timeScale = 1f;
-        transition.SetTrigger("FinishTransition");
-        TransitionMade = false;
-        Crosshair.SetActive(true);
+        if (successExit) transition.SetTrigger("FinishLongerTransition");
+        else
+        {
+            TransitionMade = false;
+            transition.SetTrigger("FinishTransition");
+        }
+
+        rayCaster.TransitionFinished();
+
+        Debug.Log("Transition Exited");
+    }
+
+    void ResetTriggers()
+    {
+        transition.ResetTrigger("StartTransition");
+        transition.ResetTrigger("FinishTransition");
+        transition.ResetTrigger("FinishLongerTransition");
+    }
+    
+    void CloseMenu()
+    {
         if (menuOption) LoginMenu.SetActive(false);
 		else RegisterMenu.SetActive(false);
-        rayCaster.TransitionFinished();
-        Debug.Log("Transition Exited");
+    }
+
+    void HideAlerts()
+    {
+        LoginMenu.transform.Find("Canvas/Login Successful").gameObject.SetActive(false);
+        LoginMenu.transform.Find("Canvas/Login Error").gameObject.SetActive(false);
+        RegisterMenu.transform.Find("Canvas/Register Successful").gameObject.SetActive(false);
+        RegisterMenu.transform.Find("Canvas/Register Error").gameObject.SetActive(false);
+    }
+
+    void CleanFields()
+    {
+        LoginMainArea.GetComponent<LoginKeyboardManager>().ResetTextFields();
+        RegisterMainArea.GetComponent<RegisterKeyboardManager>().ResetTextFields();
+    }
+
+    public void TriggerSuccessExit()
+    {
+        successExit = true;
     }
 }

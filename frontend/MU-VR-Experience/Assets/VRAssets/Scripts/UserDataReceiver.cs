@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,9 @@ using UserModel;
 public class UserDataReceiver : MonoBehaviour
 {
     public string Url, Email, Username, Password;
+	public Button LoginExitButton;
+	public Button RegisterExitButton;
+	public GameObject Crosshair;
 
 	string token = "";
 	User player = new User();
@@ -32,7 +36,10 @@ public class UserDataReceiver : MonoBehaviour
 	public void SetCurrentPlayer(User newPlayer)
 	{
 		this.player = newPlayer;
-		Debug.Log(this.player.GetPassword());
+		GameObject.FindObjectOfType<UserTransition>().TriggerSuccessExit();
+		bool currentObject = Crosshair.GetComponent<PointerControls>().GetCurrentObject().Equals("Login");
+		if (currentObject) LoginExitButton.onClick.Invoke();
+		else RegisterExitButton.onClick.Invoke();
 	}
 	
 	public void SetToken(string tkn)

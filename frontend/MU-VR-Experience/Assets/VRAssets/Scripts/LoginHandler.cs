@@ -2,12 +2,26 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
 
+using TMPro;
+
 using SimpleJSON;
 using UserModel;
 
 public class LoginHandler : MonoBehaviour
 {
+    public GameObject SuccessObjText, ErrorObjText;
+    public TMP_Text ErrorObjMessage;
+
     static readonly string API_URL = "http://192.168.1.184:6996/users/signin";
+    static GameObject SuccessText, ErrorText;
+    static TMP_Text ErrorMessage;
+
+    void Start()
+    {
+        SuccessText = SuccessObjText;
+        ErrorText = ErrorObjText;
+        ErrorMessage = ErrorObjMessage;
+    }
 
     public static IEnumerator SignIn(string userEmail, string userPassword)
     {
@@ -17,21 +31,37 @@ public class LoginHandler : MonoBehaviour
 
             if (signin.result != UnityWebRequest.Result.Success)
             {
-                if (signin.responseCode == 404)
+                ErrorMessage.text = "Password is Incorrect!";
+                switch (signin.responseCode)
                 {
-                    Debug.Log("User not found.");
+                    case 404:
+                        Debug.Log("User not found!");
+                        ErrorMessage.text = "User not found!";
+                        break;
+                    case 401:
+                        ErrorMessage.text = "Password is Incorrect!";
+                        break;
+                    default:
+                        ErrorMessage.text = "There was an error";
+                        Debug.Log("There was an error signin in: " + signin.error);
+                        break;
                 }
-                else
-                {
-                    Debug.Log("There was an error signin in: " + signin.error);
-                }
+                ErrorText.SetActive(true);
             }
             else
             {
+                ErrorText.SetActive(false);
                 Debug.Log("Sign In Info --");
+                
                 JSONNode response = JSON.Parse(signin.downloadHandler.text);
                 UserDataReceiver currentUserData  = GameObject.FindObjectOfType<UserDataReceiver>();
+                JSONNode userObj = response["user"];
+                User newPlayer = new User(userObj["user_id"], userObj["password"], userObj["email"], userObj["username"], bool.Parse(userObj["isAdmin"]));
+
+                SuccessText.SetActive(true);
+
                 currentUserData.SetToken(response["access_token"]);
+                currentUserData.SetCurrentPlayer(newPlayer);
             }
         }
     }

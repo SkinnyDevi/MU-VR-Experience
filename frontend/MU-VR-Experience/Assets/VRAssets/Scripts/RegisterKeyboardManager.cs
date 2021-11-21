@@ -40,14 +40,13 @@ public class RegisterKeyboardManager : MonoBehaviour
 
     public void SendData()
     {
-		if (PwdTextField.text.Equals(ConfirmPwdField.text))
-		{
-			StartCoroutine(RegisterHandler.CreateUserFromPlayer(EmailTextField.text, PwdTextField.text));
-		}
-		else
-		{
-			Debug.Log("Passwords do not match.");
-		}
-        
+        StartCoroutine(RegisterHandler.CreateUserFromPlayer(EmailTextField.text, PwdTextField.text, ConfirmPwdField.text));
+    }
+
+    public void ResetTextFields()
+    {
+        EmailTextField.text = "";
+        PwdTextField.text = "";
+        ConfirmPwdField.text = "";
     }
 }

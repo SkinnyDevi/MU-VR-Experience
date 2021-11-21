@@ -42,4 +42,10 @@ public class LoginKeyboardManager : MonoBehaviour
     {
         StartCoroutine(LoginHandler.SignIn(EmailTextField.text, PwdTextField.text));
     }
+
+    public void ResetTextFields()
+    {
+        EmailTextField.text = "";
+        PwdTextField.text = "";
+    }
 }

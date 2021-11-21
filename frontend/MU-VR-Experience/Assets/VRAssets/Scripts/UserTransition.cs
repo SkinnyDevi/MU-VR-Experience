@@ -41,7 +41,6 @@ public class UserTransition : MonoBehaviour
             case "Crossfade_Sleep_Blank":
                 if (!TransitionMade) {
                     CloseMenu();
-                    Debug.Log(successExit + "HI");
                     if (successExit) CleanFields();
                     HideAlerts();
                 };

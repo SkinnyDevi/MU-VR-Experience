@@ -1,18 +1,23 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+
 using System.Collections;
 using System.Collections.Generic;
+
+using TMPro;
 
 using SimpleJSON;
 using UserModel;
 
 public class UserDataReceiver : MonoBehaviour
 {
-    public string Url, Email, Username, Password;
 	public Button LoginExitButton;
 	public Button RegisterExitButton;
 	public GameObject Crosshair;
+	public TMP_Text SettingsUserText;
+
+	static readonly string Url = "http://localhost:6996/users/";
 
 	string token = "";
 	User player = new User();
@@ -36,10 +41,15 @@ public class UserDataReceiver : MonoBehaviour
 	public void SetCurrentPlayer(User newPlayer)
 	{
 		this.player = newPlayer;
+
 		GameObject.FindObjectOfType<UserTransition>().TriggerSuccessExit();
+
 		bool currentObject = Crosshair.GetComponent<PointerControls>().GetCurrentObject().Equals("Login");
 		if (currentObject) LoginExitButton.onClick.Invoke();
 		else RegisterExitButton.onClick.Invoke();
+
+		SettingsUserText.text = "User:  " + this.player.GetUsername();
+		SettingsUserText.gameObject.SetActive(true);
 	}
 	
 	public void SetToken(string tkn)
@@ -71,7 +81,6 @@ public class UserDataReceiver : MonoBehaviour
 					this.player.SetPassword(response["email"]);
 					this.player.SetUsername(response["username"]);
 					this.player.SetAdminPrivileges(response["isAdmin"]);
-					SetUserPublic(player);
 					Debug.Log(this.player.GetUsername());
 				}
 				else
@@ -192,11 +201,5 @@ public class UserDataReceiver : MonoBehaviour
 		basicAuthUser = System.Convert.ToBase64String(System.Text.Encoding.GetEncoding("ISO-8859-1").GetBytes(basicAuthUser));
 		basicAuthUser = "Basic " + basicAuthUser;
 		return basicAuthUser;
-	}
-
-	private void SetUserPublic(User user)
-	{
-		this.Email = user.GetEmail();
-		this.Password = user.GetPassword();
 	}
 }

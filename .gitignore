@@ -16,7 +16,20 @@ frontend/MU-VR-Experience/[Ll]ogs/
 frontend/MU-VR-Experience/[Uu]ser[Ss]ettings/
 frontend/MU-VR-Experience/[Mm]emoryCaptures/
 frontend/MU-VR-Experience/[Aa]ssets/AssetStoreTools*
-frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals
+frontend/MU-VR-Experience/Assets/AssetStoreOriginals/_SNAPS_PrototypingAssets/About
+frontend/MU-VR-Experience/Assets/AssetStoreOriginals/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs
+frontend/MU-VR-Experience/Assets/AssetStoreOriginals/_SNAPS_PrototypingAssets/ModernOffice_Interior/SampleScenes
+frontend/MU-VR-Experience/Assets/AssetStoreOriginals/_SNAPS_PrototypingAssets/ModernOffice_Interior/Materials/*
+!frontend/MU-VR-Experience/Assets/AssetStoreOriginals/_SNAPS_PrototypingAssets/ModernOffice_Interior/Materials/custom*
+frontend/MU-VR-Experience/Assets/AssetStoreOriginals/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs.meta
+frontend/MU-VR-Experience/Assets/AssetStoreOriginals/_SNAPS_PrototypingAssets/ModernOffice_Interior/SampleScenes.meta
+frontend/MU-VR-Experience/Assets/AssetStoreOriginals/_SNAPS_PrototypingAssets/SciFi_Industrial
+frontend/MU-VR-Experience/Assets/AssetStoreOriginals/_SNAPS_PrototypingAssets/Scripts
+frontend/MU-VR-Experience/Assets/AssetStoreOriginals/_SNAPS_Tools
+frontend/MU-VR-Experience/Assets/AssetStoreOriginals/_SNAPS_Tools.meta
+frontend/MU-VR-Experience/Assets/AssetStoreOriginals/_SNAPS_PrototypingAssets/About.meta
+frontend/MU-VR-Experience/Assets/AssetStoreOriginals/_SNAPS_PrototypingAssets/SciFi_Industrial.meta
+frontend/MU-VR-Experience/Assets/AssetStoreOriginals/_SNAPS_PrototypingAssets/Scripts.meta
 frontend/MU-VR-Experience/[Aa]ssets/AssetStoreOriginals.meta
 frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit
 frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit.meta
@@ -24,6 +37,11 @@ frontend/MU-VR-Experience/[Aa]ssets/TextMesh Pro
 frontend/MU-VR-Experience/[Aa]ssets/TextMesh Pro.meta
 frontend/MU-VR-Experience/[Aa]ssets/Oculus
 frontend/MU-VR-Experience/[Aa]ssets/Oculus.meta
+frontend/MU-VR-Experience/[Aa]ssets/ADG_Textures/walls_vol1/wall*
+!frontend/MU-VR-Experience/[Aa]ssets/ADG_Textures/walls_vol1/wall07
+frontend/MU-VR-Experience/[Aa]ssets/ADG_Textures/walls_vol1/wall*.meta
+!frontend/MU-VR-Experience/[Aa]ssets/ADG_Textures/walls_vol1/wall07.meta
+
 
 ## Other
 .vscode

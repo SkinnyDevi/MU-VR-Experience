@@ -6,12 +6,16 @@ using System;
 public class PointerControls : MonoBehaviour
 {
 	public Camera PlayerCamera;
+	public GameObject Crosshair;
+	public GameObject SelectedCrosshair;
 	public float RayLength = 4f;
 
 	string currentObject = "";
+	string hoverObject = "";
 
     void Update()
     {
+		HighlightSelectable();
 		if (Input.GetMouseButtonDown(0))
 		{
 			RaycastHit hit;
@@ -32,5 +36,30 @@ public class PointerControls : MonoBehaviour
 	{
 		currentObject += "Exited";
 		Debug.Log(currentObject);
+	}
+
+	void HighlightSelectable()
+	{
+		RaycastHit hoverCast;
+		if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out hoverCast, RayLength))
+		{
+			hoverObject = hoverCast.transform.name;
+			Debug.Log(hoverObject);
+		}
+		else
+		{
+			hoverObject = "Air";
+		}
+
+		if (hoverObject.Equals("Login") || hoverObject.Equals("Register"))
+		{
+			Crosshair.SetActive(false);
+			SelectedCrosshair.SetActive(true);
+		}
+		else
+		{
+			Crosshair.SetActive(true);
+			SelectedCrosshair.SetActive(false);
+		}
 	}
 }

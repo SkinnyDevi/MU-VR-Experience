@@ -51,14 +51,10 @@ public class SettingsMenu : MonoBehaviour
 		if (vrOptionChanged)
 		{
 			playerHandler.ChangePlayerType(PlayerVRHandler.PlayerType.VR);
-			//TODO: call player handler -> do transition -> switch camera to vr player
-			// --------------------------> change to vr
 		}
 		else
 		{
 			playerHandler.ChangePlayerType(PlayerVRHandler.PlayerType.Mouse);
-			//TODO: call player handler -> do transition ----------> switch camera to mouse player
-			// --------------------------> change to mouse player
 		}
 		Time.timeScale = 1f;
 		InSettings = false;

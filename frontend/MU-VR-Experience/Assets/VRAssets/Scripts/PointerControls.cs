@@ -43,7 +43,6 @@ public class PointerControls : MonoBehaviour
 		if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out hoverCast, RayLength))
 		{
 			hoverObject = hoverCast.transform.name;
-			Debug.Log(hoverObject);
 		}
 		else
 		{

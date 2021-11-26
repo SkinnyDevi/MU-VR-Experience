@@ -3,6 +3,8 @@ using UnityEngine.Networking;
 using System;
 using System.Collections;
 
+using TMPro;
+
 using SimpleJSON;
 
 public class ImageFramesSpawner : MonoBehaviour
@@ -31,13 +33,13 @@ public class ImageFramesSpawner : MonoBehaviour
 			}
 			else
 			{
-				Debug.Log("Info received:");
 				JSONNode response = JSON.Parse(getImages.downloadHandler.text);
 				int baseXCoord = -195;
 				foreach (JSONNode clip in response)
 				{
 					ClipFrameObject.GetComponent<TrailerImgGetter>().Base64ToSprite(clip["clip_trailer_img"]);
 					ClipFrameObject.transform.position = new Vector3(baseXCoord, 46.17f, -11.03f);
+					ClipFrameObject.transform.Find("Canvas/ClipName").GetComponent<TMP_Text>().text = clip["clip_name"];
 					baseXCoord += 2;
 					Instantiate(ClipFrameObject, gameObject.transform);
 				}

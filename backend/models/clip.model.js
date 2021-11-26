@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     const Clip = sequelize.define("clip", {
-        clid_id: {
+        clip_id: {
             type: Sequelize.INTEGER,
             primaryKey: true
         },

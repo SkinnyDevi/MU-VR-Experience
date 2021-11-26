@@ -22010,6 +22010,11 @@ PrefabInstance:
       propertyPath: RegisterExitButton
       value: 
       objectReference: {fileID: 2017089154}
+    - target: {fileID: 1495503214325550121, guid: 91f13f5c61ea94a3a916d65e86057f6c,
+        type: 3}
+      propertyPath: RayLength
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91f13f5c61ea94a3a916d65e86057f6c, type: 3}
 --- !u!23 &1697887642782483553

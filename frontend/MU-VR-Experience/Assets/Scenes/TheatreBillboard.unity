@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18329452, g: 0.22892544, b: 0.30628645, a: 1}
+  m_IndirectSpecularColor: {r: 0.1832949, g: 0.22892603, b: 0.30628732, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2874,6 +2874,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClipFrameObject: {fileID: 3370856746945877586, guid: 30cabe9b2467440d09622d95230c19e9,
+    type: 3}
+  EnterButtonObject: {fileID: 9105266663024104666, guid: 1fa1692ec631c674b882f5ffc8330a2d,
     type: 3}
 --- !u!1001 &449712846
 PrefabInstance:
@@ -7758,7 +7760,7 @@ PrefabInstance:
     - target: {fileID: 1495503213978670089, guid: 91f13f5c61ea94a3a916d65e86057f6c,
         type: 3}
       propertyPath: token
-      value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImhlbGxvIiwiZW1haWwiOiJoZWxsb0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCRXQmFRcXNoeWdEUENSMUtjZzNWdmdPY0lwZGEweTh3YXBPZDBHSGNwVC45SnBDd1JuR0plUyIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2Mzc5NDEwMTIsImV4cCI6MTYzODAyNzQxMn0.y62CK65JXw1SZpYvoDZLWiCvmDzDuIYZDTATdK0QJuw
+      value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6ImhlbGxvIiwiZW1haWwiOiJoZWxsb0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCRhZFovdDJEMFZEVkRZbGtIVVhwWGJlYnQ3UkNBUGwzQmNOMmgwVXVuLmN3a2Y4YXR4TEZmYSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MzgwMzUwMTIsImV4cCI6MTYzODEyMTQxMn0.mkB9dALNBu-rxQkcbb9CGBqfg2PjwI-3R2Cz5ZsIR4w
       objectReference: {fileID: 0}
     - target: {fileID: 1495503214325550121, guid: 91f13f5c61ea94a3a916d65e86057f6c,
         type: 3}

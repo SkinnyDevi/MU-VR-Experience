@@ -9,7 +9,7 @@ using SimpleJSON;
 
 public class ImageFramesSpawner : MonoBehaviour
 {
-	public GameObject ClipFrameObject;
+	public GameObject ClipFrameObject, EnterButtonObject;
 
     static readonly string API_URL = "http://192.168.1.184:6996/clips/";
 
@@ -41,7 +41,9 @@ public class ImageFramesSpawner : MonoBehaviour
 					ClipFrameObject.transform.position = new Vector3(baseXCoord, 46.17f, -11.03f);
 					ClipFrameObject.transform.Find("Canvas/ClipName").GetComponent<TMP_Text>().text = clip["clip_name"];
 					baseXCoord += 2;
-					Instantiate(ClipFrameObject, gameObject.transform);
+					GameObject newFrame = Instantiate(ClipFrameObject, gameObject.transform);
+					EnterButtonObject.name = "Enter-" + clip["clip_id"];
+					Instantiate(EnterButtonObject, newFrame.transform);
 				}
 
 			}

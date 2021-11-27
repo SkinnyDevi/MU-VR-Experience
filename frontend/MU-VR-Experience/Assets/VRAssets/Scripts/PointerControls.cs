@@ -7,7 +7,7 @@ public class PointerControls : MonoBehaviour
 {
 	public Camera PlayerCamera;
 	public GameObject SelectedCrosshair;
-	public float RayLength = 4f;
+	public float RayLength;
 
 	string currentObject = "";
 	string hoverObject = "";
@@ -49,7 +49,7 @@ public class PointerControls : MonoBehaviour
 			hoverObject = "Air";
 		}
 
-		if (hoverObject.Equals("Login") || hoverObject.Equals("Register"))
+		if (hoverObject.Equals("Login") || hoverObject.Equals("Register") || hoverObject.Contains("Enter"))
 		{
 			SelectedCrosshair.SetActive(true);
 		}

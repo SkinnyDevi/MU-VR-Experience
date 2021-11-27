@@ -1,12 +1,16 @@
 module.exports = (sequelize, Sequelize) => {
     const Rating = sequelize.define("rating", {
+        rating_id: {
+            type: Sequelize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
         user_id: {
             type: Sequelize.INTEGER,
             references: {
                 model: 'user',
                 key: 'user_id',
-            },
-            primaryKey: true
+            }
         },
         clip_id: {
             type: Sequelize.INTEGER,

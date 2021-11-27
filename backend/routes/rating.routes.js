@@ -4,15 +4,15 @@ module.exports = app => {
 
     var router = require("express").Router();
 
-    router.post("/", auth.isAuthenticated, ratings.create);
+    //router.post("/", auth.isAuthenticated, ratings.create);
 
     router.get("/", auth.isAuthenticated, ratings.findAll);
 
-    router.get("/rating/clip/:id", auth.isAuthenticated, ratings.findAllClipRatings);
+    router.get("/rating/:id", auth.isAuthenticated, ratings.findOne);
 
-    router.get("/rating/user/:id", auth.isAuthenticated, ratings.findAllUserRatings);
+    router.get("/clip/:id", auth.isAuthenticated, ratings.findAllClipRatings);
 
-    // TODO: update, delete
+    router.get("/user/:id", auth.isAuthenticated, ratings.findAllUserRatings);
 
     app.use('/ratings', router);
 };

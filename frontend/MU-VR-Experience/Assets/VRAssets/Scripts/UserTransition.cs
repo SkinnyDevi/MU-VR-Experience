@@ -23,6 +23,11 @@ public class UserTransition : MonoBehaviour
 
     void Update()
     {
+        if (rayCaster.GetCurrentObject().Equals("Neo_Wall_snaps001 (4)"))
+        {
+            SceneLoader.LoadScene(SceneLoader.Scene.TheatreBillboard);
+        }
+
         string currentAnimatorState = transition.GetCurrentAnimatorClipInfo(0)[0].clip.ToString().Split(' ')[0];
         if (rayCaster.GetCurrentObject().Equals("Login") || rayCaster.GetCurrentObject().Equals("Register"))
         {

@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainHub.unity
     guid: 1b40b5090e46542739122f79d0299da3
+  - enabled: 1
+    path: Assets/Scenes/TheatreBillboard.unity
+    guid: 9e5d082162d554e5393551ba74d08d01
+  - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 367e6e42c54b7f34ab666d1af3878419
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260,
       type: 2}

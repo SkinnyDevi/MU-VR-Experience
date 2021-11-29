@@ -15,6 +15,7 @@ public class PointerControls : MonoBehaviour
     void Update()
     {
 		HighlightSelectable();
+		EnterBillboard();
 		if (Input.GetMouseButtonDown(0))
 		{
 			RaycastHit hit;
@@ -35,6 +36,14 @@ public class PointerControls : MonoBehaviour
 	{
 		currentObject += "Exited";
 		Debug.Log(currentObject);
+	}
+
+	void EnterBillboard()
+	{
+		if (currentObject.Equals("BillBoardDoors"))
+		{
+			SceneLoader.LoadScene(SceneLoader.Scene.TheatreBillboard);
+		}
 	}
 
 	void HighlightSelectable()

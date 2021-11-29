@@ -55,6 +55,7 @@ public class UserDataReceiver : MonoBehaviour
 	public void SetToken(string tkn)
 	{
 		token = tkn;
+		GameObject.Find("Environment/RegisterRoom/Walls/BillBoardEntry").SetActive(true);
 		Debug.Log(token);
 	}
 

@@ -22,4 +22,11 @@ public class VolumeSlider : MonoBehaviour
     {
         AudioMixer.SetFloat("MasterVolume", volume);
     }
+
+	public void LoadVolume(float newVol)
+	{
+		SetVolume(newVol);
+		VolumeSliderObject.value = newVol;
+		VolumeValue.text = (((newVol*-1/80*100)-100)*-1).ToString("0");
+	}
 }

@@ -14,4 +14,11 @@ public class SensitivitySlider : MonoBehaviour
             SensitivityValue.text = v.ToString();
         });
     }
+
+	public void LoadSensitivity(float value)
+	{
+		SensitivitySliderObject.value = value;
+		SensitivityValue.text = value.ToString("0");
+		GameObject.FindObjectOfType<MouseLookControls>().MouseSensitivity = value;
+	}
 }

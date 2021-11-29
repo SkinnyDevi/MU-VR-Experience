@@ -17,7 +17,7 @@ public class UserDataReceiver : MonoBehaviour
 	public GameObject Crosshair;
 	public TMP_Text SettingsUserText;
 
-	static readonly string Url = "http://192.168.1.184:6996/users/";
+	// static readonly string Url = "http://192.168.1.184:6996/users/";
 
 	string token = "";
 	User player = new User();
@@ -48,7 +48,7 @@ public class UserDataReceiver : MonoBehaviour
 		if (currentObject) LoginExitButton.onClick.Invoke();
 		else RegisterExitButton.onClick.Invoke();
 
-		SettingsUserText.text = "User:  " + this.player.GetUsername();
+		SettingsUserText.text = "User: " + this.player.GetUsername();
 		SettingsUserText.gameObject.SetActive(true);
 	}
 	

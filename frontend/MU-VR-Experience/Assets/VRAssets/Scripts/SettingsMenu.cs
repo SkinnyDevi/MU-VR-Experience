@@ -66,7 +66,8 @@ public class SettingsMenu : MonoBehaviour
 	void SaveSettings()
 	{
 		Button wasd, arrows, leftclick, keye;
-		TMP_Text sensitivityValue, volumeValue;
+		TMP_Text sensitivityValue;
+		VolumeSlider volumeValue;
 
 		string settingsPath = "Settings Menu/Canvas/Pause Menu";
 		
@@ -75,16 +76,18 @@ public class SettingsMenu : MonoBehaviour
 		leftclick = gameObject.transform.Find(settingsPath + "/Interaction Choose/LeftClick").GetComponent<Button>();
 		keye = gameObject.transform.Find(settingsPath + "/Interaction Choose/KeyE").GetComponent<Button>();
 		sensitivityValue = gameObject.transform.Find(settingsPath + "/Sensitivity Slider/Sensitivity Value").GetComponent<TMP_Text>();
-		volumeValue = gameObject.transform.Find(settingsPath + "/Volume Slider/Volume Value").GetComponent<TMP_Text>();
+		volumeValue = gameObject.transform.Find(settingsPath + "/Volume Slider/Slider").GetComponent<VolumeSlider>();
 
 		string movementType = !wasd.IsInteractable() ? wasd.gameObject.name : arrows.gameObject.name;
 		string interactionType = !leftclick.IsInteractable() ? leftclick.gameObject.name : keye.gameObject.name;
+		float saveVolume;
+		volumeValue.AudioMixer.GetFloat("MasterVolume", out saveVolume);
 
-		Debug.Log($"SETTINGS TO SAVE: {movementType}, {interactionType}, {sensitivityValue.text}, {volumeValue.text}");
+		Debug.Log($"SETTINGS TO SAVE: {movementType}, {interactionType}, {sensitivityValue.text}, {saveVolume}");
 		UserInfoManager.SaveString(UserInfoManager.SaveType.SettingsMovement, movementType);
 		UserInfoManager.SaveString(UserInfoManager.SaveType.SettingsInteraction, interactionType);
-		UserInfoManager.SaveInt(UserInfoManager.SaveType.SettingsSensitivity, Int32.Parse(sensitivityValue.text));
-		UserInfoManager.SaveInt(UserInfoManager.SaveType.SettingsVolume, Int32.Parse(volumeValue.text));
+		UserInfoManager.SaveFloat(UserInfoManager.SaveType.SettingsSensitivity, float.Parse(sensitivityValue.text));
+		UserInfoManager.SaveFloat(UserInfoManager.SaveType.SettingsVolume, saveVolume);
 	}
 
 	void SetState(GameObject g, bool state)

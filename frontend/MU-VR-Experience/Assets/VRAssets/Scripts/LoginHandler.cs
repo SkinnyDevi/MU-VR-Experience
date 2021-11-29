@@ -56,12 +56,12 @@ public class LoginHandler : MonoBehaviour
                 JSONNode response = JSON.Parse(signin.downloadHandler.text);
                 UserDataReceiver currentUserData  = GameObject.FindObjectOfType<UserDataReceiver>();
                 JSONNode userObj = response["user"];
-                User newPlayer = new User(userObj["user_id"], userObj["password"], userObj["email"], userObj["username"], bool.Parse(userObj["isAdmin"]));
+                User newPlayer = new User(userObj["user_id"], userObj["email"], userObj["username"]);
 
                 SuccessText.SetActive(true);
 
-                currentUserData.SetToken(response["access_token"]);
                 currentUserData.SetCurrentPlayer(newPlayer);
+                currentUserData.SetToken(response["access_token"]);
             }
         }
     }

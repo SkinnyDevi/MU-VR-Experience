@@ -19,13 +19,13 @@ public class UserDataReceiver : MonoBehaviour
 
 	static readonly string Url = "http://192.168.1.184:6996/users/";
 
-	public string token = "";
+	string token = "";
 	User player = new User();
-	List<User> users = new List<User>();
 
 	void Start()
 	{
 		player = new User();
+		UserInfoManager.LoadSettings();
 		//StartCoroutine(CreateUser(url, this.player));
 		//StartCoroutine(GetUsers(url, token));
 		//StartCoroutine(GetUsers(url, token, true, 5));
@@ -64,6 +64,7 @@ public class UserDataReceiver : MonoBehaviour
 		return token;
 	}
 
+	/*
 	// Get Users With or Without ID
 	public IEnumerator GetUsers(string getUrl, string userToken, bool withID = false, int userID = 0)
 	{
@@ -83,10 +84,8 @@ public class UserDataReceiver : MonoBehaviour
 				if (withID)
 				{
 					this.player.SetId(response["id"]);
-					this.player.SetPassword(response["password"]);
-					this.player.SetPassword(response["email"]);
+					this.player.SetEmail(response["email"]);
 					this.player.SetUsername(response["username"]);
-					this.player.SetAdminPrivileges(response["isAdmin"]);
 					Debug.Log(this.player.GetUsername());
 				}
 				else
@@ -97,11 +96,9 @@ public class UserDataReceiver : MonoBehaviour
 						Debug.Log(response[userIndex]["username"]);
 						User tempUser = new User();
 						tempUser.SetId(response[userIndex]["id"]);
-						tempUser.SetPassword(response[userIndex]["password"]);
 						tempUser.SetEmail(response[userIndex]["email"]);
 						tempUser.SetUsername(response[userIndex]["username"]);
-						tempUser.SetAdminPrivileges(response[userIndex]["isAdmin"]);
-						users.Add(tempUser);
+						//users.Add(tempUser);
 						userIndex++;
 					}
 				}
@@ -208,4 +205,5 @@ public class UserDataReceiver : MonoBehaviour
 		basicAuthUser = "Basic " + basicAuthUser;
 		return basicAuthUser;
 	}
+	*/
 }

@@ -6345,7 +6345,7 @@ GameObject:
   - component: {fileID: 533266972}
   - component: {fileID: 533266971}
   m_Layer: 0
-  m_Name: E
+  m_Name: KeyE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21028,7 +21028,7 @@ GameObject:
   - component: {fileID: 2094892927}
   - component: {fileID: 2094892926}
   m_Layer: 0
-  m_Name: Left Click
+  m_Name: LeftClick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,5 +1,7 @@
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 using TMPro;
 
@@ -57,10 +59,35 @@ public class SettingsMenu : MonoBehaviour
 			playerHandler.ChangePlayerType(PlayerVRHandler.PlayerType.Mouse);
 		}
 		Time.timeScale = 1f;
+		SaveSettings();
 		InSettings = false;
 	}
 
-	public void SetState(GameObject g, bool state)
+	void SaveSettings()
+	{
+		Button wasd, arrows, leftclick, keye;
+		TMP_Text sensitivityValue, volumeValue;
+
+		string settingsPath = "Settings Menu/Canvas/Pause Menu";
+		
+		wasd = gameObject.transform.Find(settingsPath + "/Movement Choose/WASD").GetComponent<Button>();
+		arrows = gameObject.transform.Find(settingsPath + "/Movement Choose/Arrows").GetComponent<Button>();
+		leftclick = gameObject.transform.Find(settingsPath + "/Interaction Choose/LeftClick").GetComponent<Button>();
+		keye = gameObject.transform.Find(settingsPath + "/Interaction Choose/KeyE").GetComponent<Button>();
+		sensitivityValue = gameObject.transform.Find(settingsPath + "/Sensitivity Slider/Sensitivity Value").GetComponent<TMP_Text>();
+		volumeValue = gameObject.transform.Find(settingsPath + "/Volume Slider/Volume Value").GetComponent<TMP_Text>();
+
+		string movementType = !wasd.IsInteractable() ? wasd.gameObject.name : arrows.gameObject.name;
+		string interactionType = !leftclick.IsInteractable() ? leftclick.gameObject.name : keye.gameObject.name;
+
+		Debug.Log($"SETTINGS TO SAVE: {movementType}, {interactionType}, {sensitivityValue.text}, {volumeValue.text}");
+		UserInfoManager.SaveString(UserInfoManager.SaveType.SettingsMovement, movementType);
+		UserInfoManager.SaveString(UserInfoManager.SaveType.SettingsInteraction, interactionType);
+		UserInfoManager.SaveInt(UserInfoManager.SaveType.SettingsSensitivity, Int32.Parse(sensitivityValue.text));
+		UserInfoManager.SaveInt(UserInfoManager.SaveType.SettingsVolume, Int32.Parse(volumeValue.text));
+	}
+
+	void SetState(GameObject g, bool state)
 	{
 		g.SetActive(state);
 	}

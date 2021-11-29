@@ -48,3 +48,4 @@ frontend/MU-VR-Experience/[Aa]ssets/ADG_Textures/walls_vol1/wall*.meta
 .gradle
 .vs
 ._*
+.idea

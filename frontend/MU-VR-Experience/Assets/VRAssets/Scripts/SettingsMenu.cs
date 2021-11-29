@@ -109,13 +109,4 @@ public class SettingsMenu : MonoBehaviour
 				vrOptionChanged = false;
 		}
 	}
-
-	[DllImport("__Internal")]
-	private static extern string GetFromStorage(string key);
-
-	[DllImport("__Internal")]
-	private static extern void WriteToStorage(string key, string value);
-
-	[DllImport("__Internal")]
-	private static extern void DeleteFromStorage(string key); 
 }

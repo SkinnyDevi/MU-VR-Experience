@@ -44,6 +44,17 @@ function getCleanClip(clip) {
     };
 }
 
+function getCleanRating(rating) {
+    if (!rating) return null;
+
+    return {
+        rating_id: rating.rating_id,
+        user_id: rating.user_id,
+        clip_id: rating.clip_id,
+        rating: rating.rating
+    }
+}
+
 function generateUsername(email_str) {
     let username = "";
     username += email_str.split("@")[0];
@@ -55,5 +66,6 @@ module.exports = {
     generateToken,
     getCleanUser,
     getCleanClip,
+    getCleanRating,
     generateUsername
 }

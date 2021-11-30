@@ -1,7 +1,54 @@
 const db = require("../models");
 const Rating = db.rating;
+const utils = require("../utils");
 
-exports.create = (req, res) => {}
+exports.update = (req, res) => {
+    const id = req.params.id;
+    const reqBody = req.body;
+
+    Rating.findOne({ where: { user_id: reqBody.user_id, clip_id: reqBody.clip_id } }).then(findData => {
+        if (findData) {
+            Rating.update(req.body, { user_id: reqBody.user_id, clip_id: reqBody.clip_id }).then(code => {
+                if (code == 1) {
+                    res.send({
+                        message: "Rating was updated successfully."
+                    });
+                } else {
+                    res.send({
+                        message: "Cannot update the rating with id: " + id + "Maybe the is no clip or the request body is empty."
+                    });
+                }
+            }).catch(err => {
+                res.status(500).send({
+                    message: "There was an error updating the rating: " + err.message
+                })
+            });
+        } else {
+            if (!reqBody.user_id || !reqBody.clip_id || !reqBody.rating) {
+                return res.status(400).send({
+                    message: "Rating information is empty."
+                });
+            }
+
+            let rating = {
+                rating_id: 0,
+                user_id: reqBody.user_id,
+                clip_id: reqBody.clip_id,
+                rating: reqBody.rating
+            }
+
+            Rating.create(rating).then(createData => {
+                return res.send(utils.getCleanRating(createData));
+            }).catch(err => {
+                res.status(500).send({
+                    message: "Couldn't create a new rating: " + err.message
+                });
+            });
+        }
+    }).catch(err => {
+
+    });
+}
 
 exports.findAll = (req, res) => {
     Rating.findAll().then(data => {
@@ -15,6 +62,7 @@ exports.findAll = (req, res) => {
 
 exports.findOne = (req, res) => {
     const id = req.params.id;
+
     Rating.findByPk(id).then(data => {
         res.send(data);
     }).catch(err => {
@@ -45,5 +93,4 @@ exports.findAllClipRatings = (req, res) => {
     });
 }
 
-exports.update = (req, res) => {}
 exports.delete = (req, res) => {}

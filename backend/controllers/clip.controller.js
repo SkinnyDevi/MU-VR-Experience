@@ -4,10 +4,9 @@ const utils = require("../utils");
 
 exports.create = (req, res) => {
     if (!req.body.clip_name || !req.body.clip_duration) {
-        res.status(400).send({
+        return res.status(400).send({
             message: "Clip information is empty"
         });
-        return;
     }
 
     let clip = {

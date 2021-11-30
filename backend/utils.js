@@ -33,6 +33,17 @@ function getCleanUser(user) {
     };
 }
 
+function getCleanClip(clip) {
+    if (!clip) return null;
+
+    return {
+        clip_id: clip.clip_id,
+        clip_name: clip.clip_name,
+        clip_duration: clip.clip_duration,
+        clip_trailer_img: clip.clip_trailer_img
+    };
+}
+
 function generateUsername(email_str) {
     let username = "";
     username += email_str.split("@")[0];
@@ -43,5 +54,6 @@ function generateUsername(email_str) {
 module.exports = {
     generateToken,
     getCleanUser,
+    getCleanClip,
     generateUsername
 }

@@ -102,7 +102,7 @@ exports.update = (req, res) => {
                 });
             });
         } else {
-            return res.status(401).send("No valid user was found for update.")
+            return res.status(404).send("No valid user was found for update.")
         }
     }).catch(err => {
         res.status(500).send({

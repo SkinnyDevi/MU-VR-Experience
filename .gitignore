@@ -36,6 +36,9 @@ frontend/MU-VR-Experience/[Aa]ssets/SciFi Warehouse Kit.meta
 frontend/MU-VR-Experience/[Aa]ssets/TextMesh Pro
 frontend/MU-VR-Experience/[Aa]ssets/TextMesh Pro.meta
 frontend/MU-VR-Experience/[Aa]ssets/Oculus
+frontend/MU-VR-Experience/[Aa]ssets/Resources/[Oo]culus*
+frontend/MU-VR-Experience/[Aa]ssets/Resources/OVR*
+frontend/MU-VR-Experience/[Aa]ssets/Resources/ONSP*
 frontend/MU-VR-Experience/[Aa]ssets/Oculus.meta
 frontend/MU-VR-Experience/[Aa]ssets/ADG_Textures/walls_vol1/wall*
 !frontend/MU-VR-Experience/[Aa]ssets/ADG_Textures/walls_vol1/wall07

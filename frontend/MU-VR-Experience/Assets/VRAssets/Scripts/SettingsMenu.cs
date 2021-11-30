@@ -103,7 +103,7 @@ public class SettingsMenu : MonoBehaviour
 		else
 		{
 			vrStateText.text = "Disabled";
-				vrOptionChanged = false;
+			vrOptionChanged = false;
 		}
 	}
 }

@@ -11,7 +11,7 @@ public class SettingsOptionsChooser : MonoBehaviour
 
     void Start()
     {
-        Select1();
+        LoadConfig();
     }
 
     public void Select1()
@@ -37,4 +37,34 @@ public class SettingsOptionsChooser : MonoBehaviour
         Option2Button.interactable = true;
         Option2TextMesh.fontStyle = FontStyles.Normal;
     }
+
+	public void LoadConfig()
+	{
+		if (gameObject.name.Equals("Movement Choose"))
+		{
+			if (UserInfoManager.GetString(UserInfoManager.SaveType.SettingsMovement).Equals(UserInfoManager.Movement.WASD.ToString()))
+			{
+				Select1();
+				Deselect2();
+			}
+			else
+			{
+				Select2();
+				Deselect1();
+			}
+		}
+		else
+		{
+			if (UserInfoManager.GetString(UserInfoManager.SaveType.SettingsInteraction).Equals(UserInfoManager.Interaction.LeftClick.ToString()))
+			{
+				Select1();
+				Deselect2();
+			}
+			else
+			{
+				Select2();
+				Deselect1();
+			}
+		}
+	}
 }

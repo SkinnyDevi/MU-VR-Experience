@@ -80,7 +80,7 @@ public static class UserInfoManager
 		((VolumeSlider)(Resources.FindObjectsOfTypeAll(typeof(VolumeSlider))[0])).LoadVolume(GetFloat(SaveType.SettingsVolume));
 		((SensitivitySlider)(Resources.FindObjectsOfTypeAll(typeof(SensitivitySlider))[0])).LoadSensitivity(GetFloat(SaveType.SettingsSensitivity));
 
-        Debug.Log(PlayerPrefs.GetString(SaveType.SettingsMovement.ToString()));
+        Debug.Log(GetString(SaveType.SettingsMovement));
         Debug.Log(PlayerPrefs.GetString(SaveType.SettingsInteraction.ToString()));
         Debug.Log(PlayerPrefs.GetFloat(SaveType.SettingsSensitivity.ToString()));
         Debug.Log(PlayerPrefs.GetFloat(SaveType.SettingsVolume.ToString()));

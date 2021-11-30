@@ -7,6 +7,7 @@ public class VolumeSlider : MonoBehaviour
 {
     public Slider VolumeSliderObject;
     public AudioMixer AudioMixer;
+	public static float RawVolume = 0f;
     public TMP_Text VolumeValue;
 
     void Start()
@@ -20,6 +21,7 @@ public class VolumeSlider : MonoBehaviour
 
     public void SetVolume(float volume)
     {
+		RawVolume = volume;
         AudioMixer.SetFloat("MasterVolume", volume);
     }
 

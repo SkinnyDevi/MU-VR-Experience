@@ -58,7 +58,7 @@ public class PointerControls : MonoBehaviour
 			hoverObject = "Air";
 		}
 
-		if (hoverObject.Equals("Login") || hoverObject.Equals("Register") || hoverObject.Contains("Enter"))
+		if (hoverObject.Equals("Login") || hoverObject.Equals("Register") || hoverObject.Contains("Enter") || hoverObject.Equals("BillBoardDoors"))
 		{
 			SelectedCrosshair.SetActive(true);
 		}

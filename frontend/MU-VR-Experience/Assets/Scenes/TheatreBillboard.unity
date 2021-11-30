@@ -342,6 +342,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 29396418}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &34601754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6904163986444421222, guid: 91f13f5c61ea94a3a916d65e86057f6c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1203243617}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &35486655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5120,7 +5126,7 @@ GameObject:
   - component: {fileID: 820762364}
   - component: {fileID: 820762363}
   m_Layer: 0
-  m_Name: Left Click
+  m_Name: LeftClick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7212,7 +7218,7 @@ GameObject:
   - component: {fileID: 1111279457}
   - component: {fileID: 1111279456}
   m_Layer: 0
-  m_Name: E
+  m_Name: KeyE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7753,20 +7759,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerHandler
       objectReference: {fileID: 0}
+    - target: {fileID: 1495503212980424263, guid: 91f13f5c61ea94a3a916d65e86057f6c,
+        type: 3}
+      propertyPath: OVRPlayerObject
+      value: 
+      objectReference: {fileID: 34601754}
     - target: {fileID: 1495503213416276658, guid: 91f13f5c61ea94a3a916d65e86057f6c,
         type: 3}
       propertyPath: SensitivityValue
       value: 
       objectReference: {fileID: 1640845218}
+    - target: {fileID: 1495503213468647647, guid: 91f13f5c61ea94a3a916d65e86057f6c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1495503213978670089, guid: 91f13f5c61ea94a3a916d65e86057f6c,
         type: 3}
       propertyPath: token
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1495503213978670089, guid: 91f13f5c61ea94a3a916d65e86057f6c,
+        type: 3}
+      propertyPath: SettingsUserText
+      value: 
+      objectReference: {fileID: 1208439119}
     - target: {fileID: 1495503214325550121, guid: 91f13f5c61ea94a3a916d65e86057f6c,
         type: 3}
       propertyPath: RayLength
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6904163986444421222, guid: 91f13f5c61ea94a3a916d65e86057f6c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91f13f5c61ea94a3a916d65e86057f6c, type: 3}

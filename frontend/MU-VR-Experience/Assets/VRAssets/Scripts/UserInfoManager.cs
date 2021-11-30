@@ -1,5 +1,7 @@
 using UnityEngine;
 
+using UserModel;
+
 public static class UserInfoManager
 {
     public enum Movement {WASD, Arrows}
@@ -29,9 +31,19 @@ public static class UserInfoManager
 		return PlayerPrefs.GetString(type.ToString());
 	}
 
+	public static string GetString(string str)
+	{
+		return PlayerPrefs.GetString(str);
+	}
+
 	public static int GetInt(SaveType type)
 	{
 		return PlayerPrefs.GetInt(type.ToString());
+	}
+
+	public static int GetInt(string str)
+	{
+		return PlayerPrefs.GetInt(str);
 	}
 
 	public static float GetFloat(SaveType type)
@@ -39,16 +51,16 @@ public static class UserInfoManager
 		return PlayerPrefs.GetFloat(type.ToString());
 	}
 
-    public static void SaveUser(string username, string token)
+    public static void SaveUser(int id, string token)
     {
-        PlayerPrefs.SetString("Username", username);
+        PlayerPrefs.SetInt("User", id);
         PlayerPrefs.SetString("TempTKN", token);
         PlayerPrefs.Save();
     }
 
     public static void DeleteUser()
     {
-        PlayerPrefs.DeleteKey("Username");
+        PlayerPrefs.DeleteKey("User");
         PlayerPrefs.DeleteKey("TempTKN");
         PlayerPrefs.Save();
     }

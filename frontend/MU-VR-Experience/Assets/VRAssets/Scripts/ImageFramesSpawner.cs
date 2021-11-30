@@ -11,13 +11,17 @@ public class ImageFramesSpawner : MonoBehaviour
 {
 	public GameObject ClipFrameObject, EnterButtonObject;
 
-    static readonly string API_URL = "http://192.168.1.184:6996/clips/";
+    static readonly string API_URL = "http://localhost:6996/clips/";
 
 	UserDataReceiver userDataObj;
 
 	void Start()
 	{
 		userDataObj = GameObject.FindObjectOfType<UserDataReceiver>();
+	}
+
+	public void LoadImageFrames()
+	{
 		StartCoroutine(GetClipImages());
 	}
 

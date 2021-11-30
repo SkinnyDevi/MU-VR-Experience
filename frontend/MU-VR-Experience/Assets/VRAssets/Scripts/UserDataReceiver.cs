@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 using System.Collections;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ public class UserDataReceiver : MonoBehaviour
 	public GameObject Crosshair;
 	public TMP_Text SettingsUserText;
 
-	// static readonly string Url = "http://192.168.1.184:6996/users/";
+	static readonly string userUrl = "http://localhost:6996/users/user/";
 
 	string token = "";
 	User player = new User();
@@ -26,11 +27,20 @@ public class UserDataReceiver : MonoBehaviour
 	{
 		player = new User();
 		UserInfoManager.LoadSettings();
+		if (!SceneManager.GetActiveScene().name.Equals(SceneLoader.Scene.MainHub.ToString()))
+		{
+			StartCoroutine(LoadNewPlayer());
+		}
 		//StartCoroutine(CreateUser(url, this.player));
 		//StartCoroutine(GetUsers(url, token));
 		//StartCoroutine(GetUsers(url, token, true, 5));
 		//StartCoroutine(UpdateUser(url, token, this.player));
 		//StartCoroutine(DeleteUser(url, token, this.player));
+	}
+
+	void OnApplicationQuit() // Only for standalone
+	{
+		UserInfoManager.DeleteUser();
 	}
 
 	public User CurrentPlayer()
@@ -51,17 +61,53 @@ public class UserDataReceiver : MonoBehaviour
 		SettingsUserText.text = "User: " + this.player.GetUsername();
 		SettingsUserText.gameObject.SetActive(true);
 	}
+
+	IEnumerator LoadNewPlayer()
+	{
+		using(UnityWebRequest getUser = createGetRequest(userUrl + UserInfoManager.GetInt("User"), UserInfoManager.GetString("TempTKN")))
+		{
+			yield return getUser.SendWebRequest();
+
+			if (getUser.result != UnityWebRequest.Result.Success)
+			{
+				Debug.LogError("Something went wrong: " + getUser.error);
+			}
+			else
+			{
+				JSONNode response = JSON.Parse(getUser.downloadHandler.text);
+
+				this.player.SetId(response["user_id"]);
+				this.player.SetEmail(response["email"]);
+				this.player.SetUsername(response["username"]);
+
+				SetToken(UserInfoManager.GetString("TempTKN"));
+
+				if (SceneManager.GetActiveScene().name.Equals(SceneLoader.Scene.TheatreBillboard.ToString()))
+					GameObject.FindObjectOfType<ImageFramesSpawner>().LoadImageFrames();
+			}
+		}
+	}
 	
 	public void SetToken(string tkn)
 	{
 		token = tkn;
-		GameObject.Find("Environment/RegisterRoom/Walls/BillBoardEntry").SetActive(true);
-		Debug.Log(token);
+		if (SceneManager.GetActiveScene().name.Equals(SceneLoader.Scene.MainHub.ToString()))
+			GameObject.Find("Environment/RegisterRoom/Walls/BillBoardEntry").SetActive(true);
+		UserInfoManager.SaveUser(this.player.GetId(), tkn);
 	}
 
 	public string GetToken()
 	{
 		return token;
+	}
+
+	private UnityWebRequest createGetRequest(string requestUrl, string bearerToken)
+	{
+		UnityWebRequest getUsers = UnityWebRequest.Get(requestUrl);
+		getUsers.SetRequestHeader("Content-Type", "application/json");
+		getUsers.SetRequestHeader("Authorization", "Bearer " + bearerToken); 
+
+		return getUsers;
 	}
 
 	/*
@@ -162,15 +208,6 @@ public class UserDataReceiver : MonoBehaviour
 				StartCoroutine(GetUsers(Url, token, true, currentUser.GetId()));
 			}
 		}
-	}
-
-	private UnityWebRequest createGetRequest(string requestUrl, string bearerToken)
-	{
-		UnityWebRequest getUsers = UnityWebRequest.Get(requestUrl);
-		getUsers.SetRequestHeader("Content-Type", "application/json");
-		getUsers.SetRequestHeader("Authorization", "Bearer " + bearerToken); 
-
-		return getUsers;
 	}
 
 	private UnityWebRequest createUserPostRequest(string requestUrl, string requestEmail, string requestPassword)

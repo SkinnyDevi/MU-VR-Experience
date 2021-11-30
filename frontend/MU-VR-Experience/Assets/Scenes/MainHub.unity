@@ -3231,6 +3231,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223367921}
   m_CullTransparentMesh: 1
+--- !u!1 &235067399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6904163986444421222, guid: 91f13f5c61ea94a3a916d65e86057f6c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1495503214127481173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &235568950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19245,12 +19251,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845138287}
   m_CullTransparentMesh: 1
---- !u!1 &1849790759 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3541129744249608533, guid: 91f13f5c61ea94a3a916d65e86057f6c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1495503214127481173}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1850547322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22592,7 +22592,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OVRPlayerObject
       value: 
-      objectReference: {fileID: 1849790759}
+      objectReference: {fileID: 235067399}
     - target: {fileID: 1495503213416276658, guid: 91f13f5c61ea94a3a916d65e86057f6c,
         type: 3}
       propertyPath: SensitivityValue

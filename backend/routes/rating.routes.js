@@ -8,7 +8,7 @@ module.exports = app => {
 
     router.get("/rating/:id", auth.isAuthenticated, ratings.findOne);
 
-    router.put("/rating/:id", auth.isAuthenticated, ratings.update);
+    router.put("/rating/", auth.isAuthenticated, ratings.update);
 
     router.get("/clip/:id", auth.isAuthenticated, ratings.findAllClipRatings);
 

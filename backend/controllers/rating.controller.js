@@ -4,11 +4,11 @@ const utils = require("../utils");
 
 exports.update = (req, res) => {
     const id = req.params.id;
-    const reqBody = req.body;
+    const reqBody = req.body
 
     Rating.findOne({ where: { user_id: reqBody.user_id, clip_id: reqBody.clip_id } }).then(findData => {
         if (findData) {
-            Rating.update(req.body, { user_id: reqBody.user_id, clip_id: reqBody.clip_id }).then(code => {
+            Rating.update(reqBody, { where: { rating_id: findData.rating_id } }).then(code => {
                 if (code == 1) {
                     res.send({
                         message: "Rating was updated successfully."
@@ -46,7 +46,9 @@ exports.update = (req, res) => {
             });
         }
     }).catch(err => {
-
+        res.status(500).send({
+            message: "There was an error updating the rating: " + err.message
+        })
     });
 }
 

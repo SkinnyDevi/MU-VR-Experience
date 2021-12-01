@@ -95,4 +95,22 @@ exports.findAllClipRatings = (req, res) => {
     });
 }
 
-exports.delete = (req, res) => {}
+exports.delete = (req, res) => {
+    const id = req.params.id;
+
+    Rating.destroy({ where: { rating_id: id } }).then(code => {
+        if (code == 1) {
+            res.send({
+                message: "Rating deleted successfully."
+            });
+        } else {
+            res.status(404).send({
+                message: "Cannot delete the rating with ID: " + id + ", Are you sure there is such rating?"
+            });
+        }
+    }).catch(err => {
+        res.status(500).send({
+            message: "There was an error while deleting the rating: " + err.message
+        })
+    });
+}

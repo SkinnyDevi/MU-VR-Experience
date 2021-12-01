@@ -10,6 +10,8 @@ module.exports = app => {
 
     router.put("/rating/", auth.isAuthenticated, ratings.update);
 
+    router.delete("/rating/:id", auth.isAuthenticated, ratings.delete);
+
     router.get("/clip/:id", auth.isAuthenticated, ratings.findAllClipRatings);
 
     router.get("/user/:id", auth.isAuthenticated, ratings.findAllUserRatings);

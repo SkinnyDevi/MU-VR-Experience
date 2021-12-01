@@ -91,8 +91,8 @@ exports.delete = (req, res) => {
                 message: "Clip was deleted successfully."
             });
         } else {
-            res.send({
-                message: "Cannot update the clip with id: " + id + "Maybe the clip was not found."
+            res.status(404).send({
+                message: "Cannot delete the clip with id: " + id + "Maybe the clip was not found."
             });
         }
     }).catch(err => {

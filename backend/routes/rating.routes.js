@@ -1,20 +1,20 @@
 module.exports = app => {
-    const ratings = require("../controllers/rating.controller.js");
-    const auth = require("../controllers/auth.js");
+	const ratings = require("../controllers/rating.controller.js");
+	const auth = require("../controllers/auth.js");
 
-    var router = require("express").Router();
+	var router = require("express").Router();
 
-    router.get("/", auth.isAuthenticated, ratings.findAll);
+	router.get("/", auth.isAuthenticated, ratings.findAll);
 
-    router.get("/rating/:id", auth.isAuthenticated, ratings.findOne);
+	router.get("/rating/:id", auth.isAuthenticated, ratings.findOne);
 
-    router.put("/rating/", auth.isAuthenticated, ratings.update);
+	router.put("/rating/", auth.isAuthenticated, ratings.update);
 
-    router.delete("/rating/:id", auth.isAuthenticated, ratings.delete);
+	router.delete("/rating/:id", auth.isAuthenticated, ratings.delete);
 
-    router.get("/clip/:id", auth.isAuthenticated, ratings.findAllClipRatings);
+	router.get("/clip/:id", auth.isAuthenticated, ratings.findAllClipRatings);
 
-    router.get("/user/:id", auth.isAuthenticated, ratings.findAllUserRatings);
+	router.get("/user/:id", auth.isAuthenticated, ratings.findAllUserRatings);
 
-    app.use('/ratings', router);
+	app.use('/ratings', router);
 };

@@ -2,7 +2,7 @@ drop database if exists ongMU_db;
 create database ongMU_db;
 use ongMU_db;
 
-create table users(
+create table users(  # Saves user credentials
 	user_id int not null auto_increment primary key,
     password varchar(255) not null,
     email varchar(100) not null,
@@ -12,7 +12,7 @@ create table users(
     updatedAt datetime default current_timestamp
 ) engine=InnoDB;
 
-create table clips (
+create table clips (  # Stores clip key information
 	clip_id int not null auto_increment primary key,
     clip_name varchar(40) not null,
     clip_duration varchar(8) not null,
@@ -21,9 +21,9 @@ create table clips (
     updatedAt datetime default current_timestamp
 ) engine=InnoDB charset utf8mb4;
 
-create table ratings (
+create table ratings (  # Stores ratings by user and by clip
 	rating_id int not null primary key auto_increment,
-	user_id int not null,
+	user_id int not null,  # One user can submit one rating to one clip only, if it exists, it updates
     clip_id int not null,
     rating enum('Liked', 'Regular', 'Disliked'),
     createdAt datetime default current_timestamp,

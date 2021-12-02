@@ -40,7 +40,7 @@ public class UserDataReceiver : MonoBehaviour
 
 	void OnApplicationQuit() // Only for standalone
 	{
-		UserInfoManager.DeleteUser();
+		UserInfoManager.DeleteInfoOnExit();
 	}
 
 	public User CurrentPlayer()

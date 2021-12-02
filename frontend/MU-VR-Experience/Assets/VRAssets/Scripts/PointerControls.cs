@@ -16,6 +16,7 @@ public class PointerControls : MonoBehaviour
     {
 		HighlightSelectable();
 		EnterBillboard();
+		HandleBillboardEnterButtons();
 		if (Input.GetMouseButtonDown(0))
 		{
 			RaycastHit hit;
@@ -65,6 +66,17 @@ public class PointerControls : MonoBehaviour
 		else
 		{
 			SelectedCrosshair.SetActive(false);
+		}
+	}
+
+	void HandleBillboardEnterButtons()
+	{
+		if (currentObject.Contains("Enter-"))
+		{
+			string video = "Assets/VRAssets/static/videos/" + currentObject.Substring(6, 1) + ".mp4";
+			UserInfoManager.SaveString("videoID", video);
+			currentObject = "EnterButtonExit";
+			SceneLoader.LoadScene(SceneLoader.Scene.TheatreCinema);
 		}
 	}
 }

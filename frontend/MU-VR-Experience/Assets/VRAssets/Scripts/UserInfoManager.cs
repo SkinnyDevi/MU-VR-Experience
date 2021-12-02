@@ -14,6 +14,12 @@ public static class UserInfoManager
         PlayerPrefs.Save();
     }
 
+	public static void SaveString(string key, string str)
+    {
+        PlayerPrefs.SetString(key, str);
+        PlayerPrefs.Save();
+    }
+
     public static void SaveInt(SaveType type, int value)
     {
         PlayerPrefs.SetInt(type.ToString(), value);
@@ -58,10 +64,11 @@ public static class UserInfoManager
         PlayerPrefs.Save();
     }
 
-    public static void DeleteUser()
+    public static void DeleteInfoOnExit()
     {
         PlayerPrefs.DeleteKey("User");
         PlayerPrefs.DeleteKey("TempTKN");
+		PlayerPrefs.DeleteKey("videoID");
         PlayerPrefs.Save();
     }
 

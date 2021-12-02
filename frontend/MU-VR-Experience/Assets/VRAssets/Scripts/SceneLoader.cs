@@ -4,7 +4,7 @@ using System;
 
 public static class SceneLoader
 {
-    public enum Scene {MainHub, Loading, TheatreBillboard}
+    public enum Scene {MainHub, Loading, TheatreBillboard, TheatreCinema}
 
     static Action onLoaderCallback;
 

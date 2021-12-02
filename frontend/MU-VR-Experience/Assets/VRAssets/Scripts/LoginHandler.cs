@@ -12,7 +12,7 @@ public class LoginHandler : MonoBehaviour
     public GameObject SuccessObjText, ErrorObjText;
     public TMP_Text ErrorObjMessage;
 
-    static readonly string API_URL = "http://localhost:6996/users/signin";
+    static readonly string API_URL = "http://192.168.1.184:6996/users/signin";
     static GameObject SuccessText, ErrorText;
     static TMP_Text ErrorMessage;
 

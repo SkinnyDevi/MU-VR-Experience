@@ -1,6 +1,6 @@
-using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.Management;
 using System;
 
 using TMPro;
@@ -12,6 +12,7 @@ public class SettingsMenu : MonoBehaviour
 	public GameObject Crosshair;
 
 	bool vrOptionChanged = false;
+	bool subsystemsStarted = false;
 	PlayerVRHandler playerHandler;
 
     void Start()
@@ -36,7 +37,24 @@ public class SettingsMenu : MonoBehaviour
 				}
 			}
 		}
+
+		if (XRGeneralSettings.Instance.Manager.isInitializationComplete)
+		{
+			XRGeneralSettings.Instance.Manager.StartSubsystems();
+			subsystemsStarted = true;
+			playerHandler.ChangePlayerType(PlayerVRHandler.PlayerType.VR);
+		}
     }
+
+	void OnApplicationQuit()
+	{
+		if (subsystemsStarted)
+		{
+			XRGeneralSettings.Instance.Manager.StopSubsystems();
+			XRGeneralSettings.Instance.Manager.DeinitializeLoader();
+			subsystemsStarted = false;
+		}
+	}
 
 	public void PauseGame()
 	{
@@ -52,7 +70,10 @@ public class SettingsMenu : MonoBehaviour
 		SetState(SettingsMenuObject, false);
 		if (vrOptionChanged)
 		{
-			playerHandler.ChangePlayerType(PlayerVRHandler.PlayerType.VR);
+			if (!subsystemsStarted )
+			{
+				StartCoroutine(XRGeneralSettings.Instance.Manager.InitializeLoader());
+			}
 		}
 		else
 		{

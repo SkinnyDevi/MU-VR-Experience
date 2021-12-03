@@ -103,7 +103,8 @@ exports.checkRatingExists = (req, res) => {
 	Rating.findOne({where: {user_id: reqBody.user_id, clip_id: reqBody.clip_id}}).then(findData => {
 		if (findData) {
 			res.send({
-				message: "Rating exists."
+				message: "Rating exists.",
+				rating_id: findData.rating_id
 			});
 		} else {
 			res.status(404).send({

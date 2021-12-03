@@ -97,10 +97,10 @@ exports.findAllClipRatings = (req, res) => {
 }
 
 exports.checkRatingExists = (req, res) => {
-	const reqBody = req.body;
-	console.log(reqBody);
+	const paramUserId = req.params.user_id;
+	const paramClipId = req.params.clip_id;
 
-	Rating.findOne({where: {user_id: reqBody.user_id, clip_id: reqBody.clip_id}}).then(findData => {
+	Rating.findOne({ where: { user_id: paramUserId, clip_id: paramClipId } }).then(findData => {
 		if (findData) {
 			res.send({
 				message: "Rating exists.",

@@ -26,6 +26,12 @@ public static class UserInfoManager
         PlayerPrefs.Save();
     }
 
+	public static void SaveInt(string key, int value)
+    {
+        PlayerPrefs.SetInt(key, value);
+        PlayerPrefs.Save();
+    }
+
 	public static void SaveFloat(SaveType type, float value)
 	{
 		PlayerPrefs.SetFloat(type.ToString(), value);

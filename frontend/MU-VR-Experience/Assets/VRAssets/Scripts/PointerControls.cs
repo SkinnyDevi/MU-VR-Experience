@@ -79,7 +79,8 @@ public class PointerControls : MonoBehaviour
 			hoverObject = "Air";
 		}
 
-		if (hoverObject.Equals("Login") || hoverObject.Equals("Register") || hoverObject.Contains("Enter") || hoverObject.Equals("BillBoardDoors"))
+		Regex hoverableTest = new Regex(".*(Login|Register|Enter|BillBoardDoors|Like|Regular|Dislike).*$");
+		if (hoverableTest.Matches(hoverObject).Count > 0)
 		{
 			SelectedCrosshair.SetActive(true);
 		}
@@ -94,7 +95,8 @@ public class PointerControls : MonoBehaviour
 		if (currentObject.Contains("Enter-"))
 		{
 			string video = "Assets/VRAssets/static/videos/" + currentObject.Substring(6, 1) + ".mp4";
-			UserInfoManager.SaveString("videoID", video);
+			UserInfoManager.SaveString("VideoURL", video);
+			UserInfoManager.SaveInt("VideoID", Int32.Parse(currentObject.Substring(6, 1)));
 			currentObject = "EnterButtonExit";
 			SceneLoader.LoadScene(SceneLoader.Scene.TheatreCinema);
 		}
@@ -102,13 +104,13 @@ public class PointerControls : MonoBehaviour
 
 	public void HandleRatingButtons()
 	{
-		Regex rx = new Regex(@"(Liked||Regular||Disliked)");
+		Regex ratingTest = new Regex(".*(Like|Regular|Dislike).*$");
 
-		if (rx.Matches(currentObject).Count > 1)
+		if (ratingTest.Matches(currentObject).Count > 0)
 		{
-			//StartCoroutine(SubmitRatingHandler.SubmitRating(currentObject));
-			ReplaceableWall.SetActive(false);
-			BillboardDoors.SetActive(true);
+			StartCoroutine(SubmitRatingHandler.CheckRatingExistence(currentObject));
+			if (SubmitRatingHandler.hasCheckedExistence)
+				StartCoroutine(SubmitRatingHandler.SubmitRating(ReplaceableWall, BillboardDoors));
 		}
 	}
 }

@@ -22,14 +22,16 @@ public class UserDataReceiver : MonoBehaviour
 
 	string token = "";
 	User player = new User();
+	IEnumerator loadNewPlayer;
 
 	void Start()
 	{
+		loadNewPlayer = LoadNewPlayer();
 		player = new User();
 		UserInfoManager.LoadSettings();
 		if (!SceneManager.GetActiveScene().name.Equals(SceneLoader.Scene.MainHub.ToString()))
 		{
-			StartCoroutine(LoadNewPlayer());
+			StartCoroutine(loadNewPlayer);
 		}
 		//StartCoroutine(CreateUser(url, this.player));
 		//StartCoroutine(GetUsers(url, token));
@@ -83,7 +85,7 @@ public class UserDataReceiver : MonoBehaviour
 				SetToken(UserInfoManager.GetString("TempTKN"));
 
 				if (SceneManager.GetActiveScene().name.Equals(SceneLoader.Scene.TheatreBillboard.ToString()))
-					GameObject.FindObjectOfType<ImageFramesSpawner>().LoadImageFrames();
+					GameObject.FindObjectOfType<ImageFramesSpawner>().LoadImageFrames(loadNewPlayer);
 			}
 		}
 	}
@@ -94,6 +96,7 @@ public class UserDataReceiver : MonoBehaviour
 		if (SceneManager.GetActiveScene().name.Equals(SceneLoader.Scene.MainHub.ToString()))
 			GameObject.Find("Environment/RegisterRoom/Walls/BillBoardEntry").SetActive(true);
 		UserInfoManager.SaveUser(this.player.GetId(), tkn);
+		Debug.Log("AAAAAAAA: " + UserInfoManager.GetString("User"));
 	}
 
 	public string GetToken()

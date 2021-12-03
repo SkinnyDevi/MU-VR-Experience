@@ -20,8 +20,9 @@ public class ImageFramesSpawner : MonoBehaviour
 		userDataObj = GameObject.FindObjectOfType<UserDataReceiver>();
 	}
 
-	public void LoadImageFrames()
+	public void LoadImageFrames(IEnumerator stopPlayerCoroutine)
 	{
+		StopCoroutine(stopPlayerCoroutine);
 		StartCoroutine(GetClipImages());
 	}
 

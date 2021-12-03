@@ -8,6 +8,6 @@ public class VideoLoader : MonoBehaviour
     void Start()
     {
 		screenPlayer = GetComponent<VideoPlayer>();
-		screenPlayer.url = UserInfoManager.GetString("videoID");
+		screenPlayer.url = UserInfoManager.GetString("VideoURL");
     }
 }

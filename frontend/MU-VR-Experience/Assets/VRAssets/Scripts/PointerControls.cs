@@ -2,21 +2,36 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using System;
+using System.Text.RegularExpressions;
 
 public class PointerControls : MonoBehaviour
 {
 	public Camera PlayerCamera;
-	public GameObject SelectedCrosshair;
+	public GameObject SelectedCrosshair, ReplaceableWall, BillboardDoors;
 	public float RayLength;
 
-	string currentObject = "";
-	string hoverObject = "";
+	string currentObject;
+	string hoverObject;
+
+	void Start()
+	{
+		currentObject = "";
+		hoverObject = "";
+	}
 
     void Update()
     {
+		CurrentObjectHandler();
 		HighlightSelectable();
+
 		EnterBillboard();
+
 		HandleBillboardEnterButtons();
+		HandleRatingButtons();
+    }
+
+	void CurrentObjectHandler()
+	{
 		if (Input.GetMouseButtonDown(0))
 		{
 			RaycastHit hit;
@@ -26,7 +41,7 @@ public class PointerControls : MonoBehaviour
 				Debug.Log(currentObject);
 			}
 		}
-    }
+	}
 
 	public string GetCurrentObject()
 	{
@@ -82,6 +97,18 @@ public class PointerControls : MonoBehaviour
 			UserInfoManager.SaveString("videoID", video);
 			currentObject = "EnterButtonExit";
 			SceneLoader.LoadScene(SceneLoader.Scene.TheatreCinema);
+		}
+	}
+
+	public void HandleRatingButtons()
+	{
+		Regex rx = new Regex(@"(Liked||Regular||Disliked)");
+
+		if (rx.Matches(currentObject).Count > 1)
+		{
+			//StartCoroutine(SubmitRatingHandler.SubmitRating(currentObject));
+			ReplaceableWall.SetActive(false);
+			BillboardDoors.SetActive(true);
 		}
 	}
 }

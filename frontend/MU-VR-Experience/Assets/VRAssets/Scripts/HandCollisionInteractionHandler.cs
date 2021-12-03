@@ -24,7 +24,11 @@ public class HandCollisionInteractionHandler : OVRGrabbable
                 rayCaster.HandleBillboardEnterButtons();
                 break;
             case "TheatreCinema":
-                SceneLoader.LoadScene(SceneLoader.Scene.TheatreBillboard);
+                Debug.Log(grabPoint.gameObject.name);
+                GameObject.Find("CustomHandRight").GetComponent<OVRGrabber>().ForceRelease(this);
+                GameObject.Find("CustomHandLeft").GetComponent<OVRGrabber>().ForceRelease(this);
+                rayCaster.SetCurrentObject(grabPoint.gameObject.name);
+                rayCaster.HandleRatingButtons();
                 break;
         }
     }

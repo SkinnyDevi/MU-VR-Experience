@@ -8,6 +8,8 @@ module.exports = app => {
 
 	router.get("/rating/:id", auth.isAuthenticated, ratings.findOne);
 
+	router.get("/submitted_rating/exists", auth.isAuthenticated, ratings.checkRatingExists);
+
 	router.put("/rating/", auth.isAuthenticated, ratings.update);
 
 	router.delete("/rating/:id", auth.isAuthenticated, ratings.delete);

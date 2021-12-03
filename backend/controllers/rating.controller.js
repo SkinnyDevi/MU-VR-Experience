@@ -15,7 +15,7 @@ exports.update = (req, res) => {
 					});
 				} else {
 					res.send({
-						message: "Cannot update the rating with id: " + id + "Maybe the is no clip or the request body is empty."
+						message: "Cannot update the rating with id: " + id + "Maybe there is no clip or the request body is empty."
 					});
 				}
 			}).catch(err => {
@@ -84,6 +84,7 @@ exports.findAllUserRatings = (req, res) => {
 		});
 	});
 }
+
 exports.findAllClipRatings = (req, res) => {
 	const clip_id = req.params.id;
 	Rating.findAll({ where: { clip_id: clip_id } }).then(data => {
@@ -91,6 +92,27 @@ exports.findAllClipRatings = (req, res) => {
 	}).catch(err => {
 		res.status(500).send({
 			message: "Error while retrieving rating for clip with ID: " + id
+		});
+	});
+}
+
+exports.checkRatingExists = (req, res) => {
+	const reqBody = req.body;
+	console.log(reqBody);
+
+	Rating.findOne({where: {user_id: reqBody.user_id, clip_id: reqBody.clip_id}}).then(findData => {
+		if (findData) {
+			res.send({
+				message: "Rating exists."
+			});
+		} else {
+			res.status(404).send({
+				message: "Rating does not exist."
+			});
+		}
+	}).catch(err => {
+		res.status(500).send({
+			message: "There was an error checking for the user id: " + reqBody.user_id + ", and clip id: " + reqBody.clip_id + ". \nError: " + err.message
 		});
 	});
 }

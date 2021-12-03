@@ -51,7 +51,7 @@ public class UserTransition : MonoBehaviour
                 HideAlerts();
                 CloseMenu();
                 break;
-            case "Crossfade_Out":   
+            case "Crossfade_Out":
                 successExit = true;
                 break;
             case "Crossfade_Sleep":

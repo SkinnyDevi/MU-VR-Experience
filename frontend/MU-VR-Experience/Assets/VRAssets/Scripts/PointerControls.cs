@@ -33,6 +33,11 @@ public class PointerControls : MonoBehaviour
 		return currentObject;
 	}
 
+	public void SetCurrentObject(string str)
+	{
+		this.currentObject = str;
+	}
+
 	public void TransitionFinished()
 	{
 		currentObject += "Exited";
@@ -69,7 +74,7 @@ public class PointerControls : MonoBehaviour
 		}
 	}
 
-	void HandleBillboardEnterButtons()
+	public void HandleBillboardEnterButtons()
 	{
 		if (currentObject.Contains("Enter-"))
 		{

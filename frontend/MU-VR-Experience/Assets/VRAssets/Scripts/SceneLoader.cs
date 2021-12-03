@@ -10,7 +10,7 @@ public static class SceneLoader
 
     public static void LoadScene(Scene scene)
     {
-        string userTkn = GameObject.FindObjectOfType<UserDataReceiver>().GetToken();
+        string userTkn = ((UserDataReceiver)(Resources.FindObjectsOfTypeAll(typeof(UserDataReceiver))[0])).GetToken();
 
         if (!String.IsNullOrEmpty(userTkn))
         {

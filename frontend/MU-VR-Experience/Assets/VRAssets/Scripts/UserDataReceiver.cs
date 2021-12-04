@@ -66,7 +66,6 @@ public class UserDataReceiver : MonoBehaviour
 
 	IEnumerator LoadNewPlayer()
 	{
-		Debug.Log("USER XDDD: " + UserInfoManager.GetInt("User"));
 		using(UnityWebRequest getUser = createGetRequest(userUrl + UserInfoManager.GetInt("User"), UserInfoManager.GetString("TempTKN")))
 		{
 			yield return getUser.SendWebRequest();

@@ -69,8 +69,6 @@ public class UserTransition : MonoBehaviour
     {   
         transition.SetTrigger("StartTransition");
         TransitionMade = true;
-
-        Debug.Log("Transition Made");
     }
 
     void StopControls()
@@ -98,8 +96,6 @@ public class UserTransition : MonoBehaviour
         }
 
         rayCaster.TransitionFinished();
-
-        Debug.Log("Transition Exited");
     }
 
     void ResetTriggers()

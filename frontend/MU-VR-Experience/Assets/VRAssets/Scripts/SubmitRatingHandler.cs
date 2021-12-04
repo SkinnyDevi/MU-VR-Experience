@@ -7,24 +7,25 @@ using SimpleJSON;
 
 public class SubmitRatingHandler : MonoBehaviour
 {
-	public static bool hasCheckedExistence = false;
+	public static bool HasCheckedExistence, SubmitFinished = false;
 	public static int UserID = -1;
+
 	static readonly string API_URL = "http://192.168.1.184:6996/ratings/";
 	static string TEMP_TKN;
 	static UserDataReceiver playerData;
-	static Rating ratingPayload = new Rating();
+	static Rating ratingPayload;
 
 	void Start()
 	{
 		playerData = GameObject.FindObjectOfType<UserDataReceiver>();
 		playerData.SetToken(UserInfoManager.GetString("TempTKN"));
 		TEMP_TKN = playerData.GetToken();
-		ratingPayload.SetClipID(UserInfoManager.GetInt("VideoID"));
 	}
 
-	public IEnumerator CheckRatingExistence(string objName)
+	public static IEnumerator CheckRatingExistence(string objName)
 	{
-		ratingPayload.SetUserID(UserID);
+		ratingPayload = GenerateNewRating();
+
 		using (UnityWebRequest checkExistence = createGetRequest(API_URL + $"submitted_rating/exists/{ratingPayload.GetUserID()}/{ratingPayload.GetClipID()}", TEMP_TKN))
 		{
 			yield return checkExistence.SendWebRequest();
@@ -42,20 +43,17 @@ public class SubmitRatingHandler : MonoBehaviour
 			}
 			else
 			{
-				Debug.Log("EXISTENCE CHECK: " + checkExistence.downloadHandler.text);
 				JSONNode response = JSON.Parse(checkExistence.downloadHandler.text);
 				ratingPayload.SetRatingID(response["rating_id"]);
-				
 			}
 			ratingPayload.SetRating(objName.Replace("Cube", ""));
-			hasCheckedExistence = true;
+			HasCheckedExistence = true;
 			GameObject.FindObjectOfType<PointerControls>().SetCurrentObject(objName);
 		}
 	}
 
-	public IEnumerator SubmitRating(GameObject Wall, GameObject Doors)
+	public static IEnumerator SubmitRating(GameObject Wall, GameObject Doors)
 	{
-		Debug.Log(ratingPayload.RatingToJson());
 		using (UnityWebRequest submitRating = createRatingUpdateRequest(API_URL + "rating/", TEMP_TKN, ratingPayload))
 		{
 			yield return submitRating.SendWebRequest();
@@ -66,12 +64,19 @@ public class SubmitRatingHandler : MonoBehaviour
 			}
 			else
 			{
-				Debug.Log(submitRating.downloadHandler.text);
 				Wall.SetActive(false);
 				Doors.SetActive(true);
-				ratingPayload = new Rating();
+				SubmitFinished = true;
 			}
 		}
+	}
+
+	static Rating GenerateNewRating()
+	{
+		Rating temp = new Rating();
+		temp.SetUserID(UserID);
+		temp.SetClipID(UserInfoManager.GetInt("VideoID"));
+		return temp;
 	}
 
 	private static UnityWebRequest createGetRequest(string requestUrl, string bearerToken)

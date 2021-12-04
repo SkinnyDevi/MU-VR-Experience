@@ -12,7 +12,6 @@ public class PointerControls : MonoBehaviour
 
 	string currentObject;
 	string hoverObject;
-	Coroutine CheckRating, NewRatingSubmit = null;
 
 	void Start()
 	{
@@ -107,22 +106,26 @@ public class PointerControls : MonoBehaviour
 	{
 		if (currentObject.Contains("Cube"))
 		{
-			Debug.Log(UserInfoManager.GetInt("User"));
 			SubmitRatingHandler.UserID = UserInfoManager.GetInt("User");
-			SubmitRatingHandler submit = GameObject.FindObjectOfType<SubmitRatingHandler>();
-			if (!SubmitRatingHandler.hasCheckedExistence)
+			if (!SubmitRatingHandler.HasCheckedExistence)
 			{
-				CheckRating = StartCoroutine(submit.CheckRatingExistence(currentObject));
+				StartCoroutine(SubmitRatingHandler.CheckRatingExistence(currentObject));
 				currentObject = "RatingButtonOnHold";
-			}	
-			else
+			}
+			else if (SubmitRatingHandler.HasCheckedExistence)
 			{
-				if (CheckRating != null) StopCoroutine(CheckRating);
-				NewRatingSubmit = StartCoroutine(submit.SubmitRating(ReplaceableWall, BillboardDoors));
+				StartCoroutine(SubmitRatingHandler.SubmitRating(ReplaceableWall, BillboardDoors));
 				currentObject = "RatingButtonExit";
 			}
 		}
 		else
-			if (NewRatingSubmit != null) StopCoroutine(NewRatingSubmit);
+		{
+			if (SubmitRatingHandler.SubmitFinished)
+			{
+				StopAllCoroutines();
+				SubmitRatingHandler.HasCheckedExistence = false;
+				SubmitRatingHandler.SubmitFinished = false;
+			}
+		}
 	}
 }

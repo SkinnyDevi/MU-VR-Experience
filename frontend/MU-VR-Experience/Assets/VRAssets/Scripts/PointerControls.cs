@@ -12,6 +12,7 @@ public class PointerControls : MonoBehaviour
 
 	string currentObject;
 	string hoverObject;
+	Coroutine CheckRating, NewRatingSubmit = null;
 
 	void Start()
 	{
@@ -104,13 +105,24 @@ public class PointerControls : MonoBehaviour
 
 	public void HandleRatingButtons()
 	{
-		Regex ratingTest = new Regex(".*(Like|Regular|Dislike).*$");
-
-		if (ratingTest.Matches(currentObject).Count > 0)
+		if (currentObject.Contains("Cube"))
 		{
-			StartCoroutine(SubmitRatingHandler.CheckRatingExistence(currentObject));
-			if (SubmitRatingHandler.hasCheckedExistence)
-				StartCoroutine(SubmitRatingHandler.SubmitRating(ReplaceableWall, BillboardDoors));
+			Debug.Log(UserInfoManager.GetInt("User"));
+			SubmitRatingHandler.UserID = UserInfoManager.GetInt("User");
+			SubmitRatingHandler submit = GameObject.FindObjectOfType<SubmitRatingHandler>();
+			if (!SubmitRatingHandler.hasCheckedExistence)
+			{
+				CheckRating = StartCoroutine(submit.CheckRatingExistence(currentObject));
+				currentObject = "RatingButtonOnHold";
+			}	
+			else
+			{
+				if (CheckRating != null) StopCoroutine(CheckRating);
+				NewRatingSubmit = StartCoroutine(submit.SubmitRating(ReplaceableWall, BillboardDoors));
+				currentObject = "RatingButtonExit";
+			}
 		}
+		else
+			if (NewRatingSubmit != null) StopCoroutine(NewRatingSubmit);
 	}
 }

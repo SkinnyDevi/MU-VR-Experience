@@ -22,16 +22,14 @@ public class UserDataReceiver : MonoBehaviour
 
 	string token = "";
 	User player = new User();
-	IEnumerator loadNewPlayer;
 
 	void Start()
 	{
-		loadNewPlayer = LoadNewPlayer();
 		player = new User();
 		UserInfoManager.LoadSettings();
 		if (!SceneManager.GetActiveScene().name.Equals(SceneLoader.Scene.MainHub.ToString()))
 		{
-			StartCoroutine(loadNewPlayer);
+			StartCoroutine(LoadNewPlayer());
 		}
 		//StartCoroutine(CreateUser(url, this.player));
 		//StartCoroutine(GetUsers(url, token));
@@ -54,11 +52,13 @@ public class UserDataReceiver : MonoBehaviour
 	{
 		this.player = newPlayer;
 
-		GameObject.FindObjectOfType<UserTransition>().TriggerSuccessExit();
-
-		bool currentObject = Crosshair.GetComponent<PointerControls>().GetCurrentObject().Equals("Login");
-		if (currentObject) LoginExitButton.onClick.Invoke();
-		else RegisterExitButton.onClick.Invoke();
+		if (SceneManager.GetActiveScene().name.Equals(SceneLoader.Scene.MainHub.ToString()))
+		{
+			GameObject.FindObjectOfType<UserTransition>().TriggerSuccessExit();
+			bool currentObject = Crosshair.GetComponent<PointerControls>().GetCurrentObject().Equals("Login");
+			if (currentObject) LoginExitButton.onClick.Invoke();
+			else RegisterExitButton.onClick.Invoke();
+		}
 
 		SettingsUserText.text = "User: " + this.player.GetUsername();
 		SettingsUserText.gameObject.SetActive(true);
@@ -66,6 +66,7 @@ public class UserDataReceiver : MonoBehaviour
 
 	IEnumerator LoadNewPlayer()
 	{
+		Debug.Log("USER XDDD: " + UserInfoManager.GetInt("User"));
 		using(UnityWebRequest getUser = createGetRequest(userUrl + UserInfoManager.GetInt("User"), UserInfoManager.GetString("TempTKN")))
 		{
 			yield return getUser.SendWebRequest();
@@ -78,14 +79,11 @@ public class UserDataReceiver : MonoBehaviour
 			{
 				JSONNode response = JSON.Parse(getUser.downloadHandler.text);
 
-				this.player.SetId(response["user_id"]);
-				this.player.SetEmail(response["email"]);
-				this.player.SetUsername(response["username"]);
-
+				SetCurrentPlayer(new User(response["user_id"], response["email"], response["username"]));
 				SetToken(UserInfoManager.GetString("TempTKN"));
 
 				if (SceneManager.GetActiveScene().name.Equals(SceneLoader.Scene.TheatreBillboard.ToString()))
-					GameObject.FindObjectOfType<ImageFramesSpawner>().LoadImageFrames(loadNewPlayer);
+					GameObject.FindObjectOfType<ImageFramesSpawner>().LoadImageFrames();
 			}
 		}
 	}
@@ -96,7 +94,6 @@ public class UserDataReceiver : MonoBehaviour
 		if (SceneManager.GetActiveScene().name.Equals(SceneLoader.Scene.MainHub.ToString()))
 			GameObject.Find("Environment/RegisterRoom/Walls/BillBoardEntry").SetActive(true);
 		UserInfoManager.SaveUser(this.player.GetId(), tkn);
-		Debug.Log("AAAAAAAA: " + UserInfoManager.GetString("User"));
 	}
 
 	public string GetToken()

@@ -10,6 +10,8 @@ module.exports = app => {
 
 	router.get("/submitted_rating/exists/:user_id/:clip_id", auth.isAuthenticated, ratings.checkRatingExists);
 
+	router.get("/by_type/:clip_id", auth.isAuthenticated, ratings.returnClipRatingTypes);
+
 	router.put("/rating/", auth.isAuthenticated, ratings.update);
 
 	router.delete("/rating/:id", auth.isAuthenticated, ratings.delete);

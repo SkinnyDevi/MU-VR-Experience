@@ -96,6 +96,26 @@ exports.findAllClipRatings = (req, res) => {
 	});
 }
 
+exports.returnClipRatingTypes = (req, res) => {
+	const clip_id = req.params.clip_id;
+
+	Rating.findAll({ where: { clip_id: clip_id } }).then(findData => {
+		if (findData) {
+			if (Array.from(findData)[0] != undefined) {
+				res.send(utils.generateSplitRatingTypeJSON(findData));
+			} else {
+				res.status(404).send({
+					message: "Failed to find clip. Does it really exist or does it have any submitted rating?"
+				});
+			}
+		}
+	}).catch(err => {
+		res.status(500).send({
+			message: "There was an error retriving clip ratings: " + err.message
+		});
+	});
+}
+
 exports.checkRatingExists = (req, res) => {
 	const paramUserId = req.params.user_id;
 	const paramClipId = req.params.clip_id;

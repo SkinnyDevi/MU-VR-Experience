@@ -46,10 +46,10 @@ public class ImageFramesSpawner : MonoBehaviour
 					ClipFrameObject.transform.Find("Canvas/ClipName").GetComponent<TMP_Text>().text = clip["clip_name"];
 					baseXCoord += 2;
 					GameObject newFrame = Instantiate(ClipFrameObject, gameObject.transform);
+					newFrame.transform.Find("Canvas/Rating Text").GetComponent<RatingPercentageHandler>().SetRequestInfo(clip["clip_id"], userDataObj.GetToken());
 					EnterButtonObject.name = "Enter-" + clip["clip_id"];
 					Instantiate(EnterButtonObject, newFrame.transform);
 				}
-
 			}
 		}
 	}

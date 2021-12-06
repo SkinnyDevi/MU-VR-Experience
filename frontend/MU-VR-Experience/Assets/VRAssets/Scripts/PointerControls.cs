@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using System;
 using System.Text.RegularExpressions;
+using System.Collections;
 
 public class PointerControls : MonoBehaviour
 {
@@ -94,8 +95,6 @@ public class PointerControls : MonoBehaviour
 	{
 		if (currentObject.Contains("Enter-"))
 		{
-			string video = "Assets/VRAssets/static/videos/" + currentObject.Substring(6, 1) + ".mp4";
-			UserInfoManager.SaveString("VideoURL", video);
 			UserInfoManager.SaveInt("VideoID", Int32.Parse(currentObject.Substring(6, 1)));
 			currentObject = "EnterButtonExit";
 			SceneLoader.LoadScene(SceneLoader.Scene.TheatreCinema);

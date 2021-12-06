@@ -25,7 +25,7 @@ public class SettingsMenu : MonoBehaviour
     {
 		if (!UserTransition.TransitionMade)
 		{
-			if (Input.GetKeyDown(KeyCode.K))
+			if (Input.GetKeyDown(KeyCode.Escape))
 			{
 				if (InSettings)
 				{

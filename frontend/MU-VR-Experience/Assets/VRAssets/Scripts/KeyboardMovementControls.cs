@@ -13,13 +13,13 @@ public class KeyboardMovementControls : MonoBehaviour
 	bool isGrounded;
 	InputMaster controls;
 	CharacterController controller;
-	Vector2 horizontalInput;
+	Vector2 rawHorizontalInput, smoothInputVelocity, horizontalInput;
 
 	void Awake()
 	{
 		controls = new InputMaster();
 		controls.Enable();
-		controls.Player.Movement.performed += ctx => horizontalInput = ctx.ReadValue<Vector2>();
+		controls.Player.Movement.performed += ctx => rawHorizontalInput = ctx.ReadValue<Vector2>();
 	}
 
 	void Start()
@@ -29,6 +29,7 @@ public class KeyboardMovementControls : MonoBehaviour
 
 	void Update()
 	{
+		horizontalInput = Vector2.SmoothDamp(horizontalInput, rawHorizontalInput, ref smoothInputVelocity, .15f);
 		Move(horizontalInput);	
 	}
 

@@ -83,6 +83,46 @@
                     "expectedControlType": "Key",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "FormInputMovement",
+                    "type": "PassThrough",
+                    "id": "b4f93acf-f79f-4130-99ef-f748dcfcbe97",
+                    "expectedControlType": "Key",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "PreviousFormInputMovement",
+                    "type": "Button",
+                    "id": "68a737bd-910c-43e7-80ca-84c615e25e36",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "FormInputMovementRelease",
+                    "type": "Button",
+                    "id": "4a4dc01f-c2fb-410f-807c-2a0146899d34",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "PreviousFormInputMovementRelease",
+                    "type": "Button",
+                    "id": "63ebb324-4be6-4af6-856e-90bd886f1210",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Submit",
+                    "type": "Button",
+                    "id": "1a09838b-05c5-46b3-b6a3-96e5ae357004",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -94,6 +134,61 @@
                     "processors": "",
                     "groups": "",
                     "action": "Settings",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "053421ba-c32e-4fb5-8a90-ae75537aabf4",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "Press(pressPoint=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FormInputMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf2b802d-dd4a-4e05-9897-e638536d57ca",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "Press(pressPoint=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PreviousFormInputMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e3ff3317-e0bd-450a-a8ac-2798d96cfbea",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FormInputMovementRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b1a9b78e-530b-443f-8b0e-adf95217baf1",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PreviousFormInputMovementRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b57e0c5-a96e-41e0-ada9-6e1903bf76df",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "Press(pressPoint=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -96,6 +96,46 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Key"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""FormInputMovement"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""b4f93acf-f79f-4130-99ef-f748dcfcbe97"",
+                    ""expectedControlType"": ""Key"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""PreviousFormInputMovement"",
+                    ""type"": ""Button"",
+                    ""id"": ""68a737bd-910c-43e7-80ca-84c615e25e36"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""FormInputMovementRelease"",
+                    ""type"": ""Button"",
+                    ""id"": ""4a4dc01f-c2fb-410f-807c-2a0146899d34"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""PreviousFormInputMovementRelease"",
+                    ""type"": ""Button"",
+                    ""id"": ""63ebb324-4be6-4af6-856e-90bd886f1210"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Submit"",
+                    ""type"": ""Button"",
+                    ""id"": ""1a09838b-05c5-46b3-b6a3-96e5ae357004"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -107,6 +147,61 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Settings"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""053421ba-c32e-4fb5-8a90-ae75537aabf4"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": ""Press(pressPoint=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FormInputMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf2b802d-dd4a-4e05-9897-e638536d57ca"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": ""Press(pressPoint=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousFormInputMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e3ff3317-e0bd-450a-a8ac-2798d96cfbea"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FormInputMovementRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b1a9b78e-530b-443f-8b0e-adf95217baf1"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousFormInputMovementRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b57e0c5-a96e-41e0-ada9-6e1903bf76df"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": ""Press(pressPoint=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Submit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -121,6 +216,11 @@ public class @InputMaster : IInputActionCollection, IDisposable
         // Menus
         m_Menus = asset.FindActionMap("Menus", throwIfNotFound: true);
         m_Menus_Settings = m_Menus.FindAction("Settings", throwIfNotFound: true);
+        m_Menus_FormInputMovement = m_Menus.FindAction("FormInputMovement", throwIfNotFound: true);
+        m_Menus_PreviousFormInputMovement = m_Menus.FindAction("PreviousFormInputMovement", throwIfNotFound: true);
+        m_Menus_FormInputMovementRelease = m_Menus.FindAction("FormInputMovementRelease", throwIfNotFound: true);
+        m_Menus_PreviousFormInputMovementRelease = m_Menus.FindAction("PreviousFormInputMovementRelease", throwIfNotFound: true);
+        m_Menus_Submit = m_Menus.FindAction("Submit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -204,11 +304,21 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Menus;
     private IMenusActions m_MenusActionsCallbackInterface;
     private readonly InputAction m_Menus_Settings;
+    private readonly InputAction m_Menus_FormInputMovement;
+    private readonly InputAction m_Menus_PreviousFormInputMovement;
+    private readonly InputAction m_Menus_FormInputMovementRelease;
+    private readonly InputAction m_Menus_PreviousFormInputMovementRelease;
+    private readonly InputAction m_Menus_Submit;
     public struct MenusActions
     {
         private @InputMaster m_Wrapper;
         public MenusActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
         public InputAction @Settings => m_Wrapper.m_Menus_Settings;
+        public InputAction @FormInputMovement => m_Wrapper.m_Menus_FormInputMovement;
+        public InputAction @PreviousFormInputMovement => m_Wrapper.m_Menus_PreviousFormInputMovement;
+        public InputAction @FormInputMovementRelease => m_Wrapper.m_Menus_FormInputMovementRelease;
+        public InputAction @PreviousFormInputMovementRelease => m_Wrapper.m_Menus_PreviousFormInputMovementRelease;
+        public InputAction @Submit => m_Wrapper.m_Menus_Submit;
         public InputActionMap Get() { return m_Wrapper.m_Menus; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -221,6 +331,21 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Settings.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnSettings;
                 @Settings.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnSettings;
                 @Settings.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnSettings;
+                @FormInputMovement.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnFormInputMovement;
+                @FormInputMovement.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnFormInputMovement;
+                @FormInputMovement.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnFormInputMovement;
+                @PreviousFormInputMovement.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnPreviousFormInputMovement;
+                @PreviousFormInputMovement.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnPreviousFormInputMovement;
+                @PreviousFormInputMovement.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnPreviousFormInputMovement;
+                @FormInputMovementRelease.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnFormInputMovementRelease;
+                @FormInputMovementRelease.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnFormInputMovementRelease;
+                @FormInputMovementRelease.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnFormInputMovementRelease;
+                @PreviousFormInputMovementRelease.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnPreviousFormInputMovementRelease;
+                @PreviousFormInputMovementRelease.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnPreviousFormInputMovementRelease;
+                @PreviousFormInputMovementRelease.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnPreviousFormInputMovementRelease;
+                @Submit.started -= m_Wrapper.m_MenusActionsCallbackInterface.OnSubmit;
+                @Submit.performed -= m_Wrapper.m_MenusActionsCallbackInterface.OnSubmit;
+                @Submit.canceled -= m_Wrapper.m_MenusActionsCallbackInterface.OnSubmit;
             }
             m_Wrapper.m_MenusActionsCallbackInterface = instance;
             if (instance != null)
@@ -228,6 +353,21 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @Settings.started += instance.OnSettings;
                 @Settings.performed += instance.OnSettings;
                 @Settings.canceled += instance.OnSettings;
+                @FormInputMovement.started += instance.OnFormInputMovement;
+                @FormInputMovement.performed += instance.OnFormInputMovement;
+                @FormInputMovement.canceled += instance.OnFormInputMovement;
+                @PreviousFormInputMovement.started += instance.OnPreviousFormInputMovement;
+                @PreviousFormInputMovement.performed += instance.OnPreviousFormInputMovement;
+                @PreviousFormInputMovement.canceled += instance.OnPreviousFormInputMovement;
+                @FormInputMovementRelease.started += instance.OnFormInputMovementRelease;
+                @FormInputMovementRelease.performed += instance.OnFormInputMovementRelease;
+                @FormInputMovementRelease.canceled += instance.OnFormInputMovementRelease;
+                @PreviousFormInputMovementRelease.started += instance.OnPreviousFormInputMovementRelease;
+                @PreviousFormInputMovementRelease.performed += instance.OnPreviousFormInputMovementRelease;
+                @PreviousFormInputMovementRelease.canceled += instance.OnPreviousFormInputMovementRelease;
+                @Submit.started += instance.OnSubmit;
+                @Submit.performed += instance.OnSubmit;
+                @Submit.canceled += instance.OnSubmit;
             }
         }
     }
@@ -239,5 +379,10 @@ public class @InputMaster : IInputActionCollection, IDisposable
     public interface IMenusActions
     {
         void OnSettings(InputAction.CallbackContext context);
+        void OnFormInputMovement(InputAction.CallbackContext context);
+        void OnPreviousFormInputMovement(InputAction.CallbackContext context);
+        void OnFormInputMovementRelease(InputAction.CallbackContext context);
+        void OnPreviousFormInputMovementRelease(InputAction.CallbackContext context);
+        void OnSubmit(InputAction.CallbackContext context);
     }
 }

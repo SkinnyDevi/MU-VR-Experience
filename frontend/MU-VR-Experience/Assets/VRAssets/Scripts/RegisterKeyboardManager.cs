@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
 using TMPro;
 
@@ -13,33 +12,52 @@ public class RegisterKeyboardManager : MonoBehaviour
     public Button SubmitButton;
 
     EventSystem system;
+	InputMaster keyboardControls;
+	bool tabPress, shiftPress;
+
+	void Awake()
+	{
+		keyboardControls = new InputMaster();
+		keyboardControls.Enable();
+		keyboardControls.Menus.FormInputMovement.performed += _ => tabPress = true;
+		keyboardControls.Menus.FormInputMovementRelease.performed += _ => tabPress = false;
+		keyboardControls.Menus.PreviousFormInputMovement.performed += _ => shiftPress = true;
+		keyboardControls.Menus.PreviousFormInputMovementRelease.performed += _ => shiftPress = false;
+		keyboardControls.Menus.Submit.performed += _ => SubmitForm();
+	}
 
     void Start()
     {
         system = EventSystem.current;
+		tabPress = false;
+		shiftPress = false;
         EmailField.Select();
     }
 
     void Update()
-    {
-        var keyboard = Keyboard.current;
-        if (keyboard.tabKey.isPressed && keyboard.leftShiftKey.isPressed)
-        {
-            Selectable previous = system.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnUp();
-            
-            if (previous != null) previous.Select();
-        }
-        else if (keyboard.tabKey.isPressed)
-        {
-            Selectable next = system.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
+	{
+		if (tabPress && shiftPress) PreviousField();
+		else if (tabPress) NextField();
+	}
 
-            if (next != null) next.Select();
-        }
-        else if (keyboard.enterKey.isPressed)
-        {
-            SendData();
-        }
-    }
+	void NextField()
+	{
+		Selectable next = system.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
+		if (next != null) next.Select();
+		tabPress = false;
+	}
+
+	void PreviousField()
+	{
+		Selectable previous = system.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnUp();
+        if (previous != null) previous.Select();
+		tabPress = false;
+	}
+
+	void SubmitForm()
+	{
+		SendData();
+	}
 
     public void SendData()
     {

@@ -61,6 +61,7 @@ public class LoginKeyboardManager : MonoBehaviour
 
     public void SendData()
     {
+		if (LoginHandler.ValidationRetry) HasSentLoginRequest = false;
         if (!HasSentLoginRequest)
         {
             StartCoroutine(LoginHandler.SignIn(EmailTextField.text, PwdTextField.text));

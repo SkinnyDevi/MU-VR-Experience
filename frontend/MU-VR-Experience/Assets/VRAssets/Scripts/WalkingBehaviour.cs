@@ -1,8 +1,18 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WalkingBehaviour : MonoBehaviour
 {
 	Animator animator;
+	InputMaster controls;
+	Vector2 horizontalInput;
+
+	void Awake()
+	{
+		controls = new InputMaster();
+		controls.Enable();
+		controls.Player.Movement.performed += ctx => horizontalInput = ctx.ReadValue<Vector2>();
+	}
 
     void Start()
     {
@@ -11,16 +21,17 @@ public class WalkingBehaviour : MonoBehaviour
 
     void Update()
     {
+		HandleAnimation(horizontalInput);
+	}
+
+	void HandleAnimation(Vector2 direction)
+	{
+		var keyboard = Keyboard.current;
 		bool isWalking = animator.GetBool("isWalking");
 		float walkSpeed = animator.GetFloat("backwardsWalk");
 
-		bool forwardPressed = Input.GetKey("w");
-		bool backwardsPressed = Input.GetKey("s");
-		bool rightPressed = Input.GetKey("d");
-		bool leftPressed = Input.GetKey("a");
-
-		animator.SetBool("isWalking", forwardPressed || backwardsPressed || rightPressed || leftPressed ? true : false);
-		animator.SetFloat("backwardsWalk", forwardPressed ? 1.5f : -1.5f);
-		animator.SetFloat("backwardsWalk", backwardsPressed ? -1.5f : 1.5f);
+		animator.SetBool("isWalking", direction.x != 0 || direction.y != 0 ? true : false);
+		animator.SetFloat("backwardsWalk", direction.x > 0 ? 1.5f : -1.5f);
+		animator.SetFloat("backwardsWalk", direction.x < 0 ? -1.5f : 1.5f);
 	}
 }

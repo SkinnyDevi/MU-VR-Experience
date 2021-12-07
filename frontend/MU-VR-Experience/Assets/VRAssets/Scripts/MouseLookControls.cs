@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using TMPro;
 
 public class MouseLookControls : MonoBehaviour
 {
-	public float MouseSensitivity = 100f;
+	public float MouseSensitivity = 5f;
 	public Transform PlayerBody;
 	public TMP_Text SensitivityValue;
 	
@@ -24,8 +25,10 @@ public class MouseLookControls : MonoBehaviour
 		else
 		{
 			Cursor.lockState = CursorLockMode.Locked;
-			float mouseX = Input.GetAxis("Mouse X") * MouseSensitivity * Time.deltaTime;
-			float mouseY = Input.GetAxis("Mouse Y") * MouseSensitivity * Time.deltaTime;
+
+			var mouse = Pointer.current.delta.ReadValue();
+			float mouseX = mouse.x * MouseSensitivity * Time.deltaTime;
+			float mouseY = mouse.y * MouseSensitivity * Time.deltaTime;
 
 			xRotation -= mouseY;
 			xRotation = Mathf.Clamp(xRotation, -90f, 90f);

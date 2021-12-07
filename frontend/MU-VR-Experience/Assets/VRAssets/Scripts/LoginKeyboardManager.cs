@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 using TMPro;
 
 public class LoginKeyboardManager : MonoBehaviour
 {
+    public static bool HasSentLoginRequest = false;
     public Selectable EmailField;
     public TMP_InputField EmailTextField, PwdTextField;
     public Button SubmitButton;
@@ -20,19 +22,20 @@ public class LoginKeyboardManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && Input.GetKey(KeyCode.LeftShift))
+        var keyboard = Keyboard.current;
+        if (keyboard.tabKey.isPressed && keyboard.leftShiftKey.isPressed)
         {
             Selectable previous = system.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnUp();
             
             if (previous != null) previous.Select();
         }
-        else if (Input.GetKeyDown(KeyCode.Tab))
+        else if (keyboard.tabKey.isPressed)
         {
             Selectable next = system.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
 
             if (next != null) next.Select();
         }
-        else if (Input.GetKeyDown(KeyCode.Return))
+        else if (keyboard.enterKey.isPressed)
         {
             SendData();
         }
@@ -40,7 +43,11 @@ public class LoginKeyboardManager : MonoBehaviour
 
     public void SendData()
     {
-        StartCoroutine(LoginHandler.SignIn(EmailTextField.text, PwdTextField.text));
+        if (!HasSentLoginRequest)
+        {
+            StartCoroutine(LoginHandler.SignIn(EmailTextField.text, PwdTextField.text));
+            HasSentLoginRequest = true;
+        }
     }
 
     public void ResetTextFields()

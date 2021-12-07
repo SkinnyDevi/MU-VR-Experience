@@ -89,7 +89,7 @@ public static class UserInfoManager
 		{
 			SaveString(SaveType.SettingsMovement, Movement.WASD.ToString());
 			SaveString(SaveType.SettingsInteraction, Interaction.LeftClick.ToString());
-			SaveFloat(SaveType.SettingsSensitivity, 125f);
+			SaveFloat(SaveType.SettingsSensitivity, 8f);
 			SaveFloat(SaveType.SettingsVolume, 0f);
 			PlayerPrefs.SetString("InitPrefs", "true");
 		}

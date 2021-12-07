@@ -57,6 +57,7 @@ public class UserTransition : MonoBehaviour
             case "Crossfade_Sleep":
                 if (successExit) // needed to not enter on enter->exit loop
                 {
+                    ResetRequests();
                     ResetTriggers(); 
                     ResumeControls();
                     successExit = false;
@@ -103,6 +104,12 @@ public class UserTransition : MonoBehaviour
         transition.ResetTrigger("StartTransition");
         transition.ResetTrigger("FinishTransition");
         transition.ResetTrigger("FinishLongerTransition");
+    }
+
+    void ResetRequests()
+    {
+        RegisterKeyboardManager.HasSentRegisterRequest = false;
+        LoginKeyboardManager.HasSentLoginRequest = false;
     }
     
     void CloseMenu()

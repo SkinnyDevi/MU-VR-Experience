@@ -45,12 +45,11 @@ public class RegisterHandler : MonoBehaviour
 				else
 				{
 					ErrorText.SetActive(false);
-					Debug.Log("New user info: ");
+					Debug.Log("New user submitted");
 
 					JSONNode response = JSON.Parse(createUser.downloadHandler.text);
 					UserDataReceiver currentUserData = GameObject.FindObjectOfType<UserDataReceiver>();
 					JSONNode userObj = response["user"];
-					Debug.Log("REGISTER USER ID: " + userObj["user_id"]);
 					User newPlayer = new User(userObj["user_id"], userObj["email"], userObj["username"]);
 					
 					SuccessText.SetActive(true);

@@ -51,7 +51,7 @@ public class LoginHandler : MonoBehaviour
             else
             {
                 ErrorText.SetActive(false);
-                Debug.Log("Sign In Info --");
+                Debug.Log("User signed in");
                 
                 JSONNode response = JSON.Parse(signin.downloadHandler.text);
                 UserDataReceiver currentUserData  = GameObject.FindObjectOfType<UserDataReceiver>();

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class KeyboardMovementControls : MonoBehaviour
 {
-	public float speedMovement = 12f;
+	public float speedMovement = 8f;
 	public float gravity = -9.81f;
 	public Transform groundCheck;
 	public float groundDistance = 0.4f;

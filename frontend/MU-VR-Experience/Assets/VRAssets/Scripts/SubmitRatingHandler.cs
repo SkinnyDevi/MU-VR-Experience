@@ -7,7 +7,6 @@ using SimpleJSON;
 
 public class SubmitRatingHandler : MonoBehaviour
 {
-	public static bool HasCheckedExistence, SubmitFinished = false;
 	public static int UserID = -1;
 
 	static readonly string API_URL = "http://192.168.1.184:6996/ratings/";
@@ -47,8 +46,6 @@ public class SubmitRatingHandler : MonoBehaviour
 				ratingPayload.SetRatingID(response["rating_id"]);
 			}
 			ratingPayload.SetRating(objName.Replace("Cube", ""));
-			//HasCheckedExistence = true;
-			//GameObject.FindObjectOfType<PointerControls>().SetCurrentObject(objName);
 		}
 
 		using (UnityWebRequest submitRating = createRatingUpdateRequest(API_URL + "rating/", TEMP_TKN, ratingPayload))
@@ -63,56 +60,6 @@ public class SubmitRatingHandler : MonoBehaviour
 			{
 				Wall.SetActive(false);
 				Doors.SetActive(true);
-				//SubmitFinished = true;
-			}
-		}
-	}
-
-	public static IEnumerator CheckRatingExistence(string objName)
-	{
-		ratingPayload = GenerateNewRating();
-
-		using (UnityWebRequest checkExistence = createGetRequest(API_URL + $"submitted_rating/exists/{ratingPayload.GetUserID()}/{ratingPayload.GetClipID()}", TEMP_TKN))
-		{
-			yield return checkExistence.SendWebRequest();
-
-			if (checkExistence.result != UnityWebRequest.Result.Success)
-			{
-				if (checkExistence.responseCode == 404)
-				{
-					ratingPayload.SetRatingID(0);
-				}
-				else
-				{
-					Debug.LogError("Couldn't Complete Existance Request: " + checkExistence.error);
-				}
-			}
-			else
-			{
-				JSONNode response = JSON.Parse(checkExistence.downloadHandler.text);
-				ratingPayload.SetRatingID(response["rating_id"]);
-			}
-			ratingPayload.SetRating(objName.Replace("Cube", ""));
-			HasCheckedExistence = true;
-			GameObject.FindObjectOfType<PointerControls>().SetCurrentObject(objName);
-		}
-	}
-
-	public static IEnumerator SubmitRating(GameObject Wall, GameObject Doors)
-	{
-		using (UnityWebRequest submitRating = createRatingUpdateRequest(API_URL + "rating/", TEMP_TKN, ratingPayload))
-		{
-			yield return submitRating.SendWebRequest();
-
-			if (submitRating.result != UnityWebRequest.Result.Success)
-			{
-				Debug.LogError("Couldn't Complete Request: " + submitRating.downloadHandler.text);
-			}
-			else
-			{
-				Wall.SetActive(false);
-				Doors.SetActive(true);
-				SubmitFinished = true;
 			}
 		}
 	}

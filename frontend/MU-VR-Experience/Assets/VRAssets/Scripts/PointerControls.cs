@@ -112,26 +112,6 @@ public class PointerControls : MonoBehaviour
 		{
 			SubmitRatingHandler.UserID = UserInfoManager.GetInt("User");
 			StartCoroutine(SubmitRatingHandler.RatingSubmitTest(currentObject, ReplaceableWall, BillboardDoors));
-			// SubmitRatingHandler.UserID = UserInfoManager.GetInt("User");
-			// if (!SubmitRatingHandler.HasCheckedExistence)
-			// {
-			// 	StartCoroutine(SubmitRatingHandler.CheckRatingExistence(currentObject));
-			// 	currentObject = "RatingButtonOnHold";
-			// }
-			// else if (SubmitRatingHandler.HasCheckedExistence)
-			// {
-			// 	StartCoroutine(SubmitRatingHandler.SubmitRating(ReplaceableWall, BillboardDoors));
-			// 	currentObject = "RatingButtonExit";
-			// }
 		}
-		// else
-		// {
-		// 	if (SubmitRatingHandler.SubmitFinished)
-		// 	{
-		// 		StopAllCoroutines();
-		// 		SubmitRatingHandler.HasCheckedExistence = false;
-		// 		SubmitRatingHandler.SubmitFinished = false;
-		// 	}
-		// }
 	}
 }

@@ -14,6 +14,7 @@ public class RegisterKeyboardManager : MonoBehaviour
     EventSystem system;
 	InputMaster keyboardControls;
 	bool tabPress, shiftPress;
+	static GameObject processWheel;
 
 	void Awake()
 	{
@@ -31,6 +32,8 @@ public class RegisterKeyboardManager : MonoBehaviour
         system = EventSystem.current;
 		tabPress = false;
 		shiftPress = false;
+		processWheel = gameObject.transform.Find("ProcessWheel").gameObject;
+		processWheel.SetActive(false);
         EmailField.Select();
     }
 
@@ -59,10 +62,16 @@ public class RegisterKeyboardManager : MonoBehaviour
 		SendData();
 	}
 
+	public static void ToggleProcessWheel()
+	{
+		processWheel.SetActive(!processWheel.activeSelf);
+	}
+
     public void SendData()
     {
 		if (GameObject.Find("Register Menu").activeSelf)
 		{
+			ToggleProcessWheel();
 			if (RegisterHandler.ValidationRetry) HasSentRegisterRequest = false;
 			if (!HasSentRegisterRequest)
 			{

@@ -34,6 +34,7 @@ public class RegisterHandler : MonoBehaviour
 			{
 				yield return createUser.SendWebRequest();
 
+				RegisterKeyboardManager.ToggleProcessWheel();
 				if (createUser.result != UnityWebRequest.Result.Success)
 				{
 					ErrorMessage.text = "There was an error";
@@ -81,14 +82,17 @@ public class RegisterHandler : MonoBehaviour
 		switch (validationCode)
 		{
 			case -1:
+				RegisterKeyboardManager.ToggleProcessWheel();
 				ErrorText.SetActive(true);
 				ErrorMessage.text = "Missing required fields";
 				return false;				
 			case 0:
+				RegisterKeyboardManager.ToggleProcessWheel();
 				ErrorText.SetActive(true);
 				ErrorMessage.text = "Invalid email";
 				return false;
 			case -2:
+				RegisterKeyboardManager.ToggleProcessWheel();
 				ErrorText.SetActive(true);
 				ErrorMessage.text = "Passwords don't match!";
 				return false;

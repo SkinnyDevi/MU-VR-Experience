@@ -34,6 +34,7 @@ public class LoginHandler : MonoBehaviour
 			{
 				yield return signin.SendWebRequest(); 
 
+				LoginKeyboardManager.ToggleProcessWheel();
 				if (signin.result != UnityWebRequest.Result.Success)
 				{
 					ErrorMessage.text = "Password is Incorrect!";
@@ -78,10 +79,10 @@ public class LoginHandler : MonoBehaviour
 		int code = 1;
 		Regex emailRx = new Regex("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$");
 
+		if (!(emailRx.Matches(email).Count > 0)) code = 0;
+		
 		if (string.IsNullOrEmpty(pass)) code = -1;
 		if (string.IsNullOrEmpty(email)) code = -1;
-		
-		if (!(emailRx.Matches(email).Count > 0)) code = 0;
 
 		return code;
 	}
@@ -91,10 +92,12 @@ public class LoginHandler : MonoBehaviour
 		switch (validationCode)
 		{
 			case -1:
+				LoginKeyboardManager.ToggleProcessWheel();
 				ErrorText.SetActive(true);
 				ErrorMessage.text = "Missing required fields";
 				return false;				
 			case 0:
+				LoginKeyboardManager.ToggleProcessWheel();
 				ErrorText.SetActive(true);
 				ErrorMessage.text = "Invalid email";
 				return false;

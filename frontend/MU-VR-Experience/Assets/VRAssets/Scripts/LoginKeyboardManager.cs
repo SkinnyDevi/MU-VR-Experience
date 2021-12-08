@@ -61,12 +61,15 @@ public class LoginKeyboardManager : MonoBehaviour
 
     public void SendData()
     {
-		if (LoginHandler.ValidationRetry) HasSentLoginRequest = false;
-        if (!HasSentLoginRequest)
-        {
-            StartCoroutine(LoginHandler.SignIn(EmailTextField.text, PwdTextField.text));
-            HasSentLoginRequest = true;
-        }
+		if (GameObject.Find("Login Menu").activeSelf)
+		{
+			if (LoginHandler.ValidationRetry) HasSentLoginRequest = false;
+			if (!HasSentLoginRequest)
+			{
+				StartCoroutine(LoginHandler.SignIn(EmailTextField.text, PwdTextField.text));
+				HasSentLoginRequest = true;
+			}
+		}
     }
 
     public void ResetTextFields()

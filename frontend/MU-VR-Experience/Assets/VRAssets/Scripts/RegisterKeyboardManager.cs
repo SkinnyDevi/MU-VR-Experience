@@ -61,11 +61,15 @@ public class RegisterKeyboardManager : MonoBehaviour
 
     public void SendData()
     {
-        if (!HasSentRegisterRequest)
-        {
-            StartCoroutine(RegisterHandler.CreateUserFromPlayer(EmailTextField.text, PwdTextField.text, ConfirmPwdField.text));
-            HasSentRegisterRequest = true;
-        }
+		if (GameObject.Find("Register Menu").activeSelf)
+		{
+			if (RegisterHandler.ValidationRetry) HasSentRegisterRequest = false;
+			if (!HasSentRegisterRequest)
+			{
+				StartCoroutine(RegisterHandler.CreateUserFromPlayer(EmailTextField.text, PwdTextField.text, ConfirmPwdField.text));
+				HasSentRegisterRequest = true;
+			}
+		}
     }
 
     public void ResetTextFields()

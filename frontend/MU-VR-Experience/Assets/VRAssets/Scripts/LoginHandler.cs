@@ -78,11 +78,10 @@ public class LoginHandler : MonoBehaviour
 		int code = 1;
 		Regex emailRx = new Regex("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$");
 
-		Debug.Log("INFO: " + email + ", " + pass);
-		if (string.IsNullOrEmpty(email)) code = -1;
-		else if (!(emailRx.Matches(email).Count > 0)) code = 0;
-
 		if (string.IsNullOrEmpty(pass)) code = -1;
+		if (string.IsNullOrEmpty(email)) code = -1;
+		
+		if (!(emailRx.Matches(email).Count > 0)) code = 0;
 
 		return code;
 	}

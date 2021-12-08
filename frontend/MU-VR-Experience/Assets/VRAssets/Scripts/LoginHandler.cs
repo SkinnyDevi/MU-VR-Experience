@@ -47,8 +47,12 @@ public class LoginHandler : MonoBehaviour
 						case 401:
 							ErrorMessage.text = "Password is Incorrect!";
 							break;
+						case 0:
+							ErrorMessage.text = "No started\nserver was\nfound";
+							break;
 						default:
-							ErrorMessage.text = "Request found an error";
+							Debug.Log(signin.responseCode);
+							ErrorMessage.text = "Request\nfound\nan error";
 							Debug.LogError("There was an error signin in: " + signin.error);
 							break;
 					}

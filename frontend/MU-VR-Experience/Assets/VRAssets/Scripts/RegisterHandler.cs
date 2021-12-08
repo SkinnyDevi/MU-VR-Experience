@@ -37,9 +37,17 @@ public class RegisterHandler : MonoBehaviour
 				RegisterKeyboardManager.ToggleProcessWheel();
 				if (createUser.result != UnityWebRequest.Result.Success)
 				{
-					ErrorMessage.text = "There was an error";
-					Debug.Log(createUser.responseCode);
-					Debug.LogError("Something went wrong: " + createUser.error);
+					switch (createUser.responseCode)
+					{
+						case 0:
+							ErrorMessage.text = "No started\nserver was\nfound";
+							break;
+						default:
+							Debug.Log(createUser.responseCode);
+							ErrorMessage.text = "Request\nfound\nan error";
+							Debug.LogError("There was an error registering the user in: " + createUser.error);
+							break;
+					}
 					ErrorText.SetActive(true);
 				}
 				else

@@ -21,12 +21,10 @@ public class VideoLoader : MonoBehaviour
 
 		screenPlayer.playOnAwake = false; 
 		screenAudio.playOnAwake = false;
-		screenAudio.Pause();
 
 		screenPlayer.clip = Resources.Load<VideoClip>("videos/" + UserInfoManager.GetInt("VideoID")) as VideoClip;
 
 		screenPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
-		Debug.Log("AUDIO TRACKS CLIP: " + screenPlayer.controlledAudioTrackCount);
 		screenPlayer.EnableAudioTrack(0, true);
 		screenPlayer.SetTargetAudioSource(0, screenAudio);
 

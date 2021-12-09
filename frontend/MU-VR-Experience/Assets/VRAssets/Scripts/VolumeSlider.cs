@@ -10,18 +10,21 @@ public class VolumeSlider : MonoBehaviour
 	public static float RawVolume = 0f;
     public TMP_Text VolumeValue;
 
-    void Start()
-    {
-        VolumeSliderObject.onValueChanged.AddListener((v) => {
-            float volumePositive = ((v*-1/80*100)-100)*-1;
-            VolumeValue.text = volumePositive.ToString("0");
-            SetVolume(v);
-        });
-    }
+    // void Start()
+    // {
+	// 	AudioMixer = Instantiate(AudioMixer);
+    //     VolumeSliderObject.onValueChanged.AddListener((v) => {
+    //         float volumePositive = ((v*-1/80*100)-100)*-1;
+    //         VolumeValue.text = volumePositive.ToString("0");
+    //         SetVolume(v);
+    //     });
+    // }
 
     public void SetVolume(float volume)
     {
 		RawVolume = volume;
+		float volumePositive = ((volume*-1/80*100)-100)*-1;
+        VolumeValue.text = volumePositive.ToString("0");
         AudioMixer.SetFloat("MasterVolume", volume);
     }
 

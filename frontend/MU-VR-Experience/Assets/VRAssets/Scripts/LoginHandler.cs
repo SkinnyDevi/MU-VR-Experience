@@ -34,7 +34,7 @@ public class LoginHandler : MonoBehaviour
 			{
 				yield return signin.SendWebRequest(); 
 
-				LoginKeyboardManager.ToggleProcessWheel();
+				LoginKeyboardManager.ToggleProcessWheel(false);
 				if (signin.result != UnityWebRequest.Result.Success)
 				{
 					ErrorMessage.text = "Password is Incorrect!";
@@ -96,12 +96,12 @@ public class LoginHandler : MonoBehaviour
 		switch (validationCode)
 		{
 			case -1:
-				LoginKeyboardManager.ToggleProcessWheel();
+				LoginKeyboardManager.ToggleProcessWheel(false);
 				ErrorText.SetActive(true);
 				ErrorMessage.text = "Missing required fields";
 				return false;				
 			case 0:
-				LoginKeyboardManager.ToggleProcessWheel();
+				LoginKeyboardManager.ToggleProcessWheel(false);
 				ErrorText.SetActive(true);
 				ErrorMessage.text = "Invalid email";
 				return false;

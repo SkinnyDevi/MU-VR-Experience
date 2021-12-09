@@ -62,16 +62,16 @@ public class LoginKeyboardManager : MonoBehaviour
 		SendData();
 	}
 
-	public static void ToggleProcessWheel()
+	public static void ToggleProcessWheel(bool toggle)
 	{
-		processWheel.SetActive(!processWheel.activeSelf);
+		processWheel.SetActive(toggle);
 	}
 
     public void SendData()
     {
 		if (GameObject.Find("Login Menu").activeSelf)
 		{
-			ToggleProcessWheel();
+			ToggleProcessWheel(true);
 			if (LoginHandler.ValidationRetry) HasSentLoginRequest = false;
 			if (!HasSentLoginRequest)
 			{

@@ -62,16 +62,16 @@ public class RegisterKeyboardManager : MonoBehaviour
 		SendData();
 	}
 
-	public static void ToggleProcessWheel()
+	public static void ToggleProcessWheel(bool toggle)
 	{
-		processWheel.SetActive(!processWheel.activeSelf);
+		processWheel.SetActive(toggle);
 	}
 
     public void SendData()
     {
 		if (GameObject.Find("Register Menu").activeSelf)
 		{
-			ToggleProcessWheel();
+			ToggleProcessWheel(true);
 			if (RegisterHandler.ValidationRetry) HasSentRegisterRequest = false;
 			if (!HasSentRegisterRequest)
 			{

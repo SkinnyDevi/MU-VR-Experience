@@ -9,16 +9,9 @@ using SimpleJSON;
 public class RatingPercentageHandler : MonoBehaviour
 {
     static readonly string API_URL = "http://192.168.1.184:6996/ratings/by_type/";
-    TMP_Text LikedPercentage, RegularPercentage, DislikedPercentage;
+    public TMP_Text LikedPercentage, RegularPercentage, DislikedPercentage;
     int clipId = -1;
     string token = "";
-
-    void Start()
-    {
-        LikedPercentage = gameObject.transform.Find("Like").GetComponent<TMP_Text>();
-        RegularPercentage = gameObject.transform.Find("Regular").GetComponent<TMP_Text>();
-        DislikedPercentage = gameObject.transform.Find("Dislike").GetComponent<TMP_Text>();
-    }
 
     public void SetRequestInfo(int id, string tkn)
     {

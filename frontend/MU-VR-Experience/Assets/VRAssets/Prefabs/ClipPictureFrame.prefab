@@ -796,6 +796,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299ffb50e3f43394894d3d1de5417e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LikedPercentage: {fileID: 9166714269273159856}
+  RegularPercentage: {fileID: 9029853340392861816}
+  DislikedPercentage: {fileID: 6423429888490731203}
 --- !u!1 &5653926649713782984
 GameObject:
   m_ObjectHideFlags: 0

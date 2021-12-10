@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.Management;
+using UnityEngine.SceneManagement;
 
 using System;
 
@@ -11,12 +12,14 @@ public class SettingsMenu : MonoBehaviour
     public GameObject SettingsMenuObject, Crosshair, RemoveVRButton;
     public static bool InSettings;
 
+	string rootPath = "Settings Menu/Canvas/Pause Menu/";
     bool vrOptionChanged = false;
     bool subsystemsStarted = false;
     PlayerVRHandler playerHandler;
     InputMaster keyboardControls;
 	TMP_Text vrStateText;
 	Toggle vrToggler;
+	GameObject returnToReceptionBtn;
 
 
     void Awake()
@@ -29,8 +32,15 @@ public class SettingsMenu : MonoBehaviour
     void Start()
     {
         playerHandler = GameObject.FindObjectOfType<PlayerVRHandler>();
-		vrStateText = gameObject.transform.Find("Settings Menu/Canvas/Pause Menu/Enable VR Checkbox/Toggle/Label").GetComponent<TMP_Text>();
-        vrToggler = gameObject.transform.Find("Settings Menu/Canvas/Pause Menu/Enable VR Checkbox/Toggle").GetComponent<Toggle>();
+		vrStateText = gameObject.transform.Find(rootPath + "Enable VR Checkbox/Toggle/Label").GetComponent<TMP_Text>();
+        vrToggler = gameObject.transform.Find(rootPath + "Enable VR Checkbox/Toggle").GetComponent<Toggle>();
+		returnToReceptionBtn = gameObject.transform.Find(rootPath + "ReturnReception").gameObject;
+
+		if (SceneManager.GetActiveScene().name.Equals("MainHub"))
+			returnToReceptionBtn.SetActive(false);
+		else
+			returnToReceptionBtn.SetActive(true);
+
 		SettingsMenuObject.SetActive(false);
     }
 
@@ -128,8 +138,14 @@ public class SettingsMenu : MonoBehaviour
         SaveSettings();
         InSettings = false;
     }
+	
+	public void ReturnMainHub() // Only assigned in the UI
+	{
+		ResumeGame();
+		SceneLoader.LoadScene(SceneLoader.Scene.MainHub);
+	}
 
-    public void VRToggleHandler()
+    public void VRToggleHandler() // Only assigned in the UI
     {
         if (vrStateText.text.Equals("Disabled") && vrToggler.isOn)
         {

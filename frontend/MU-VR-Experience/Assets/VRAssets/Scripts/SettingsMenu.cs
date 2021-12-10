@@ -1,21 +1,23 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.Management;
-using UnityEngine.InputSystem;
+
 using System;
 
 using TMPro;
 
 public class SettingsMenu : MonoBehaviour
 {
-    public GameObject SettingsMenuObject;
+    public GameObject SettingsMenuObject, Crosshair, RemoveVRButton;
     public static bool InSettings;
-    public GameObject Crosshair;
 
     bool vrOptionChanged = false;
     bool subsystemsStarted = false;
     PlayerVRHandler playerHandler;
     InputMaster keyboardControls;
+	TMP_Text vrStateText;
+	Toggle vrToggler;
+
 
     void Awake()
     {
@@ -27,7 +29,9 @@ public class SettingsMenu : MonoBehaviour
     void Start()
     {
         playerHandler = GameObject.FindObjectOfType<PlayerVRHandler>();
-        SettingsMenuObject.SetActive(false);
+		vrStateText = gameObject.transform.Find("Settings Menu/Canvas/Pause Menu/Enable VR Checkbox/Toggle/Label").GetComponent<TMP_Text>();
+        vrToggler = gameObject.transform.Find("Settings Menu/Canvas/Pause Menu/Enable VR Checkbox/Toggle").GetComponent<Toggle>();
+		SettingsMenuObject.SetActive(false);
     }
 
     void OpenSettings()
@@ -54,12 +58,7 @@ public class SettingsMenu : MonoBehaviour
 
     void OnApplicationQuit() // for standalone only
     {
-        if (subsystemsStarted)
-        {
-            XRGeneralSettings.Instance.Manager.StopSubsystems();
-            XRGeneralSettings.Instance.Manager.DeinitializeLoader();
-            subsystemsStarted = false;
-        }
+        StopXRSubsystems();
     }
 
 	void SaveSettings()
@@ -91,6 +90,16 @@ public class SettingsMenu : MonoBehaviour
         g.SetActive(state);
     }
 
+	public void StopXRSubsystems()
+	{
+		if (subsystemsStarted)
+        {
+            XRGeneralSettings.Instance.Manager.StopSubsystems();
+            XRGeneralSettings.Instance.Manager.DeinitializeLoader();
+            subsystemsStarted = false;
+        }
+	}
+
     public void PauseGame()
     {
         SetState(Crosshair, false);
@@ -108,6 +117,7 @@ public class SettingsMenu : MonoBehaviour
             if (!subsystemsStarted)
             {
                 StartCoroutine(XRGeneralSettings.Instance.Manager.InitializeLoader());
+				Instantiate(RemoveVRButton);
             }
         }
         else
@@ -121,8 +131,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void VRToggleHandler()
     {
-        TMP_Text vrStateText = gameObject.transform.Find("Settings Menu/Canvas/Pause Menu/Enable VR Checkbox/Toggle/Label").GetComponent<TMP_Text>();
-        if (vrStateText.text.Equals("Disabled"))
+        if (vrStateText.text.Equals("Disabled") && vrToggler.isOn)
         {
             vrStateText.text = "Enabled";
             vrOptionChanged = true;
@@ -133,4 +142,11 @@ public class SettingsMenu : MonoBehaviour
             vrOptionChanged = false;
         }
     }
+
+	public void ExternalVRDeactivation()
+	{
+		vrStateText.text = "Disabled";
+        vrOptionChanged = false;
+		vrToggler.isOn = false;
+	}
 }

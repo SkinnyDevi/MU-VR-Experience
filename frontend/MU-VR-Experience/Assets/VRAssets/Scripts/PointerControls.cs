@@ -69,7 +69,7 @@ public class PointerControls : MonoBehaviour
 			hoverObject = "Air";
 		}
 
-		Regex hoverableTest = new Regex(".*(Login|Register|Enter|BillBoardDoors|Like|Regular|Dislike).*$");
+		Regex hoverableTest = new Regex(".*(Login|Register|Enter|BillBoardDoors|Like|Regular|Dislike|Remove VR).*$");
 		if (hoverableTest.Matches(hoverObject).Count > 0)
 		{
 			SelectedCrosshair.SetActive(true);

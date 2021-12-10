@@ -9,11 +9,6 @@ public class PlayerVRHandler : MonoBehaviour
 	public static PlayerType CurrentPlayerType = PlayerType.Mouse;
 
 	Vector3 lobbyPlayerStartingCoords = new Vector3(-1451.133f, -286.0826f, 178.8876f);
-
-	void Start()
-	{
-		
-	}
 	
 	public void ChangePlayerType(PlayerType type)
 	{

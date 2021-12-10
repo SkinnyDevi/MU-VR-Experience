@@ -31,11 +31,6 @@ public class UserDataReceiver : MonoBehaviour
 		{
 			StartCoroutine(LoadNewPlayer());
 		}
-		//StartCoroutine(CreateUser(url, this.player));
-		//StartCoroutine(GetUsers(url, token));
-		//StartCoroutine(GetUsers(url, token, true, 5));
-		//StartCoroutine(UpdateUser(url, token, this.player));
-		//StartCoroutine(DeleteUser(url, token, this.player));
 	}
 
 	void OnApplicationQuit() // Only for standalone
@@ -110,105 +105,6 @@ public class UserDataReceiver : MonoBehaviour
 	}
 
 	/*
-	// Get Users With or Without ID
-	public IEnumerator GetUsers(string getUrl, string userToken, bool withID = false, int userID = 0)
-	{
-		if (withID) getUrl += "user/" + userID;
-		using(UnityWebRequest getter = createGetRequest(getUrl, userToken))
-		{	
-			yield return getter.SendWebRequest();
-			if (getter.result != UnityWebRequest.Result.Success)
-			{
-				Debug.Log("Something went wrong: " + getter.error);
-			}
-			else
-			{
-				JSONNode response = JSON.Parse(getter.downloadHandler.text);
-
-				Debug.Log("--- START OF USERS ---");
-				if (withID)
-				{
-					this.player.SetId(response["id"]);
-					this.player.SetEmail(response["email"]);
-					this.player.SetUsername(response["username"]);
-					Debug.Log(this.player.GetUsername());
-				}
-				else
-				{
-					int userIndex = 0;
-					while (response[userIndex]["username"] != null)
-					{
-						Debug.Log(response[userIndex]["username"]);
-						User tempUser = new User();
-						tempUser.SetId(response[userIndex]["id"]);
-						tempUser.SetEmail(response[userIndex]["email"]);
-						tempUser.SetUsername(response[userIndex]["username"]);
-						//users.Add(tempUser);
-						userIndex++;
-					}
-				}
-				
-				Debug.Log("--- END OF USERS ---");
-			}
-		}
-	}
-
-	public IEnumerator CreateUser(string createUrl, User createdUser)
-	{
-		using(UnityWebRequest post = createUserPostRequest(createUrl, createdUser.GetEmail(), createdUser.GetPassword()))
-		{
-			yield return post.SendWebRequest();
-			if (post.result != UnityWebRequest.Result.Success)
-			{
-				Debug.Log("Something went wrong creating a user: " + post.error);
-			}
-			else
-			{
-				Debug.Log("User created successfully.");
-				JSONNode success = JSON.Parse(post.downloadHandler.text);
-				token = success["access_token"];
-
-				StartCoroutine(GetUsers(Url, token, true, success["user"]["id"]));
-			}
-		}
-	}
-
-	public IEnumerator DeleteUser(string deleteUrl, string userToken, User userDelete)
-	{
-		deleteUrl += "user/" + userDelete.GetId();
-		using(UnityWebRequest delete = createUserDeleteRequest(deleteUrl, userToken))
-		{
-			yield return delete.SendWebRequest();
-			if (delete.result != UnityWebRequest.Result.Success)
-			{
-				Debug.Log("Something went wrong deleting a user: " + delete.error);
-			}
-			else
-			{
-				Debug.Log("User was deleted successfully.");
-				StartCoroutine(GetUsers(Url, token));
-			}
-		}
-	}
-
-	public IEnumerator UpdateUser(string updateUrl, string userToken, User currentUser)
-	{
-		updateUrl += "user/" + currentUser.GetId();
-		using(UnityWebRequest update = createUserUpdateRequest(updateUrl, userToken, currentUser))
-		{
-			yield return update.SendWebRequest();
-			if (update.result != UnityWebRequest.Result.Success)
-			{
-				Debug.Log("Something went wrong updating a user: " + update.error);
-			}
-			else
-			{
-				Debug.Log("User was updated successfully.");
-				StartCoroutine(GetUsers(Url, token, true, currentUser.GetId()));
-			}
-		}
-	}
-
 	private UnityWebRequest createUserPostRequest(string requestUrl, string requestEmail, string requestPassword)
 	{	
 		UnityWebRequest postRequest = UnityWebRequest.Post(requestUrl, Authentication(requestEmail, requestPassword));

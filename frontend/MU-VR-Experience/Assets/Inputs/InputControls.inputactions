@@ -6,7 +6,7 @@
             "id": "c345157d-9261-48bf-8de0-402a51a0d129",
             "actions": [
                 {
-                    "name": "Movement",
+                    "name": "MovementWASD",
                     "type": "PassThrough",
                     "id": "5253b7fc-4a1c-4ef0-be5c-cb0cb5af72c7",
                     "expectedControlType": "Vector2",
@@ -20,6 +20,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "MovementArrows",
+                    "type": "Button",
+                    "id": "de0a6578-47e8-4fac-8084-b66be9cd5c26",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=1)"
                 }
             ],
             "bindings": [
@@ -30,7 +38,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "MovementWASD",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -41,7 +49,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "MovementWASD",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -52,7 +60,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "MovementWASD",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -63,7 +71,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "MovementWASD",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -74,7 +82,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "MovementWASD",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -88,6 +96,61 @@
                     "action": "MouseClick",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "fe5badba-b5f2-4be8-b727-c08ab4b2b954",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementArrows",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "25749ecb-f2a4-4a98-9f11-a64ee6f46510",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementArrows",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "31aca0f7-2194-4ffc-ba48-bb2454d475c3",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementArrows",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "89dcbbee-32e9-4cc4-bf28-83885ce3d789",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementArrows",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "a66102d7-90c9-4612-8e54-59a245533d73",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementArrows",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

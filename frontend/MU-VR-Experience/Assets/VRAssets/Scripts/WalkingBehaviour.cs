@@ -1,17 +1,17 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class WalkingBehaviour : MonoBehaviour
 {
 	Animator animator;
 	InputMaster controls;
-	Vector2 horizontalInput;
+	Vector2 rawWASDInput, rawArrowsInput, horizontalInput;
 
 	void Awake()
 	{
 		controls = new InputMaster();
 		controls.Enable();
-		controls.Player.Movement.performed += ctx => horizontalInput = ctx.ReadValue<Vector2>();
+		controls.Player.MovementWASD.performed += ctx => rawWASDInput = ctx.ReadValue<Vector2>();
+		controls.Player.MovementArrows.performed += ctx => rawArrowsInput = ctx.ReadValue<Vector2>();
 	}
 
     void Start()
@@ -21,12 +21,12 @@ public class WalkingBehaviour : MonoBehaviour
 
     void Update()
     {
+		horizontalInput = UserInfoManager.GetString(UserInfoManager.SaveType.SettingsMovement).Equals("WASD") ? rawWASDInput : rawArrowsInput;
 		HandleAnimation(horizontalInput);
 	}
 
 	void HandleAnimation(Vector2 direction)
 	{
-		var keyboard = Keyboard.current;
 		bool isWalking = animator.GetBool("isWalking");
 		float walkSpeed = animator.GetFloat("backwardsWalk");
 

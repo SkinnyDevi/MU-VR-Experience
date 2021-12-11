@@ -28,6 +28,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press(pressPoint=1)"
+                },
+                {
+                    "name": "KeyE",
+                    "type": "Button",
+                    "id": "5bf13399-f486-446c-b233-dea1a9aa78d6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=1)"
                 }
             ],
             "bindings": [
@@ -151,6 +159,17 @@
                     "action": "MovementArrows",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "82d5f17c-e249-4634-8a93-ac5cbd0e5b49",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Press(pressPoint=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KeyE",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-using System.Collections;
 
+using System.Collections;
 
 public class UserTransition : MonoBehaviour
 {
@@ -53,6 +53,7 @@ public class UserTransition : MonoBehaviour
                 break;
             case "Crossfade_Out":
                 successExit = true;
+				PointerControls.canInteractAgain = false;
                 break;
             case "Crossfade_Sleep":
                 if (successExit) // needed to not enter on enter->exit loop

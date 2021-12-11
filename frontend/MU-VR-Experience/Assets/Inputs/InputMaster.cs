@@ -41,6 +41,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(pressPoint=1)""
+                },
+                {
+                    ""name"": ""KeyE"",
+                    ""type"": ""Button"",
+                    ""id"": ""5bf13399-f486-446c-b233-dea1a9aa78d6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(pressPoint=1)""
                 }
             ],
             ""bindings"": [
@@ -164,6 +172,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""MovementArrows"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""82d5f17c-e249-4634-8a93-ac5cbd0e5b49"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Press(pressPoint=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -297,6 +316,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_MovementWASD = m_Player.FindAction("MovementWASD", throwIfNotFound: true);
         m_Player_MouseClick = m_Player.FindAction("MouseClick", throwIfNotFound: true);
         m_Player_MovementArrows = m_Player.FindAction("MovementArrows", throwIfNotFound: true);
+        m_Player_KeyE = m_Player.FindAction("KeyE", throwIfNotFound: true);
         // Menus
         m_Menus = asset.FindActionMap("Menus", throwIfNotFound: true);
         m_Menus_Settings = m_Menus.FindAction("Settings", throwIfNotFound: true);
@@ -357,6 +377,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_MovementWASD;
     private readonly InputAction m_Player_MouseClick;
     private readonly InputAction m_Player_MovementArrows;
+    private readonly InputAction m_Player_KeyE;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -364,6 +385,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @MovementWASD => m_Wrapper.m_Player_MovementWASD;
         public InputAction @MouseClick => m_Wrapper.m_Player_MouseClick;
         public InputAction @MovementArrows => m_Wrapper.m_Player_MovementArrows;
+        public InputAction @KeyE => m_Wrapper.m_Player_KeyE;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -382,6 +404,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @MovementArrows.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovementArrows;
                 @MovementArrows.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovementArrows;
                 @MovementArrows.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovementArrows;
+                @KeyE.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnKeyE;
+                @KeyE.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnKeyE;
+                @KeyE.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnKeyE;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -395,6 +420,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @MovementArrows.started += instance.OnMovementArrows;
                 @MovementArrows.performed += instance.OnMovementArrows;
                 @MovementArrows.canceled += instance.OnMovementArrows;
+                @KeyE.started += instance.OnKeyE;
+                @KeyE.performed += instance.OnKeyE;
+                @KeyE.canceled += instance.OnKeyE;
             }
         }
     }
@@ -477,6 +505,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnMovementWASD(InputAction.CallbackContext context);
         void OnMouseClick(InputAction.CallbackContext context);
         void OnMovementArrows(InputAction.CallbackContext context);
+        void OnKeyE(InputAction.CallbackContext context);
     }
     public interface IMenusActions
     {

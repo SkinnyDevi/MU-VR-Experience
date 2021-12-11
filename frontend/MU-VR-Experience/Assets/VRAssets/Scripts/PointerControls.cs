@@ -12,27 +12,54 @@ public class PointerControls : MonoBehaviour
 	public Camera PlayerCamera;
 	public GameObject SelectedCrosshair, ReplaceableWall, BillboardDoors;
 	public float RayLength;
+	public static bool canInteractAgain = true;
 
-	string currentObject;
-	string hoverObject;
+	string currentObject, hoverObject;
 	InputMaster mouseControls;
+	bool mouseClick, eKey;
 
 	void Awake()
 	{
 		mouseControls = new InputMaster();
 		mouseControls.Enable();
-		mouseControls.Player.MouseClick.performed += _ => CurrentObjectHandler();
+		mouseControls.Player.MouseClick.performed += _ => mouseClick = true;;
+		mouseControls.Player.KeyE.performed += _ => eKey = true;
 	}
 
 	void Start()
 	{
 		currentObject = "";
 		hoverObject = "";
+		mouseClick = false;
+		eKey = false;
 	}
 
 	void Update()
 	{
+		if (!((currentObject.Equals("Login") || currentObject.Equals("Register")) || (hoverObject.Equals("Login") || hoverObject.Equals("Register")))) canInteractAgain = true;
+		if (canInteractAgain) HandleInteractionKey();
 		HighlightSelectable();
+	}
+
+	void HandleInteractionKey()
+	{
+		if (UserInfoManager.GetString(UserInfoManager.SaveType.SettingsInteraction).Equals("LeftClick"))
+		{
+			if (mouseClick && !UserTransition.TransitionMade)
+			{
+				CurrentObjectHandler();
+			}
+		}
+		else
+		{
+			if (eKey)
+			{
+				CurrentObjectHandler();
+			}
+		}
+
+		mouseClick = false;
+		eKey = false;
 	}
 
 	void CurrentObjectHandler()

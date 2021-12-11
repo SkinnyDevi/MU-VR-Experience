@@ -44,7 +44,7 @@ public class VideoLoader : MonoBehaviour
 		Debug.Log("Playing Video");
 		while (screenPlayer.isPlaying)
 		{
-			Debug.Log("Video Time: " + Mathf.FloorToInt((float)screenPlayer.time));
+			//Debug.Log("Video Time: " + Mathf.FloorToInt((float)screenPlayer.time));
 			yield return null;
 		}
 

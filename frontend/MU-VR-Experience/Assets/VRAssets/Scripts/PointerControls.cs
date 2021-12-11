@@ -38,7 +38,9 @@ public class PointerControls : MonoBehaviour
 	{
 		if (!((currentObject.Equals("Login") || currentObject.Equals("Register")) || (hoverObject.Equals("Login") || hoverObject.Equals("Register")))) canInteractAgain = true;
 		if (canInteractAgain) HandleInteractionKey();
+
 		HighlightSelectable();
+		RemoveCrosshairOnScreen();
 	}
 
 	void HandleInteractionKey()
@@ -104,6 +106,16 @@ public class PointerControls : MonoBehaviour
 		else
 		{
 			SelectedCrosshair.SetActive(false);
+		}
+	}
+
+	void RemoveCrosshairOnScreen()
+	{
+		RaycastHit hoverCast;
+		if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out hoverCast, 100f))
+		{
+			if (hoverCast.transform.name.Equals("Black Screen")) gameObject.transform.Find("Canvas").gameObject.SetActive(false);
+			else gameObject.transform.Find("Canvas").gameObject.SetActive(true);
 		}
 	}
 

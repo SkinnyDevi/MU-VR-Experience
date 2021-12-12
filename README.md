@@ -124,7 +124,16 @@ Pay attention to the following flow chart for a simpler way to visualize the pro
 <a name="user-usability"/>
 
 ## Usability
-Focusing on the usability of the project, we can start of by seeing a simple interface where the user can select login or register within the application. All text used within the application is made to look user-friendly and as readable as possible for all sorts of audiences.
+Focusing on the usability of the project, we will be mentioning the following aspects on how usable the application is:
+- Text font
+- Colours in use
+- Icons
+- Security
+- User friendly messages
+- Interactive elements
+- Menu structures
+
+To start off, we see a simple interface where the user can select login or register within the application. All text used within the application is made to look user-friendly and as readable as possible for all sorts of audiences.
 
 Except these two, button like objects like these and door handle are grabble objects in the virtual reality space, so be on the look out for those. 
 
@@ -167,20 +176,22 @@ After a successful user login/registration, a simple door appears to the right s
 The billboard is presented with a simple room like theatre billboard where picture frames are presented with a trailer image received from the database.
 
 <p align="center">
-	<img width="500" height="350"  src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/picture-frames.png?raw=true" alt="Picture Frames">
+	<img width="500" height="500"  src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/picture-frames.png?raw=true" alt="Picture Frames">
 </p>
 
 The user enters the cinema by clicking on the interactable button mentioned above, just below where the ratings are displayed.
 
 <p align="center">
-	<img width="500" height="350"  src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/enter-buttons.png?raw=true" alt="Enter Button">
+	<img width="500" height="350"  src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/enter-button.png?raw=true" alt="Enter Button">
 </p>
 
 Finally, inside the theatre room, the user is presented with the wide screen short film player, and simple interactable buttons to rate the short film in question.
 
 <p align="center">
-	<img width="500" height="350"  src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/enter-buttons.png?raw=true" alt="Rating Buttons">
+	<img width="700" height="350"  src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/rating-buttons.png?raw=true" alt="Rating Buttons">
 </p>
+
+To take a look on how these aspects have been implemented across the entire application, you can check the [mockup and prototype document here](https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/Project%20Mockup.pdf) to see how these elements have been spread across the entire project. 
 
 <a name="backend-structure"/>
 

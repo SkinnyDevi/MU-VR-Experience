@@ -2,7 +2,7 @@
 This project was made in collaboration Manos Unidas ONG. It consists of a virtual reality cinema/theatre made for short films provided to the short film contest made by Manos Unidas. For more information, you can visit the ["Clipmetrajes"](https://www.clipmetrajesmanosunidas.org/) section, where it explains more on the topic.
 
 <p align="center">
-  <img width="500" height="250" src="https://www.catolicos.red/wp-content/uploads/2017/04/large_campa_a_manos_unidas-corte_ingles.jpg" alt="Manos Unidas">
+  <img width="400" height="250" src="https://www.manosunidas.org/sites/default/files/logo_mu.png" alt="Manos Unidas">
 </p>
 
 ## Table Of Contents
@@ -51,7 +51,7 @@ Administrators are able to:
 What you can do with this app:
 - Compile and run it as standalone for PC (for further information, please see [system requirements](#sys-requirements))
 
-![Use Case Image](https://image-link)
+![Use Case Image](https://raw.githubusercontent.com/SkinnyDevi/MU-VR-Experience/develop/readme-assets/images/use-cases.png)
 
 <a name="tech-stack"/>
 

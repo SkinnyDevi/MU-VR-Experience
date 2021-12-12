@@ -4,6 +4,7 @@ using UnityEngine.XR.Management;
 using UnityEngine.SceneManagement;
 
 using System;
+using System.Collections;
 
 using TMPro;
 
@@ -14,7 +15,6 @@ public class SettingsMenu : MonoBehaviour
 
 	string rootPath = "Settings Menu/Canvas/Pause Menu/";
     bool vrOptionChanged = false;
-    bool subsystemsStarted = false;
     PlayerVRHandler playerHandler;
     InputMaster keyboardControls;
 	TMP_Text vrStateText;
@@ -57,18 +57,6 @@ public class SettingsMenu : MonoBehaviour
                 PauseGame();
             }
         }
-
-        if (XRGeneralSettings.Instance.Manager.isInitializationComplete)
-        {
-            XRGeneralSettings.Instance.Manager.StartSubsystems();
-            subsystemsStarted = true;
-            playerHandler.ChangePlayerType(PlayerVRHandler.PlayerType.VR);
-        }
-    }
-
-    void OnApplicationQuit() // for standalone only
-    {
-        StopXRSubsystems();
     }
 
 	void SaveSettings()
@@ -100,16 +88,6 @@ public class SettingsMenu : MonoBehaviour
         g.SetActive(state);
     }
 
-	public void StopXRSubsystems()
-	{
-		if (subsystemsStarted)
-        {
-            XRGeneralSettings.Instance.Manager.StopSubsystems();
-            XRGeneralSettings.Instance.Manager.DeinitializeLoader();
-            subsystemsStarted = false;
-        }
-	}
-
     public void PauseGame()
     {
         SetState(Crosshair, false);
@@ -124,12 +102,8 @@ public class SettingsMenu : MonoBehaviour
         SetState(SettingsMenuObject, false);
         if (vrOptionChanged)
         {
-            if (!subsystemsStarted)
-            {
-                StartCoroutine(XRGeneralSettings.Instance.Manager.InitializeLoader());
-				Instantiate(RemoveVRButton);
-            }
-        }
+			playerHandler.ChangePlayerType(PlayerVRHandler.PlayerType.VR);
+		}
         else
         {
             playerHandler.ChangePlayerType(PlayerVRHandler.PlayerType.Mouse);

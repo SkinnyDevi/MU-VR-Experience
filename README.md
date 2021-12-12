@@ -8,9 +8,9 @@ This project was made in collaboration Manos Unidas ONG. It consists of a virtua
 ## Table Of Contents
 - [Main Idea Behind The Project](#main-idea)
 - [Use Cases](#use-cases)
-- [Tech Stack And Comparison](#tech-stack)
+- [Tech Stack And Comparison](#tech-stack-link)
 - [Planning & Organising The Project](#project-planning)
-- [How It Works And Basic Playthrough](#hiw)
+- [How It Works And Basic Playthrough](#how-it-works)
 - [Backend Structure](#backend-structure)
     - Data Model
     - ORM
@@ -23,7 +23,7 @@ This project was made in collaboration Manos Unidas ONG. It consists of a virtua
     - Usability
 - [System Requirements](#sys-requirements)
 - [Final Thoughts](#conclusion)
-- [External Links](#external-links)
+- [Related Links](#external-links)
 
 <a name="main-idea"/>
 
@@ -56,7 +56,7 @@ What you can do with this app:
 
 ![Use Case Image](https://raw.githubusercontent.com/SkinnyDevi/MU-VR-Experience/develop/readme-assets/images/use-cases.png)
 
-<a name="tech-stack"/>
+<a name="tech-stack-link"/>
 
 ## Tech Stack And Comparison
 The server side of this project was created with NodeJS.
@@ -100,7 +100,7 @@ The process in which the backend would be develop was the following:
 	2. The billboard room where a user would choose what short film to watch
 	3. The main cinema room to watch the short films
 
-<a name="hwi"/>
+<a name="how-it-works"/>
 
 ## How It Works And Basic Playthrough
 
@@ -244,6 +244,16 @@ Registered users are able to:
 	2. Rate the short film
 		1. Available ratings: Liked, Regular, Disliked
 
+Any User:
+1. Any room:
+	1. Open settings
+		1. Custom movement of choice: WASD or Arrow keys
+		2. Custom interaction key of choise: Mouse left click or E Key
+		3. Adjust sensitivity for mouse users: From 5 to 20
+		4. Adjust volume: From 0 to 100
+		5. Enable VR Checkbox to enable player virtual reality  
+			A. Once virtual reality has been enabled, the user must reopen the application if it wishes to return to mouse and keyboard.
+
 #### Users
 1. The are two types of users:
 	1. Non-registered users which will not have access only to the reception room.
@@ -251,7 +261,35 @@ Registered users are able to:
 
 
 ### Usability
-hello
+Focusing on the usability of the project, we can see a simple interface where the user can select login or register within the application.
+
+<p align="center">
+	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/register-buttons.png?raw=true" alt="Register Buttons">
+</p>
+
+After the user is presented with the login/register screen and has submitted their credentials, it passes through a process of verifying the information passed by the user:
+
+<p align="center">
+	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/handle-login-fields.png?raw=true" alt="Fields handler">
+</p>
+
+If any issue arises, it detects which issue to present the corresponding message:
+
+<p align="center">
+	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/handle-error-messages.png?raw=true" alt="Handle Error Messages">
+</p>
+
+And the error is presented to the user:
+
+<p align="center">
+	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/error-display.png?raw=true" alt="Handle Error Messages">
+</p>
+
+Server errors are also handle and presented with the corresponding message:
+
+<p align="center">
+	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/server-error-display.png?raw=true" alt="Handle Error Messages">
+</p>
 
 <a name="sys-requirements"/>
 

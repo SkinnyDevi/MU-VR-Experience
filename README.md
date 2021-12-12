@@ -11,6 +11,7 @@ This project was made in collaboration Manos Unidas ONG. It consists of a virtua
 - [Tech Stack And Comparison](#tech-stack-link)
 - [Planning & Organising The Project](#project-planning)
 - [How It Works And Basic Playthrough](#how-it-works)
+- [Usability](#user-usability)
 - [Backend Structure](#backend-structure)
     - Data Model
     - ORM
@@ -20,7 +21,6 @@ This project was made in collaboration Manos Unidas ONG. It consists of a virtua
     - How To Install (Guide)
     - How To Use (Guide)
     - User Requirements
-    - Usability
 - [System Requirements](#sys-requirements)
 - [Final Thoughts](#conclusion)
 - [Related Links](#external-links)
@@ -120,6 +120,67 @@ Pay attention to the following flow chart for a simpler way to visualize the pro
 **The user may exit to the main reception room at any time.*
 
 ![How It Works Flow Chart](https://raw.githubusercontent.com/SkinnyDevi/MU-VR-Experience/develop/readme-assets/images/how-it-works.png)
+
+<a name="user-usability"/>
+
+## Usability
+Focusing on the usability of the project, we can start of by seeing a simple interface where the user can select login or register within the application. All text used within the application is made to look user-friendly and as readable as possible for all sorts of audiences.
+
+Except these two, button like objects like these and door handle are grabble objects in the virtual reality space, so be on the look out for those. 
+
+<p align="center">
+	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/register-buttons.png?raw=true" alt="Register Buttons">
+</p>
+
+After the user is presented with the login/register screen and has submitted their credentials, it passes through a process of verifying the information passed by the user:
+
+<p align="center">
+	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/handle-login-fields.png?raw=true" alt="Fields handler">
+</p>
+
+If any issue arises, it detects which issue to present the corresponding message:
+
+<p align="center">
+	<img width="400" height="400" src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/handle-error-messages.png?raw=true" alt="Handle Error Messages">
+</p>
+
+And the error is presented to the user:
+
+<p align="center">
+	<img width="550" height="350"  src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/error-display.png?raw=true" alt="Handle Error Messages">
+</p>
+
+Server errors are also handled by the authentication service using password encryption and are presented with the corresponding messages:
+
+<p align="center">
+	<img width="500" height="350"  src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/server-error-display.png?raw=true" alt="Handle Error Messages">
+</p>
+
+Otherwise, the user is presented with a success message and leaves the interface automatically.
+
+<p align="center">
+	<img width="500" height="350"  src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/login-successful.png?raw=true" alt="Sucessful Login">
+</p>
+
+After a successful user login/registration, a simple door appears to the right side of the room where he can click or grab the door handles and enter the billboard rooms. On a door appearance, it indicates the user that there's a room where the user can enter.
+
+The billboard is presented with a simple room like theatre billboard where picture frames are presented with a trailer image received from the database.
+
+<p align="center">
+	<img width="500" height="350"  src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/picture-frames.png?raw=true" alt="Picture Frames">
+</p>
+
+The user enters the cinema by clicking on the interactable button mentioned above, just below where the ratings are displayed.
+
+<p align="center">
+	<img width="500" height="350"  src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/enter-buttons.png?raw=true" alt="Enter Button">
+</p>
+
+Finally, inside the theatre room, the user is presented with the wide screen short film player, and simple interactable buttons to rate the short film in question.
+
+<p align="center">
+	<img width="500" height="350"  src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/enter-buttons.png?raw=true" alt="Rating Buttons">
+</p>
 
 <a name="backend-structure"/>
 
@@ -259,37 +320,6 @@ Any User:
 	1. Non-registered users which will not have access only to the reception room.
 	2. Registered users in the database with access to the app and its functions.
 
-
-### Usability
-Focusing on the usability of the project, we can see a simple interface where the user can select login or register within the application.
-
-<p align="center">
-	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/register-buttons.png?raw=true" alt="Register Buttons">
-</p>
-
-After the user is presented with the login/register screen and has submitted their credentials, it passes through a process of verifying the information passed by the user:
-
-<p align="center">
-	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/handle-login-fields.png?raw=true" alt="Fields handler">
-</p>
-
-If any issue arises, it detects which issue to present the corresponding message:
-
-<p align="center">
-	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/handle-error-messages.png?raw=true" alt="Handle Error Messages">
-</p>
-
-And the error is presented to the user:
-
-<p align="center">
-	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/error-display.png?raw=true" alt="Handle Error Messages">
-</p>
-
-Server errors are also handle and presented with the corresponding message:
-
-<p align="center">
-	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/server-error-display.png?raw=true" alt="Handle Error Messages">
-</p>
 
 <a name="sys-requirements"/>
 

@@ -16,6 +16,7 @@ This project was made in collaboration Manos Unidas ONG. It consists of a virtua
     - Data Model
     - ORM
     - How To Install And Run (Guide)
+		- API Documentation
 - [Frontend Structure](#frontend-structure)
     - Mockups & Prototypes
     - How To Install (Guide)
@@ -133,6 +134,8 @@ Focusing on the usability of the project, we will be mentioning the following as
 - Interactive elements
 - Menu structures
 
+**Room colours and design are subject to change due to the images in question being a prototype*
+
 To start off, we see a simple interface where the user can select login or register within the application. All text used within the application is made to look user-friendly and as readable as possible for all sorts of audiences.
 
 Except these two, button like objects like these and door handle are grabble objects in the virtual reality space, so be on the look out for those. 
@@ -222,6 +225,12 @@ RATINGS(ID, user_id, clip_id, rating)
 
 ### ORM
 As the ORM, Express JS uses Sequelize to communicate with our MySQL database. We first define our models inside of the ```./models``` directory, after we define the controllers inside ```./controllers``` directory.
+
+### API Documentation
+To further read on how to access the APIs end-points, please refer to the following links:
+* [Users Database Table](https://documenter.getpostman.com/view/17831178/UVR5qUKK)
+* [Short Films Database Table](https://documenter.getpostman.com/view/17831178/UVR5qUEy)
+* [Ratings Database Table](https://documenter.getpostman.com/view/17831178/UVR5qUF2)
 
 ### How To Install And Run 
 Before knowing how to install, make sure have Git to clone the project. To clone the project, run:

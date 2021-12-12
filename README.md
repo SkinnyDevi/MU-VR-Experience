@@ -387,7 +387,7 @@ With Virtual Reality:
 <a name="conclusion"/>
 
 ## Final Thoughts
-Very good.
+Overall, this has been a blast of a project to work on, and this being my first time working with virtual reality, it has been a lot of fun to develop. I look forward to the users who use this app to have fun watching short films on the wide screen inside the virtual environment as much I did.
 
 <a name="external-links"/>
 

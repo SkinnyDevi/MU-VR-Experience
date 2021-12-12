@@ -76,52 +76,102 @@ The user experience on the other hand was made using Unity.
 Unity was chosen for this project due to its simplicity and how powerful it can be. Knowing there are other game engines like Unreal Engine or Godot, Unity provides a simple and interactive user experience to develop the game, while providing powerful tools to exploit the users creativity.
 
 
-
-
-
 <a name="project-planning">
 
 ## Planning & Organising The Project
-hello
+The planning went as follows:  
+1. Tackle how to structure the project and develop a main idea.  
+* To start off the project, first we made a basic planning on what we needed:
+	- A place where users register
+	- A room where users choose a short film
+	- A cinema room where the users watch the short films
+
+2. Start from the base and build up with the backend.  
+* The backend was the first to be implemented so that when the frontend started development, it could all be tested correctly without speculations.  
+The process in which the backend would be develop was the following:
+	1. Develop user model and controller with authentication
+	2. Develop short film model and controller
+	3. Develop rating model and controllers
+3. The frontend was to be developed later, and it would be developed in the following order:
+	1. Main hub / reception first where a user would register
+	2. The billboard room where a user would choose what short film to watch
+	3. The main cinema room to watch the short films
+
 
 <a name="backend-structure"/>
 
 ## Backend Structure
 ### Data Model
-hello
+The backend database used was developed using MySQL. The database is structured as follows:
+
+1. A Users table for registered
+2. A short film table to store information about the short films
+3. A rating table to store ratings submitteed by users
+
+![E-R DB Diagram](https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/e-r_diagram.png?raw=true)
+![UML DB Diagram](uml-link)
+
+With the following Relational DB structure:
+
+USERS(ID, username, email, password, isAdmin)  
+CLIPS(ID, name, duration, trailer_img)  
+RATINGS(ID, user_id, clip_id, rating)  
+
+
+**Restriction: only one rating is allowed per video per user, meaning if the user rates the same video, the existing rating will be updated.*
 
 ### ORM
-Backend uses a combination of ExpressJS + MySQL and Sequelize as the ORM.  
+As the ORM, Express JS uses Sequelize to communicate with our MySQL database. We first define our models inside of the ```./models``` directory, after we define the controllers inside ```./controllers``` directory.
 
-### How To Install And Run
-How to install:  
-Having an open connection to a MySQL server, run the ```database-setup.sql``` file.  
+### How To Install And Run 
+After having cloned the project and an open connection to a MySQL server, run the ```database-setup.sql``` file.
 
-After, run ```npm install``` in the *\*backend\** directory when cloning the project to install the required libraries.  
+To install all dependencias, run ```npm install``` inside the *\*backend\** directory. 
 
-An npm package called ```nodemon``` is used to reload changes automatically when files change. To install, simply run ```npm i -g nodemon```  
+An npm package called ```nodemon``` is used to reload changes automatically when files change. To install, simply run ```npm i -g nodemon``` in the console.
+
+Before running the server, make sure you have created a ```.env``` file with the following contents:
+```
+JWT_SECRET=V3RY#1MP0RT@NT$3CR3T#
+
+MYSQL_DATABASE=ongMU_db
+MYSQL_USER=root
+MYSQL_PASSWORD=pwd
+MYSQL_ROOT_PASSWORD=root_pwd
+
+DB_HOST=$YOUR DATABASE CONNECTION$ (normally localhost)
+
+NODE_ENV=development
+```
 
 The following commands must be run inside the backend directory:  
-To start the server, run ```npm start``` to start the server with nodemon.  
-To start the server manually, run ```node server.js``` within the */backend* directory, to launch the server and reload it with Ctrl + C.
+- To start the server, run ```npm start``` to run with nodemon to run with automatic refresh.  
+- To start the server manually, run ```node server.js``` to launch the server and reload it with Ctrl + C.
 
 <a name="frontend-structure"/>
 
 ## Frontend Structure
 ### Mockups & Prototypes
-hello
+Here are the mockups used to serve as base for the modeling of the different rooms.
+
+[View the mockup document here.](pdf-document-with-mockup)
 
 ### How To Install
-This project uses free SNAPS Prototyping Assets from Unity Asset store, as well as the [SNAPS Tool](#external-links), ProBuilder and ProGrids plugins. The project also uses TextMesh Pro, make sure to previously import it if you haven't. 
+Firstly, clone the project. The main unity project file is located in ```./frontend/MU-VR-Experience```
+
+To install Unity, make sure to install Unity Hub, and install the version of the Unity Editor *2020.3.20f1* through the Unity Hub app.
+
+This project uses free SNAPS Prototyping Assets from the Unity Asset Store, as well as the [SNAPS Tool](#external-links), ProBuilder, ProGrids and TextMeshPro. Make sure to install this through the Unity Package Manager under the Window section of Unity.
 
 To avoid uploading unused Prefabs, only the Materials folder is uploaded (if needed) to provide the changed materials for the Prefabs, which can be obtained in the Unity Asset Store:  
+
 [Office Prototype](#external-links)  
 [SciFi/Industrial Prototype](#external-links)  
 [SciFi Construction Kit (Modular)](#external-links)  
 [18 High Resolution Wall Textures](#external-links)  
 
 Additional plugins installed from the asset store:  
-[Oculus Integration (for standalone version only)](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022)
+[Oculus Integration (for standalone version only)](#external-links)
   
 **These prototypes should be installed in the "AssetStoreOriginals/_SNAPS_PrototypingAssets" directory, except SciFi Warehouse Kit and High Resolution Wall textures, which should be placed inside "Assets" to avoid errors*  
 
@@ -148,8 +198,14 @@ Very good.
 
 ## Related Links
 ### Backend
+#### Tech Stack
+[About ExpressJS](https://expressjs.com)  
+[About bcrypt.js](https://www.npmjs.com/package/bcrypt)
 ### Frontend
-#### Tools
+#### Tech Stack
+[Unity Hub](https://unity.com/download)  
+[Unity Editor 2020.3.20f1](https://unity3d.com/get-unity/download/archive)
+#### Aditional Tools
 [SNAPS Tool](https://assetstore.unity.com/packages/tools/integration/asset-swap-tool-151202?aid=1101lPGj&utm_campaign=unity_affiliate&utm_medium=affiliate&utm_source=partnerize-linkmaker)
 
 #### Assets
@@ -160,5 +216,8 @@ Very good.
 
 #### Other Unity Packages
 [Oculus Integration (for standalone version only)](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022)
+
+### Other Documentation
+[User App Manual](app-manual)  
 
 

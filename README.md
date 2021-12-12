@@ -16,7 +16,7 @@ This project was made in collaboration Manos Unidas ONG. It consists of a virtua
     - Data Model
     - ORM
     - How To Install And Run (Guide)
-		- API Documentation
+	- API Documentation
 - [Frontend Structure](#frontend-structure)
     - Mockups & Prototypes
     - How To Install (Guide)

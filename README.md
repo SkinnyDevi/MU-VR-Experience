@@ -10,7 +10,7 @@ This project was made in collaboration Manos Unidas ONG. It consists of a virtua
 - [Use Cases](#use-cases)
 - [Tech Stack And Comparison](#tech-stack)
 - [Planning & Organising The Project](#project-planning)
-- [How It Works](#hiw)
+- [How It Works And Basic Playthrough](#hiw)
 - [Backend Structure](#backend-structure)
     - Data Model
     - ORM
@@ -102,7 +102,7 @@ The process in which the backend would be develop was the following:
 
 <a name="hwi"/>
 
-## How It Works
+## How It Works And Basic Playthrough
 
 Firstly, once entered the app, the user is greeted with a reception room, where it sees a login and register button. These help the user authenticate to access database information.
 
@@ -116,6 +116,8 @@ During the short film, or after it has finished playing, the user is able to rat
 Once again in the billboard, the users is able to see the short film trailer images, as well as all rating percentage based on other user rating submissions.
 
 Pay attention to the following flow chart for a simpler way to visualize the process.
+
+**The user may exit to the main reception room at any time.*
 
 ![How It Works Flow Chart](https://raw.githubusercontent.com/SkinnyDevi/MU-VR-Experience/develop/readme-assets/images/how-it-works.png)
 
@@ -150,6 +152,10 @@ RATINGS(ID, user_id, clip_id, rating)
 As the ORM, Express JS uses Sequelize to communicate with our MySQL database. We first define our models inside of the ```./models``` directory, after we define the controllers inside ```./controllers``` directory.
 
 ### How To Install And Run 
+Before knowing how to install, make sure have Git to clone the project. To clone the project, run:
+```
+git clone https://github.com/SkinnyDevi/MU-VR-Experience.git
+```
 After having cloned the project and an open connection to a MySQL server, run the ```database-setup.sql``` file.
 
 To install all dependencias, run ```npm install``` inside the *\*backend\** directory. 
@@ -186,9 +192,15 @@ Below, you can find the mockups and prototypes used to serve as base for modelin
 [View the mockup document here.](https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/Project%20Mockup.pdf)
 
 ### How To Install
-Firstly, clone the project. The main unity project file is located in ```./frontend/MU-VR-Experience```
+Firstly, clone the project. For this, you need to have installed Git. Then, simply run:
+To clone the project, run:
+```
+git clone https://github.com/SkinnyDevi/MU-VR-Experience.git
+```
 
-To install Unity, make sure to install Unity Hub, and install the version of the Unity Editor *2020.3.20f1* through the Unity Hub app.
+The main unity project file is located in ```./frontend/MU-VR-Experience```
+
+To install Unity, make sure to install [Unity Hub](#external-links), and install the version of the Unity Editor *2020.3.20f1* through the Unity Hub app.
 
 This project uses free SNAPS Prototyping Assets from the Unity Asset Store, as well as the [SNAPS Tool](#external-links), ProBuilder, ProGrids and TextMeshPro. Make sure to install this through the Unity Package Manager under the Window section of Unity.
 
@@ -216,7 +228,27 @@ Once you have the *IL2CPP* module, you may click Build, or Build And Run to exec
 For further instructions on how to use and play the app, please refer to [the user manual](#external-links).
 
 ### User Requirements
-hello
+#### Server-side
+Registered users are able to:  
+1. View short films information the database
+2. View the total ratings of each film, separated by type (Liked, Regular, Disliked)
+
+#### Game
+Registered users are able to:
+1. Access the billboard room
+	1. Inside they can click to watch any short film
+	2. See live updates of the ratings made by other users
+		1. Live updates refers to reloading the ratings every time the users enters the room
+2. Access the cinema room
+	1. Watch a short film
+	2. Rate the short film
+		1. Available ratings: Liked, Regular, Disliked
+
+#### Users
+1. The are two types of users:
+	1. Non-registered users which will not have access only to the reception room.
+	2. Registered users in the database with access to the app and its functions.
+
 
 ### Usability
 hello

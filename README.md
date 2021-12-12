@@ -70,7 +70,7 @@ Within the use of NodeJS, frameworks like Express JS with Sequelize were used to
 The user experience on the other hand was made using Unity.  
 
 <p align="center">
-	<img width="600" height="140" src="https://unity3d.com/profiles/unity3d/themes/unity/images/pages/branding_trademarks/unity-mwu-black.png" alt="NodeJS Logo">
+	<img width="600" height="140" src="https://unity3d.com/profiles/unity3d/themes/unity/images/pages/branding_trademarks/unity-mwu-black.png" alt="Unity Logo">
 </p>
 
 Unity was chosen for this project due to its simplicity and how powerful it can be. Knowing there are other game engines like Unreal Engine or Godot, Unity provides a simple and interactive user experience to develop the game, while providing powerful tools to exploit the users creativity.
@@ -108,8 +108,13 @@ The backend database used was developed using MySQL. The database is structured 
 2. A short film table to store information about the short films
 3. A rating table to store ratings submitteed by users
 
-![E-R DB Diagram](https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/e-r_diagram.png?raw=true)
-![UML DB Diagram](uml-link)
+<p align="center">
+	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/e-r_diagram.png?raw=true" alt="E/R Diagram">
+</p>
+
+<p align="center">
+	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/uml-db-diagram.png?raw=true" alt="UML Diagram">
+</p>
 
 With the following Relational DB structure:
 

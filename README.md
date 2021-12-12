@@ -158,11 +158,11 @@ git clone https://github.com/SkinnyDevi/MU-VR-Experience.git
 ```
 After having cloned the project and an open connection to a MySQL server, run the ```database-setup.sql``` file.
 
-To install all dependencias, run ```npm install``` inside the *\*backend\** directory. 
+To install all dependencies, run ```npm install``` inside the *backend* directory. 
 
 An npm package called ```nodemon``` is used to reload changes automatically when files change. To install, simply run ```npm i -g nodemon``` in the console.
 
-Before running the server, make sure you have created a ```.env``` file with the following contents:
+Before running the server, make sure you have created a ```.env``` file inside the *backend* directory with the following contents:
 ```
 JWT_SECRET=V3RY#1MP0RT@NT$3CR3T#
 
@@ -175,7 +175,7 @@ DB_HOST=$YOUR DATABASE CONNECTION$ (normally localhost)
 
 NODE_ENV=development
 
-##OPTIONAL (NOT NEEDED)
+##OPTIONAL (IF NOT USED DON'T INCLUDE)
 PORT=
 ```
 

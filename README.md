@@ -10,14 +10,15 @@ This project was made in collaboration Manos Unidas ONG. It consists of a virtua
 - [Use Cases](#use-cases)
 - [Tech Stack And Comparison](#tech-stack)
 - [Planning & Organising The Project](#project-planning)
+- [How It Works](#hiw)
 - [Backend Structure](#backend-structure)
     - Data Model
     - ORM
-    - How To Install And Run
+    - How To Install And Run (Guide)
 - [Frontend Structure](#frontend-structure)
     - Mockups & Prototypes
-    - How To Install
-    - How To Use
+    - How To Install (Guide)
+    - How To Use (Guide)
     - User Requirements
     - Usability
 - [System Requirements](#sys-requirements)
@@ -99,6 +100,24 @@ The process in which the backend would be develop was the following:
 	2. The billboard room where a user would choose what short film to watch
 	3. The main cinema room to watch the short films
 
+<a name="hwi"/>
+
+## How It Works
+
+Firstly, once entered the app, the user is greeted with a reception room, where it sees a login and register button. These help the user authenticate to access database information.
+
+Once submitted, the backend is in charge of verifying the user credentials with *bcrypt.js* npm package to encrypt the user password in the database. After the authentication has been verified, the user is allowed into the billboard room.
+
+Inside the billboard room, the user sees picture frames with the short film, in which he can enter with the enter button. On enter, the user will be transported to the cinema room.
+
+Inside the cinema room, the according short film selected by the user will load and play.
+During the short film, or after it has finished playing, the user is able to rate it with provided ratings of *Liked*, *Regular*, or *Disliked*. These are then recorded in the database for future reference.
+
+Once again in the billboard, the users is able to see the short film trailer images, as well as all rating percentage based on other user rating submissions.
+
+Pay attention to the following flow chart for a simpler way to visualize the process.
+
+![How It Works Flow Chart](https://raw.githubusercontent.com/SkinnyDevi/MU-VR-Experience/develop/readme-assets/images/how-it-works.png)
 
 <a name="backend-structure"/>
 
@@ -149,6 +168,9 @@ MYSQL_ROOT_PASSWORD=root_pwd
 DB_HOST=$YOUR DATABASE CONNECTION$ (normally localhost)
 
 NODE_ENV=development
+
+##OPTIONAL (NOT NEEDED)
+PORT=
 ```
 
 The following commands must be run inside the backend directory:  
@@ -159,9 +181,9 @@ The following commands must be run inside the backend directory:
 
 ## Frontend Structure
 ### Mockups & Prototypes
-Here are the mockups used to serve as base for the modeling of the different rooms.
+Below, you can find the mockups and prototypes used to serve as base for modeling the different rooms inside the virtual reality environment.
 
-[View the mockup document here.](pdf-document-with-mockup)
+[View the mockup document here.](https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/Project%20Mockup.pdf)
 
 ### How To Install
 Firstly, clone the project. The main unity project file is located in ```./frontend/MU-VR-Experience```

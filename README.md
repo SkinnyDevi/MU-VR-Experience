@@ -31,6 +31,8 @@ The main idea proposed for this project was to create a virtual reality environm
 
 Knowing what Manos Unidas was asking for, the idea transformed into making a cinema/theatre in virtual reality.
 
+To extend the audience of this project, it comes with mouse and keyboard support, as well as Oculus VR Headsets support.
+
 <a name="use-cases"/>
 
 ## Use Cases
@@ -178,10 +180,18 @@ To avoid uploading unused Prefabs, only the Materials folder is uploaded (if nee
 Additional plugins installed from the asset store:  
 [Oculus Integration (for standalone version only)](#external-links)
   
-**These prototypes should be installed in the "AssetStoreOriginals/_SNAPS_PrototypingAssets" directory, except SciFi Warehouse Kit and High Resolution Wall textures, which should be placed inside "Assets" to avoid errors*  
+**These prototypes should be installed in the "AssetStoreOriginals/_SNAPS_PrototypingAssets" directory, except SciFi Warehouse Kit and High Resolution Wall textures, which should be placed inside "Assets" to avoid errors* 
 
-### How To Use
-hello
+***Please bear in mind that the short films video files included in the database have not been included due to the repos' size limitation and to save space.*
+
+### How To Export and Use
+Once opened the project inside the Unity Editor and having installed the previously mentioned assets and tools, go to ```File -> Build Settings``` and choose the Standalone version (selected by default).
+
+To successfully export it, you need to previously have installed the *IL2CPP* module for the Unity Editor version mentioned previously.
+
+Once you have the *IL2CPP* module, you may click Build, or Build And Run to execute the application automatically once it has finished compiling and exporting.
+
+For further instructions on how to use and play the app, please refer to [the user manual](#external-links).
 
 ### User Requirements
 hello
@@ -192,7 +202,45 @@ hello
 <a name="sys-requirements"/>
 
 ## System Requirements
-hello
+All the following requirements have been selected according to the platforms in which these have been tested.
+
+As this project uses the previously mentioned Oculus Integration plugin for Unity, only Oculus headsets are properly supported for this application.
+
+These can be changed at any time with proper user feedback.
+
+### Minimum requirements
+Common requirements:
+- CPU: Intel Core i5 7th Gen
+- RAM: 4 GB
+- FREE DISK SPACE: 500 MB
+
+Without Virtual Reality (Keyboard+Mouse):
+- INTEGRATED CPU VRAM: 1400 MB
+- DEDICATED VIDEO RAM: 2 GB
+- OS: Mac OSX, Windows 10 64-bit
+
+With Virtual Reality:
+- DEDICATED VIDEO RAM: 3 GB
+- GRAPHICS CARD: Any NVIDIA GeForce GTX Supported by the Oculus Headset Family
+- OS: Windows 10 64-bit
+- Oculus Headset: Rift
+
+### Recommended requirements
+Common requirements:
+- CPU: Intel Core i5 8-10th Gen or higher
+- RAM: 8 GB
+- FREE DISK SPACE: 750 MB
+
+Without Virtual Reality (Keyboard+Mouse):
+- GRAPHICS CARD: NVIDIA GeForce GTX 1050
+- DEDICATED VIDEO RAM: 3 GB
+- OS: Mac OSX, Windows 10 64-bit
+
+With Virtual Reality:
+- DEDICATED VIDEO RAM: 3 GB
+- GRAPHICS CARD: NVIDIA GeForce GtX 1650 or higher
+- OS: Windows 10 64-bit
+- Oculus Headset: Rift or higher
 
 <a name="conclusion"/>
 

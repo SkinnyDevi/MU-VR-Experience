@@ -29,7 +29,7 @@ Interactable objects include 3D button like objects with text within them. Inter
 	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/register-buttons.png?raw=true" alt="Register Buttons">
 </p>
 
-As a easy to follow guide, the crosshair shows arrows around it when at interactables comes within range of the crossahair and when it points at it.
+As an easy to follow guide, the crosshair shows arrows around it when an interactable comes within range of the crosshair and when it points towards it.
 
 <p align="center">
 	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/user_manual/selected-crosshair.png?raw=true" alt="Selected Crosshair">
@@ -50,6 +50,9 @@ In this menu, you can customize your player controls:
 - Enable VR by clicking the checkbox
 	- *WARNING*: An alert will appear to inform you that once VR is activated, you cannot revert back to mouse and keyboard movement. If you wish to do so, you will need to restart the app.
 
+At the top right hand side, when logged in, you will see a *"User: "* text, followed by the current logged in username.
+
+Lastly, when not inside the reception room, a button with text *"Return To Reception"* to logout and return to the reception area.
 
 <a name="virtual-reality-movement"/>
 

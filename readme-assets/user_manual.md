@@ -115,7 +115,7 @@ Here, you will encounter a table with two buttons:
 After authenticating, a door will appear to the right of the room where the user is lead to the next room.
 
 <p align="center">
-	<img width="500" src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/reception-room.png?raw=true" alt="Reception Room">
+	<img width="500" src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/user_manual/reception-room.png?raw=true" alt="Reception Room">
 </p>
 
 <a name="billboard-room"/>
@@ -125,7 +125,7 @@ After authenticating, a door will appear to the right of the room where the user
 Inside this room you will find a wall containing picture frames with a trailer image and ratings. These correspond to the short films stored inside the databse.
 
 <p align="center">
-	<img width="500" src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/billboard-room.png?raw=true" alt="Billboard Room">
+	<img width="500" src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/user_manual/billboard-room.png?raw=true" alt="Billboard Room">
 </p>
 
 Each short film rating is updated every time the user enters the room.

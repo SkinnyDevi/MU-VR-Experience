@@ -13,7 +13,7 @@
 <a name="user-gameplay"/>
 
 ## User Gameplay
-Once inside the application, you are greeted with a first person view with a character which you can interact using the default controls with keyboard and mouse. To see Virtual Reality controls, [click here](#virtual-reality-movement).
+Once inside the application, you are greeted with a first person view of a character which you can interact using the default controls with keyboard and mouse. To see Virtual Reality controls, [click here](#virtual-reality-movement).
 
 You move the camera around using your mouse, by moving it left, right, up and down.
 
@@ -25,7 +25,7 @@ You have a small crosshair in the middle of the screen which indicates where you
 	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/user_manual/crosshair.png?raw=true" alt="Crosshair">
 </p>
 
-Interactable objects include 3D button like objects with text within them. Interactable objects also include doors with a simple like design within any room which lead on to another room upon clicked.
+Interactable objects include 3D button-like objects with text within them. Interactable objects also include doors with a simple like design within any room which lead on to another room upon clicked.
 
 <p align="center">
 	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/register-buttons.png?raw=true" alt="Register Buttons">
@@ -48,7 +48,7 @@ To open the settings menu, press the Escape key.
 	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/user_manual/settings-menu.png?raw=true" alt="Settings Menu">
 </p>
 
-In this menu, you can customize your player controls:
+In this menu, you can customize a variety of gameplay aspects:
 - Choose between WASD or Arrow key movement
 - To interact with objects, choose between Left Click or E Key
 - Choose your sensitivty to change how fast the camera goes with every mouse movement. Values range from 5 to 20
@@ -58,7 +58,9 @@ In this menu, you can customize your player controls:
 
 At the top right hand side, when logged in, you will see a *"User: "* text, followed by the current logged in username.
 
-Lastly, when not inside the reception room, a button with text *"Return To Reception"* to logout and return to the reception area.
+Lastly, when not inside the reception room, a button with text *"Return To Reception"* will appear to logout and return to the reception area.
+
+All user settings are saved locally on the device, meaning the next time you open the app, all your settings will be back as you left them.
 
 <a name="virtual-reality-movement"/>
 
@@ -67,7 +69,8 @@ Lastly, when not inside the reception room, a button with text *"Return To Recep
 ```
 *WARNING*:
 Before proceding on how to move around in the virtual reality environment, 
-please login/register first, as you will not be able to do so once you have entered the virtual reality stage.
+please login/register first, as you will not be able to 
+do so once you have entered the virtual reality stage.
 ```
 
 Once your headset is on, move your head around to look at the environment around you.
@@ -78,9 +81,9 @@ Here's a basic schematic on the controllers of the Oculus Rift. If you are using
 	<img width="500" height="300" alt="Rift Controller Schematic" src="https://preview.redd.it/osfxjlt9ak911.png?width=2871&format=png&auto=webp&s=098c9d63dfd983b99adc649fc49938ace3b276ae">
 </p>
 
-To interact with objects, you grab them by pressing the inner controller buttons, the top joystick and resting your thumb on the joystick, as to be simulating grabing a real object.
+To interact with objects, you grab them by pressing the inner controller buttons, the top joystick and resting your thumb on the joystick, as to be simulating grabbing a real object.
 
-Interactable objects tend to be 3D button like objects with text inside or door handles. Although the same, in virtual reality, you cannot grab the login and register buttons to login and register.
+Interactable objects tend to be 3D button-like objects with text inside or door handles. Although the same, in virtual reality, you cannot grab the login and register buttons to login and register.
 
 Interactable objects may include the following:
 

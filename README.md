@@ -134,7 +134,7 @@ Focusing on the usability of the project, we will be mentioning the following as
 
 To start off, we see a simple interface where the user can select login or register within the application. All text used within the application is made to look user-friendly and as readable as possible for all sorts of audiences.
 
-Except these two, button like objects like these and door handles are grabble objects in the virtual reality space, so be on the look out for those. They provide a simple text explaining what action is executed when clicked on.  
+Except these two, button-like objects like these and door handles are grabble objects in the virtual reality space, so be on the look out for those. They provide a simple text explaining what action is executed when clicked on.  
 
 <p align="center">
 	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/register-buttons.png?raw=true" alt="Register Buttons">
@@ -392,14 +392,19 @@ Overall, this has been a blast of a project to work on, and this being my first 
 <a name="external-links"/>
 
 ## Related Links
+### Other Documentation
+[User App Manual](https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/user_manual.md)  
+
 ### Backend
 #### Tech Stack
 [About ExpressJS](https://expressjs.com)  
 [About bcrypt.js](https://www.npmjs.com/package/bcrypt)
+
 ### Frontend
 #### Tech Stack
 [Unity Hub](https://unity.com/download)  
 [Unity Editor 2020.3.20f1](https://unity3d.com/get-unity/download/archive)
+
 #### Aditional Tools
 [SNAPS Tool](https://assetstore.unity.com/packages/tools/integration/asset-swap-tool-151202?aid=1101lPGj&utm_campaign=unity_affiliate&utm_medium=affiliate&utm_source=partnerize-linkmaker)
 
@@ -411,8 +416,5 @@ Overall, this has been a blast of a project to work on, and this being my first 
 
 #### Other Unity Packages
 [Oculus Integration (for standalone version only)](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022)
-
-### Other Documentation
-[User App Manual](https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/user_manual.md)  
 
 

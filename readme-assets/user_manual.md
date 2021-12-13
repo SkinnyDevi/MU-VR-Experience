@@ -10,6 +10,8 @@
 	- Ratings
 	- Short Film Player
 
+<a name="user-gameplay"/>
+
 ## User Gameplay
 Once inside the application, you are greeted with a first person view with a character which you can interact using the default controls with keyboard and mouse. To see Virtual Reality controls, [click here](#virtual-reality-movement).
 
@@ -100,6 +102,8 @@ Interactable objects may include the following:
 To move around, use the joystick from the left controller.  
 To move the camera within the horizontal axis a bit faster, use the joystick from the right controller.
 
+<a name="reception-room"/>
+
 ## The Reception Room
 
 This is the first and main room you encounter once you open the application.
@@ -113,6 +117,8 @@ After authenticating, a door will appear to the right of the room where the user
 <p align="center">
 	<img width="500" src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/reception-room.png?raw=true" alt="Reception Room">
 </p>
+
+<a name="billboard-room"/>
 
 ## The Billboard Room
 
@@ -129,6 +135,8 @@ To access the Cinema room with the desired short film, click the enter button un
 <p align="center">
 	<img width="500" src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/picture-frames.png?raw=true" alt="Picture Fraims">
 </p>
+
+<a name="cinema-room"/>
 
 ## The Cinema Room
 

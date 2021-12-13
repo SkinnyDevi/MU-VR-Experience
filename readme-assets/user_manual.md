@@ -102,6 +102,45 @@ To move the camera within the horizontal axis a bit faster, use the joystick fro
 
 ## The Reception Room
 
+This is the first and main room you encounter once you open the application.
+
+Here, you will encounter a table with two buttons:
+- Login: Authenticates an existing user
+- Register: Authenticates a new user
+
+After authenticating, a door will appear to the right of the room where the user is lead to the next room.
+
+<p align="center">
+	<img width="500" src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/reception-room.png?raw=true" alt="Reception Room">
+</p>
+
 ## The Billboard Room
 
+Inside this room you will find a wall containing picture frames with a trailer image and ratings. These correspond to the short films stored inside the databse.
+
+<p align="center">
+	<img width="500" src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/billboard-room.png?raw=true" alt="Billboard Room">
+</p>
+
+Each short film rating is updated every time the user enters the room.
+
+To access the Cinema room with the desired short film, click the enter button under the picture frame of your short film of choice. This will transport you to the cinema room.
+
+<p align="center">
+	<img width="500" src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/picture-frames.png?raw=true" alt="Picture Fraims">
+</p>
+
 ## The Cinema Room
+
+Inside the Cinema room, you spawn directly infront of the video player widescreen. Upon enter, the video will start to play automatically.
+
+<p align="center">
+	<img width="500" src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/user_manual/cinema-room.png?raw=true" alt="Cinema Room">
+</p>
+
+You can press (or grab in VR) the rating buttons at any time during your stay in the Cinema room to rate the short film you're watching.
+
+<p align="center">
+	<img width="500" src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/rating-buttons.png?raw=true" alt="Rating Buttons">
+</p>
+To exit the Cinema room, first rate the short film watched, and after, a door will appear to confirm your exit. After exiting, you will return back to the Billboard room to choose another short film to watch.

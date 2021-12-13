@@ -29,6 +29,10 @@ Interactable objects include 3D button like objects with text within them. Inter
 	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/register-buttons.png?raw=true" alt="Register Buttons">
 </p>
 
+<p align="center">
+	<img width="500" src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/user_manual/interactable-door.png?raw=true" alt="Interactable Door">
+</p>
+
 As an easy to follow guide, the crosshair shows arrows around it when an interactable comes within range of the crosshair and when it points towards it.
 
 <p align="center">
@@ -55,6 +59,46 @@ At the top right hand side, when logged in, you will see a *"User: "* text, foll
 Lastly, when not inside the reception room, a button with text *"Return To Reception"* to logout and return to the reception area.
 
 <a name="virtual-reality-movement"/>
+
+### Virtual Reality Movement
+
+```
+*WARNING*:
+Before proceding on how to move around in the virtual reality environment, 
+please login/register first, as you will not be able to do so once you have entered the virtual reality stage.
+```
+
+Once your headset is on, move your head around to look at the environment around you.
+
+Here's a basic schematic on the controllers of the Oculus Rift. If you are using another type of Oculus Headset, controls should be very similar. If not, please refer to your headset's controller manual and how to use it.
+
+<p align="center">
+	<img width="500" height="300" alt="Rift Controller Schematic" src="https://preview.redd.it/osfxjlt9ak911.png?width=2871&format=png&auto=webp&s=098c9d63dfd983b99adc649fc49938ace3b276ae">
+</p>
+
+To interact with objects, you grab them by pressing the inner controller buttons, the top joystick and resting your thumb on the joystick, as to be simulating grabing a real object.
+
+Interactable objects tend to be 3D button like objects with text inside or door handles. Although the same, in virtual reality, you cannot grab the login and register buttons to login and register.
+
+Interactable objects may include the following:
+
+- Door handles: once grabbed, it will lead you to the next room.
+<p align="center">
+	<img width="500" src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/user_manual/interactable-door.png?raw=true" alt="Interactable Door">
+</p>
+
+- Enter button within the Billboard Room
+<p align="center">
+	<img width="500" src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/enter-button.png?raw=true" alt="Enter Button">
+</p>
+
+- Rating buttons within the Cinema Room
+<p align="center">
+	<img width="500" src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/rating-buttons.png?raw=true" alt="Enter Button">
+</p>
+
+To move around, use the joystick from the left controller.  
+To move the camera within the horizontal axis a bit faster, use the joystick from the right controller.
 
 ## The Reception Room
 

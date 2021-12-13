@@ -413,6 +413,6 @@ Overall, this has been a blast of a project to work on, and this being my first 
 [Oculus Integration (for standalone version only)](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022)
 
 ### Other Documentation
-[User App Manual](app-manual)  
+[User App Manual](https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/user_manual.md)  
 
 

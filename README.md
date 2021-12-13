@@ -1,5 +1,5 @@
 # Manos Unidas VR Experience
-This project was made in collaboration Manos Unidas ONG. It consists of a virtual reality cinema/theatre made for short films provided to the short film contest made by Manos Unidas. For more information, you can visit the ["Clipmetrajes"](https://www.clipmetrajesmanosunidas.org/) section, where it explains more on the topic.
+This project was made in collaboration with Manos Unidas ONG. It consists of a virtual reality cinema/theatre made for short films provided to the short film contest made by Manos Unidas. For more information, you can visit the ["Clipmetrajes"](https://www.clipmetrajesmanosunidas.org/) section, where it explains more on the topic.
 
 <p align="center">
   <img width="400" height="250" src="https://www.manosunidas.org/sites/default/files/logo_mu.png" alt="Manos Unidas">
@@ -38,18 +38,15 @@ To extend the audience of this project, it comes with mouse and keyboard support
 <a name="use-cases"/>
 
 ## Use Cases
-Register Users are able to:
+Registered Users are able to:
 - Watch short films in the theatre
 - Rate the short films
 - View ratings for a specific short films
 
-Managers are able to:
+Administrators are able to:
 - Do all actions a registered user can
 - Manage users
 - Manage short film ratings
-
-Administrators are able to:
-- Do all actions a manager can
 - Insert new short film videos and trailer images
 
 What you can do with this app:
@@ -68,16 +65,16 @@ The server side of this project was created with NodeJS.
 
 The reason behind the use of NodeJS comes from how extensive and powerful all frameworks within and external from NodeJS can be, delivering fast responses for real-time performance, as well as taking advantage of the extensive versatility that comes with the JavaScript language.
 
-Within the use of NodeJS, frameworks like Express JS with Sequelize were used to provide a stable and fast server and server connection with the database.
+Within the use of NodeJS, frameworks like Express JS with Sequelize were used to provide a stable server connection and fast response time with the database.
 
 
-The user experience on the other hand was made using Unity.  
+The user experience, on the other hand, was made using Unity.  
 
 <p align="center">
 	<img width="600" height="140" src="https://unity3d.com/profiles/unity3d/themes/unity/images/pages/branding_trademarks/unity-mwu-black.png" alt="Unity Logo">
 </p>
 
-Unity was chosen for this project due to its simplicity and how powerful it can be. Knowing there are other game engines like Unreal Engine or Godot, Unity provides a simple and interactive user experience to develop the game, while providing powerful tools to exploit the users creativity.
+Unity was chosen for this project due to its simplicity and how powerful it can be. Knowing there are other game engines like Unreal Engine or Godot, Unity provides a simple and interactive user experience to develop the game, while providing powerful tools to exploit the developer's creativity.
 
 
 <a name="project-planning">
@@ -91,12 +88,11 @@ The planning went as follows:
 	- A cinema room where the users watch the short films
 
 2. Start from the base and build up with the backend.  
-* The backend was the first to be implemented so that when the frontend started development, it could all be tested correctly without speculations.  
-The process in which the backend would be develop was the following:
+* The backend was the first to be implemented so that when the frontend started development, it could all be tested correctly without speculations. The process in which the backend would be developed was the following:
 	1. Develop user model and controller with authentication
 	2. Develop short film model and controller
 	3. Develop rating model and controllers
-3. The frontend was to be developed later, and it would be developed in the following order:
+3. The frontend was to be developed at a later stage, and it would be developed in the following order:
 	1. Main hub / reception first where a user would register
 	2. The billboard room where a user would choose what short film to watch
 	3. The main cinema room to watch the short films
@@ -107,11 +103,11 @@ The process in which the backend would be develop was the following:
 
 Firstly, once entered the app, the user is greeted with a reception room, where it sees a login and register button. These help the user authenticate to access database information.
 
-Once submitted, the backend is in charge of verifying the user credentials with *bcrypt.js* npm package to encrypt the user password in the database. After the authentication has been verified, the user is allowed into the billboard room.
+Once submitted, the backend is in charge of verifying the user credentials using the *bcrypt.js* npm package to encrypt the user password in the database. After the authentication has been verified, the user is allowed into the billboard room.
 
-Inside the billboard room, the user sees picture frames with the short film, in which he can enter with the enter button. On enter, the user will be transported to the cinema room.
+Inside the billboard room, the user sees picture frames with the short film trailer image, in which he can enter with the enter button. On enter, the user will be transported to the cinema room.
 
-Inside the cinema room, the according short film selected by the user will load and play.
+Inside the cinema room, the according selected short film by the user will load and play.
 During the short film, or after it has finished playing, the user is able to rate it with provided ratings of *Liked*, *Regular*, or *Disliked*. These are then recorded in the database for future reference.
 
 Once again in the billboard, the users is able to see the short film trailer images, as well as all rating percentage based on other user rating submissions.
@@ -138,7 +134,7 @@ Focusing on the usability of the project, we will be mentioning the following as
 
 To start off, we see a simple interface where the user can select login or register within the application. All text used within the application is made to look user-friendly and as readable as possible for all sorts of audiences.
 
-Except these two, button like objects like these and door handle are grabble objects in the virtual reality space, so be on the look out for those. 
+Except these two, button like objects like these and door handles are grabble objects in the virtual reality space, so be on the look out for those. They provide a simple text explaining what action is executed when clicked on.  
 
 <p align="center">
 	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/register-buttons.png?raw=true" alt="Register Buttons">
@@ -150,7 +146,7 @@ After the user is presented with the login/register screen and has submitted the
 	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/handle-login-fields.png?raw=true" alt="Fields handler">
 </p>
 
-If any issue arises, it detects which issue to present the corresponding message:
+If any issue arises, it detects which issue corresponds to the inputted validation code to present the corresponding error message:
 
 <p align="center">
 	<img width="400" height="400" src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/handle-error-messages.png?raw=true" alt="Handle Error Messages">
@@ -176,7 +172,7 @@ Otherwise, the user is presented with a success message and leaves the interface
 
 After a successful user login/registration, a simple door appears to the right side of the room where he can click or grab the door handles and enter the billboard rooms. On a door appearance, it indicates the user that there's a room where the user can enter.
 
-The billboard is presented with a simple room like theatre billboard where picture frames are presented with a trailer image received from the database.
+The billboard is presented with a simple room which simulates a theatre billboard, where picture frames are presented with a trailer image received from the database.
 
 <p align="center">
 	<img width="500" height="500"  src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/picture-frames.png?raw=true" alt="Picture Frames">
@@ -191,6 +187,11 @@ The user enters the cinema by clicking on the interactable button mentioned abov
 Finally, inside the theatre room, the user is presented with the wide screen short film player, and simple interactable buttons to rate the short film in question.
 
 <p align="center">
+	<img width="700" height="400"  src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/user_manual/cinema-room.png?raw=true" alt="Rating Buttons">
+</p>
+
+
+<p align="center">
 	<img width="700" height="350"  src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/rating-buttons.png?raw=true" alt="Rating Buttons">
 </p>
 
@@ -202,9 +203,9 @@ To take a look on how these aspects have been implemented across the entire appl
 ### Data Model
 The backend database used was developed using MySQL. The database is structured as follows:
 
-1. A Users table for registered
+1. A Users table to store registered users
 2. A short film table to store information about the short films
-3. A rating table to store ratings submitteed by users
+3. A rating table to store ratings submitted by users
 
 <p align="center">
 	<img src="https://github.com/SkinnyDevi/MU-VR-Experience/blob/develop/readme-assets/images/e-r_diagram.png?raw=true" alt="E/R Diagram">
@@ -224,7 +225,7 @@ RATINGS(ID, user_id, clip_id, rating)
 **Restriction: only one rating is allowed per video per user, meaning if the user rates the same video, the existing rating will be updated.*
 
 ### ORM
-As the ORM, Express JS uses Sequelize to communicate with our MySQL database. We first define our models inside of the ```./models``` directory, after we define the controllers inside ```./controllers``` directory.
+As the ORM, Express JS uses Sequelize to communicate with our MySQL database. We first define our models inside of the ```./models``` directory using the tables defined previously, and after we define the controllers inside ```./controllers``` directory to manage how the information is sent, received and processed.
 
 ### API Documentation
 To further read on how to access the APIs end-points, please refer to the following links:
@@ -241,7 +242,7 @@ After having cloned the project and an open connection to a MySQL server, run th
 
 To install all dependencies, run ```npm install``` inside the *backend* directory. 
 
-An npm package called ```nodemon``` is used to reload changes automatically when files change. To install, simply run ```npm i -g nodemon``` in the console.
+An npm package called ```nodemon``` is used to reload changes automatically when files change. To install, simply run ```npm i -g nodemon``` in the console if you are going to be modifying any *backend* files for a simpler and faster workflow.
 
 Before running the server, make sure you have created a ```.env``` file inside the *backend* directory with the following contents:
 ```
@@ -261,7 +262,7 @@ PORT=
 ```
 
 The following commands must be run inside the backend directory:  
-- To start the server, run ```npm start``` to run with nodemon to run with automatic refresh.  
+- To start the server, run ```npm start``` to run with nodemon and automatic file refresh on modification.  
 - To start the server manually, run ```node server.js``` to launch the server and reload it with Ctrl + C.
 
 <a name="frontend-structure"/>
@@ -274,7 +275,6 @@ Below, you can find the mockups and prototypes used to serve as base for modelin
 
 ### How To Install
 Firstly, clone the project. For this, you need to have installed Git. Then, simply run:
-To clone the project, run:
 ```
 git clone https://github.com/SkinnyDevi/MU-VR-Experience.git
 ```
@@ -311,7 +311,7 @@ For further instructions on how to use and play the app, please refer to [the us
 ### User Requirements
 #### Server-side
 Registered users are able to:  
-1. View short films information the database
+1. View short films information of the database
 2. View the total ratings of each film, separated by type (Liked, Regular, Disliked)
 
 #### Game
@@ -344,9 +344,9 @@ Any User:
 <a name="sys-requirements"/>
 
 ## System Requirements
-All the following requirements have been selected according to the platforms in which these have been tested.
+All the following requirements have been selected according to the platforms in which this app has been tested.
 
-As this project uses the previously mentioned Oculus Integration plugin for Unity, only Oculus headsets are properly supported for this application.
+As this project uses the previously mentioned Oculus Integration plugin for Unity, *only Oculus headsets are properly supported* for this application.
 
 These can be changed at any time with proper user feedback.
 
@@ -363,7 +363,7 @@ Without Virtual Reality (Keyboard+Mouse):
 
 With Virtual Reality:
 - DEDICATED VIDEO RAM: 3 GB
-- GRAPHICS CARD: Any NVIDIA GeForce GTX Supported by the Oculus Headset Family
+- GRAPHICS CARD: NVIDIA GeForce GTX 1050 Ti
 - OS: Windows 10 64-bit
 - Oculus Headset: Rift
 
@@ -374,7 +374,7 @@ Common requirements:
 - FREE DISK SPACE: 750 MB
 
 Without Virtual Reality (Keyboard+Mouse):
-- GRAPHICS CARD: NVIDIA GeForce GTX 1050
+- GRAPHICS CARD: NVIDIA GeForce GTX 1050 or higher
 - DEDICATED VIDEO RAM: 3 GB
 - OS: Mac OSX, Windows 10 64-bit
 

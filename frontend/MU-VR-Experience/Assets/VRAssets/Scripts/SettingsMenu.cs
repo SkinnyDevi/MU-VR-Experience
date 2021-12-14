@@ -14,13 +14,12 @@ public class SettingsMenu : MonoBehaviour
     public static bool InSettings;
 
 	string rootPath = "Settings Menu/Canvas/Pause Menu/";
-    bool vrOptionChanged = false;
+    bool vrOptionChanged, acceptedVRPopup = false;
     PlayerVRHandler playerHandler;
     InputMaster keyboardControls;
 	TMP_Text vrStateText;
 	Toggle vrToggler;
 	GameObject returnToReceptionBtn;
-
 
     void Awake()
     {
@@ -81,6 +80,9 @@ public class SettingsMenu : MonoBehaviour
         UserInfoManager.SaveString(UserInfoManager.SaveType.SettingsInteraction, interactionType);
         UserInfoManager.SaveFloat(UserInfoManager.SaveType.SettingsSensitivity, float.Parse(sensitivityValue.text));
         UserInfoManager.SaveFloat(UserInfoManager.SaveType.SettingsVolume, saveVolume);
+		if (vrOptionChanged && acceptedVRPopup) UserInfoManager.SavePlayerType(UserInfoManager.PlayerType.VR);
+		else UserInfoManager.SavePlayerType(UserInfoManager.PlayerType.Mouse);
+		Debug.Log("PLAYER TYPE: " + UserInfoManager.GetPlayerType());
     }
 
     void SetState(GameObject g, bool state)
@@ -100,19 +102,46 @@ public class SettingsMenu : MonoBehaviour
     {
         SetState(Crosshair, true);
         SetState(SettingsMenuObject, false);
-        if (vrOptionChanged)
-        {
-			playerHandler.ChangePlayerType(PlayerVRHandler.PlayerType.VR);
+        if (vrOptionChanged && acceptedVRPopup) playerHandler.ChangePlayerType(PlayerVRHandler.PlayerType.VR);
+		ContinueResumingGame();
+    }
+
+	void HandleVRPopup(bool acceptedPopup)
+	{
+		if (acceptedPopup)
+		{
+			acceptedVRPopup = true;
+			vrOptionChanged = true;
+			UserInfoManager.SavePlayerType(UserInfoManager.PlayerType.VR);
 		}
-        else
-        {
-            playerHandler.ChangePlayerType(PlayerVRHandler.PlayerType.Mouse);
-        }
-        Time.timeScale = 1f;
+		else
+		{
+			acceptedVRPopup = false;
+			vrStateText.text = "Disabled";
+            vrOptionChanged = false;
+			vrToggler.isOn = false;
+		}
+
+		SetState(gameObject.transform.Find("Settings Menu/Canvas/Warning VR Popup").gameObject, false);
+	}
+
+	void ContinueResumingGame()
+	{
+		Time.timeScale = 1f;
         SaveSettings();
         InSettings = false;
-    }
-	
+	}
+
+	public void ClickYes()
+	{
+		HandleVRPopup(true);
+	}
+
+	public void ClickNo()
+	{
+		HandleVRPopup(false);
+	}
+
 	public void ReturnMainHub() // Only assigned in the UI
 	{
 		ResumeGame();
@@ -124,7 +153,12 @@ public class SettingsMenu : MonoBehaviour
         if (vrStateText.text.Equals("Disabled") && vrToggler.isOn)
         {
             vrStateText.text = "Enabled";
-            vrOptionChanged = true;
+			if (!acceptedVRPopup) SetState(gameObject.transform.Find("Settings Menu/Canvas/Warning VR Popup").gameObject, true);
+			else 
+			{
+				vrOptionChanged = true;
+				acceptedVRPopup = true;
+			}
         }
         else
         {
@@ -132,11 +166,4 @@ public class SettingsMenu : MonoBehaviour
             vrOptionChanged = false;
         }
     }
-
-	public void ExternalVRDeactivation()
-	{
-		vrStateText.text = "Disabled";
-        vrOptionChanged = false;
-		vrToggler.isOn = false;
-	}
 }

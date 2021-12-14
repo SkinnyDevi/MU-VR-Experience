@@ -19,16 +19,10 @@ public class VRXRManager : MonoBehaviour
 	{
 		if (XRGeneralSettings.Instance.Manager.isInitializationComplete && !subsystemsStarted)
 		{
+			Debug.Log("Starting Subsystems");
 			XRGeneralSettings.Instance.Manager.StartSubsystems();
 			subsystemsStarted = true;
 		}
-	}
-
-	void OnDisable()
-	{
-		XRGeneralSettings.Instance.Manager.StopSubsystems();
-		subsystemsStarted = false;
-        XRGeneralSettings.Instance.Manager.DeinitializeLoader();
 	}
 
 	void OnApplicationQuit() // for standalone only

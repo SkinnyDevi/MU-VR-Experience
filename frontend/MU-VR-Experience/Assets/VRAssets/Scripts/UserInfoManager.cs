@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 using UserModel;
 
 public static class UserInfoManager
 {
+	public enum PlayerType {Mouse, VR}
     public enum Movement {WASD, Arrows}
     public enum Interaction {LeftClick, KeyE}
     public enum SaveType {SettingsMovement, SettingsInteraction, SettingsSensitivity, SettingsVolume}
@@ -20,6 +22,18 @@ public static class UserInfoManager
         PlayerPrefs.Save();
     }
 
+	public static void SavePlayerType(PlayerType type)
+	{
+		PlayerPrefs.SetString("PlayerType", type.ToString());
+		PlayerPrefs.Save();
+	}
+
+	static void SavePlayerType(string str)
+	{
+		PlayerPrefs.SetString("PlayerType", str);
+		PlayerPrefs.Save();
+	}
+	
     public static void SaveInt(SaveType type, int value)
     {
         PlayerPrefs.SetInt(type.ToString(), value);
@@ -46,6 +60,11 @@ public static class UserInfoManager
 	public static string GetString(string str)
 	{
 		return PlayerPrefs.GetString(str);
+	}
+
+	public static string GetPlayerType()
+	{
+		return PlayerPrefs.GetString("PlayerType");
 	}
 
 	public static int GetInt(SaveType type)
@@ -91,6 +110,7 @@ public static class UserInfoManager
 			SaveString(SaveType.SettingsInteraction, Interaction.LeftClick.ToString());
 			SaveFloat(SaveType.SettingsSensitivity, 8f);
 			SaveFloat(SaveType.SettingsVolume, 0f);
+			SavePlayerType(PlayerType.Mouse);
 			PlayerPrefs.SetString("InitPrefs", "true");
 		}
 		else
@@ -99,10 +119,17 @@ public static class UserInfoManager
 			SaveString(SaveType.SettingsInteraction, GetString(SaveType.SettingsInteraction));
 			SaveFloat(SaveType.SettingsSensitivity, GetFloat(SaveType.SettingsSensitivity));
 			SaveFloat(SaveType.SettingsVolume, GetFloat(SaveType.SettingsVolume));
+			if (!SceneManager.GetActiveScene().name.Equals("MainHub")) SavePlayerType(GetPlayerType());
 		}
 		ForceSave();
 
 		((VolumeSlider)(Resources.FindObjectsOfTypeAll(typeof(VolumeSlider))[0])).LoadVolume(GetFloat(SaveType.SettingsVolume));
 		((SensitivitySlider)(Resources.FindObjectsOfTypeAll(typeof(SensitivitySlider))[0])).LoadSensitivity(GetFloat(SaveType.SettingsSensitivity));
+
+		Debug.Log("PLAYER TYPE: " + GetPlayerType());
+		if (GetPlayerType().Equals(PlayerType.VR.ToString()))
+		{
+			GameObject.FindObjectOfType<PlayerVRHandler>().ChangePlayerType(PlayerVRHandler.PlayerType.VR);
+		}
     }
 }

@@ -36,6 +36,7 @@ public class UserDataReceiver : MonoBehaviour
 	void OnApplicationQuit() // Only for standalone
 	{
 		UserInfoManager.DeleteInfoOnExit();
+		UserInfoManager.SavePlayerType(UserInfoManager.PlayerType.Mouse);
 	}
 
 	public User CurrentPlayer()

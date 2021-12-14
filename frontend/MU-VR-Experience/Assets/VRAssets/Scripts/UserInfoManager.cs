@@ -126,7 +126,6 @@ public static class UserInfoManager
 		((VolumeSlider)(Resources.FindObjectsOfTypeAll(typeof(VolumeSlider))[0])).LoadVolume(GetFloat(SaveType.SettingsVolume));
 		((SensitivitySlider)(Resources.FindObjectsOfTypeAll(typeof(SensitivitySlider))[0])).LoadSensitivity(GetFloat(SaveType.SettingsSensitivity));
 
-		Debug.Log("PLAYER TYPE: " + GetPlayerType());
 		if (GetPlayerType().Equals(PlayerType.VR.ToString()))
 		{
 			GameObject.FindObjectOfType<PlayerVRHandler>().ChangePlayerType(PlayerVRHandler.PlayerType.VR);

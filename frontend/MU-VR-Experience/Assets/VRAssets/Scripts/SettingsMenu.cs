@@ -82,7 +82,6 @@ public class SettingsMenu : MonoBehaviour
         UserInfoManager.SaveFloat(UserInfoManager.SaveType.SettingsVolume, saveVolume);
 		if (vrOptionChanged && acceptedVRPopup) UserInfoManager.SavePlayerType(UserInfoManager.PlayerType.VR);
 		else UserInfoManager.SavePlayerType(UserInfoManager.PlayerType.Mouse);
-		Debug.Log("PLAYER TYPE: " + UserInfoManager.GetPlayerType());
     }
 
     void SetState(GameObject g, bool state)

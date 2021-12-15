@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 using System;
 using System.Text.RegularExpressions;
@@ -36,11 +37,14 @@ public class PointerControls : MonoBehaviour
 
 	void Update()
 	{
-		if (!((currentObject.Equals("Login") || currentObject.Equals("Register")) || (hoverObject.Equals("Login") || hoverObject.Equals("Register")))) canInteractAgain = true;
-		if (canInteractAgain) HandleInteractionKey();
+		if (!(SceneManager.GetActiveScene().name.Equals("TheatreCinema") && PlayerVRHandler.CurrentPlayerType == PlayerVRHandler.PlayerType.VR))
+		{
+			if (!((currentObject.Equals("Login") || currentObject.Equals("Register")) || (hoverObject.Equals("Login") || hoverObject.Equals("Register")))) canInteractAgain = true;
+			if (canInteractAgain) HandleInteractionKey();
 
-		HighlightSelectable();
-		RemoveCrosshairOnScreen();
+			HighlightSelectable();
+			RemoveCrosshairOnScreen();
+		}
 	}
 
 	void HandleInteractionKey()

@@ -243,7 +243,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a4451d87-73c9-4e97-99bc-0a29376a1cac"",
-                    ""path"": ""<Keyboard>/k"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": ""Press(pressPoint=1,behavior=1)"",
                     ""processors"": """",
                     ""groups"": """",

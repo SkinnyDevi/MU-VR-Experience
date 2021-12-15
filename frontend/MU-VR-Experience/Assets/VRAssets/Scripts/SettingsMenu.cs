@@ -101,6 +101,11 @@ public class SettingsMenu : MonoBehaviour
     {
         SetState(Crosshair, true);
         SetState(SettingsMenuObject, false);
+		if (gameObject.transform.Find("Settings Menu/Canvas/Warning VR Popup").gameObject.activeSelf)
+		{
+			SetState(gameObject.transform.Find("Settings Menu/Canvas/Warning VR Popup").gameObject, false);
+			VRToggleHandler();
+		}
         if (vrOptionChanged && acceptedVRPopup) playerHandler.ChangePlayerType(PlayerVRHandler.PlayerType.VR);
 		ContinueResumingGame();
     }
@@ -163,6 +168,7 @@ public class SettingsMenu : MonoBehaviour
         {
             vrStateText.text = "Disabled";
             vrOptionChanged = false;
+			vrToggler.isOn = false;
         }
     }
 }

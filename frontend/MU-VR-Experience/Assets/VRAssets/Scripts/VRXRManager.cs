@@ -19,7 +19,7 @@ public class VRXRManager : MonoBehaviour
 	{
 		if (XRGeneralSettings.Instance.Manager.isInitializationComplete && !subsystemsStarted)
 		{
-			Debug.Log("Starting Subsystems");
+			// Debug.Log("Starting Subsystems");
 			XRGeneralSettings.Instance.Manager.StartSubsystems();
 			subsystemsStarted = true;
 			OVRManager.display.RecenterPose();

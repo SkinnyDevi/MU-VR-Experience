@@ -43,7 +43,7 @@ public class RegisterHandler : MonoBehaviour
 							ErrorMessage.text = "No started\nserver was\nfound";
 							break;
 						default:
-							Debug.Log(createUser.responseCode);
+							// Debug.Log(createUser.responseCode);
 							ErrorMessage.text = "Request\nfound\nan error";
 							Debug.LogError("There was an error registering the user in: " + createUser.error);
 							break;
@@ -53,7 +53,7 @@ public class RegisterHandler : MonoBehaviour
 				else
 				{
 					ErrorText.SetActive(false);
-					Debug.Log("New user submitted");
+					// Debug.Log("New user submitted");
 
 					JSONNode response = JSON.Parse(createUser.downloadHandler.text);
 					UserDataReceiver currentUserData = GameObject.FindObjectOfType<UserDataReceiver>();

@@ -74,7 +74,7 @@ public class PointerControls : MonoBehaviour
 		if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out hit, RayLength))
 		{
 			currentObject = hit.transform.name;
-			Debug.Log(currentObject);
+			// Debug.Log(currentObject);
 		}
 
 		EnterBillboard();
@@ -136,7 +136,7 @@ public class PointerControls : MonoBehaviour
 	public void TransitionFinished()
 	{
 		currentObject += "Exited";
-		Debug.Log(currentObject);
+		// Debug.Log(currentObject);
 	}
 
 	public void HandleBillboardEnterButtons()

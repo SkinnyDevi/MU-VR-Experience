@@ -22,7 +22,7 @@ public class HandCollisionInteractionHandler : OVRGrabbable
 		base.GrabBegin(hand, grabPoint);
 		grabbedObj = grabPoint.gameObject;
 		rayCaster.SetCurrentObject(grabbedObj.name);
-		Debug.Log(rayCaster.GetCurrentObject());
+		// Debug.Log(rayCaster.GetCurrentObject());
 		switch(SceneManager.GetActiveScene().name)
 		{
 			case "MainHub":
@@ -47,7 +47,7 @@ public class HandCollisionInteractionHandler : OVRGrabbable
 
     public override void GrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
     {
-		Debug.Log("STOPPED GRABBING: " + grabbedObj.name);
+		// Debug.Log("STOPPED GRABBING: " + grabbedObj.name);
 		if (SceneManager.GetActiveScene().name.Equals("TheatreCinema"))
 		{
 			if (grabbedObj.name.Contains("Cube") && hasSubmittedRating) GameObject.Find(grabbedObj.name).gameObject.SetActive(false);

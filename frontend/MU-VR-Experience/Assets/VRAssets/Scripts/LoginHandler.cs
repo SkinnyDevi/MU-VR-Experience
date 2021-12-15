@@ -41,7 +41,7 @@ public class LoginHandler : MonoBehaviour
 					switch (signin.responseCode)
 					{
 						case 404:
-							Debug.Log("User not found!");
+							// Debug.Log("User not found!");
 							ErrorMessage.text = "User not found!";
 							break;
 						case 401:
@@ -51,7 +51,7 @@ public class LoginHandler : MonoBehaviour
 							ErrorMessage.text = "No started\nserver was\nfound";
 							break;
 						default:
-							Debug.Log(signin.responseCode);
+							// Debug.Log(signin.responseCode);
 							ErrorMessage.text = "Request\nfound\nan error";
 							Debug.LogError("There was an error signin in: " + signin.error);
 							break;
@@ -61,7 +61,7 @@ public class LoginHandler : MonoBehaviour
 				else
 				{
 					ErrorText.SetActive(false);
-					Debug.Log("User signed in");
+					// Debug.Log("User signed in");
 					
 					JSONNode response = JSON.Parse(signin.downloadHandler.text);
 					UserDataReceiver currentUserData  = GameObject.FindObjectOfType<UserDataReceiver>();

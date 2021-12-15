@@ -75,7 +75,7 @@ public class SettingsMenu : MonoBehaviour
         string interactionType = !leftclick.IsInteractable() ? leftclick.gameObject.name : keye.gameObject.name;
         float saveVolume = VolumeSlider.RawVolume;
 
-        Debug.Log($"SETTINGS TO SAVE: {movementType}, {interactionType}, {sensitivityValue.text}, {saveVolume}");
+        // Debug.Log($"SETTINGS TO SAVE: {movementType}, {interactionType}, {sensitivityValue.text}, {saveVolume}");
         UserInfoManager.SaveString(UserInfoManager.SaveType.SettingsMovement, movementType);
         UserInfoManager.SaveString(UserInfoManager.SaveType.SettingsInteraction, interactionType);
         UserInfoManager.SaveFloat(UserInfoManager.SaveType.SettingsSensitivity, float.Parse(sensitivityValue.text));

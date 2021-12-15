@@ -32,22 +32,22 @@ public class VideoLoader : MonoBehaviour
 
 		while (!screenPlayer.isPrepared)
 		{
-			Debug.Log("Preparing video... WAIT!");
+			// Debug.Log("Preparing video... WAIT!");
 			yield return null;
 		}
 
-		Debug.Log("Video was loaded.");
+		// Debug.Log("Video was loaded.");
 
 		screenPlayer.Play();
 		screenAudio.Play();
 
-		Debug.Log("Playing Video");
+		// Debug.Log("Playing Video");
 		while (screenPlayer.isPlaying)
 		{
-			//Debug.Log("Video Time: " + Mathf.FloorToInt((float)screenPlayer.time));
+			//// Debug.Log("Video Time: " + Mathf.FloorToInt((float)screenPlayer.time));
 			yield return null;
 		}
 
-		Debug.Log("Done Playing Video");
+		// Debug.Log("Done Playing Video");
 	}	
 }

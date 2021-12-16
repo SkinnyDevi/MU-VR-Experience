@@ -9,7 +9,7 @@ public class SubmitRatingHandler : MonoBehaviour
 {
 	public static int UserID = -1;
 
-	static readonly string API_URL = "http://192.168.1.184:6996/ratings/";
+	static readonly string API_URL = "http://localhost:6996/ratings/";
 	static string TEMP_TKN;
 	static UserDataReceiver playerData;
 	static Rating ratingPayload;

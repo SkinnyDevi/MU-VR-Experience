@@ -18,7 +18,7 @@ public class UserDataReceiver : MonoBehaviour
 	public GameObject Crosshair;
 	public TMP_Text SettingsUserText;
 
-	static readonly string userUrl = "http://192.168.1.184:6996/users/user/";
+	static readonly string userUrl = "http://localhost:6996/users/user/";
 
 	string token = "";
 	User player = new User();

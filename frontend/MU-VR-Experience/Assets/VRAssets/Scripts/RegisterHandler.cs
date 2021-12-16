@@ -15,7 +15,7 @@ public class RegisterHandler : MonoBehaviour
 	public TMP_Text ErrorObjMessage;
 	public static bool ValidationRetry = true;
 
-    static readonly string API_URL = "http://192.168.1.184:6996/users/";
+    static readonly string API_URL = "http://localhost:6996/users/";
 	static GameObject SuccessText, ErrorText;
 	static TMP_Text ErrorMessage;
 

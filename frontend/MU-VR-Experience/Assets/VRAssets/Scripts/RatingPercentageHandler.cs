@@ -8,7 +8,7 @@ using SimpleJSON;
 
 public class RatingPercentageHandler : MonoBehaviour
 {
-    static readonly string API_URL = "http://192.168.1.184:6996/ratings/by_type/";
+    static readonly string API_URL = "http://localhost:6996/ratings/by_type/";
     public TMP_Text LikedPercentage, RegularPercentage, DislikedPercentage;
     int clipId = -1;
     string token = "";

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 using TMPro;
 
 public class MouseLookControls : MonoBehaviour
@@ -8,7 +9,7 @@ public class MouseLookControls : MonoBehaviour
 	public Transform PlayerBody;
 	public TMP_Text SensitivityValue;
 	
-	float xRotation = 0f;
+	float _xRotation = 0f;
 
     void Start()
     {
@@ -30,10 +31,10 @@ public class MouseLookControls : MonoBehaviour
 			float mouseX = mouse.x * MouseSensitivity * Time.deltaTime;
 			float mouseY = mouse.y * MouseSensitivity * Time.deltaTime;
 
-			xRotation -= mouseY;
-			xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+			_xRotation -= mouseY;
+			_xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
 
-			transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+			transform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
 			PlayerBody.Rotate(Vector3.up * mouseX);
 		}
     }

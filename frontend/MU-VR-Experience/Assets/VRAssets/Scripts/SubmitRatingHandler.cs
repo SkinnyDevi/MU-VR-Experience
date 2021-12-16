@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Networking;
+
 using System.Collections;
 
 using RatingModel;
@@ -9,23 +10,23 @@ public class SubmitRatingHandler : MonoBehaviour
 {
 	public static int UserID = -1;
 
-	static readonly string API_URL = "http://localhost:6996/ratings/";
-	static string TEMP_TKN;
-	static UserDataReceiver playerData;
-	static Rating ratingPayload;
+	const string API_URL = "http://192.168.1.184:6996/ratings/";
+	static string s_requestToken;
+	static UserDataReceiver s_playerData;
+	static Rating s_ratingPayload;
 
 	void Start()
 	{
-		playerData = GameObject.FindObjectOfType<UserDataReceiver>();
-		playerData.SetToken(UserInfoManager.GetString("TempTKN"));
-		TEMP_TKN = playerData.GetToken();
+		s_playerData = GameObject.FindObjectOfType<UserDataReceiver>();
+		s_playerData.SetToken(UserInfoManager.GetString("TempTKN"));
+		s_requestToken = s_playerData.GetToken();
 	}
 
-	public static IEnumerator RatingSubmitTest(string objName, GameObject Wall, GameObject Doors)
+	public static IEnumerator SubmitRating(string objName, GameObject Wall, GameObject Doors)
 	{
-		ratingPayload = GenerateNewRating();
+		s_ratingPayload = GenerateNewRating();
 
-		using (UnityWebRequest checkExistence = createGetRequest(API_URL + $"submitted_rating/exists/{ratingPayload.GetUserID()}/{ratingPayload.GetClipID()}", TEMP_TKN))
+		using (UnityWebRequest checkExistence = CreateGetRequest(API_URL + $"submitted_rating/exists/{s_ratingPayload.GetUserID()}/{s_ratingPayload.GetClipID()}", s_requestToken))
 		{
 			yield return checkExistence.SendWebRequest();
 
@@ -33,7 +34,7 @@ public class SubmitRatingHandler : MonoBehaviour
 			{
 				if (checkExistence.responseCode == 404)
 				{
-					ratingPayload.SetRatingID(0);
+					s_ratingPayload.SetRatingID(0);
 				}
 				else
 				{
@@ -43,12 +44,12 @@ public class SubmitRatingHandler : MonoBehaviour
 			else
 			{
 				JSONNode response = JSON.Parse(checkExistence.downloadHandler.text);
-				ratingPayload.SetRatingID(response["rating_id"]);
+				s_ratingPayload.SetRatingID(response["rating_id"]);
 			}
-			ratingPayload.SetRating(objName.Replace("Cube", ""));
+			s_ratingPayload.SetRating(objName.Replace("Cube", ""));
 		}
 
-		using (UnityWebRequest submitRating = createRatingUpdateRequest(API_URL + "rating/", TEMP_TKN, ratingPayload))
+		using (UnityWebRequest submitRating = CreateRatingUpdateRequest(API_URL + "rating/", s_requestToken, s_ratingPayload))
 		{
 			yield return submitRating.SendWebRequest();
 
@@ -64,7 +65,7 @@ public class SubmitRatingHandler : MonoBehaviour
 		}
 	}
 
-	static Rating GenerateNewRating()
+	private static Rating GenerateNewRating()
 	{
 		Rating temp = new Rating();
 		temp.SetUserID(UserID);
@@ -72,7 +73,7 @@ public class SubmitRatingHandler : MonoBehaviour
 		return temp;
 	}
 
-	private static UnityWebRequest createGetRequest(string requestUrl, string bearerToken)
+	private static UnityWebRequest CreateGetRequest(string requestUrl, string bearerToken)
 	{
 		UnityWebRequest getUsers = UnityWebRequest.Get(requestUrl);
 		getUsers.SetRequestHeader("Content-Type", "application/json");
@@ -81,7 +82,7 @@ public class SubmitRatingHandler : MonoBehaviour
 		return getUsers;
 	}
 
-	private static UnityWebRequest createRatingUpdateRequest(string requestUrl, string bearerToken, Rating userRating)
+	private static UnityWebRequest CreateRatingUpdateRequest(string requestUrl, string bearerToken, Rating userRating)
 	{
 		UnityWebRequest updateRequest = UnityWebRequest.Put(requestUrl, userRating.RatingToJson());
 		updateRequest.SetRequestHeader("Authorization", "Bearer " + bearerToken);

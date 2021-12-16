@@ -15,15 +15,15 @@ public class RegisterHandler : MonoBehaviour
 	public TMP_Text ErrorObjMessage;
 	public static bool ValidationRetry = true;
 
-    static readonly string API_URL = "http://localhost:6996/users/";
-	static GameObject SuccessText, ErrorText;
-	static TMP_Text ErrorMessage;
+    const string API_URL = "http://192.168.1.184:6996/users/";
+	static GameObject s_successText, s_errorText;
+	static TMP_Text s_errorMessage;
 
 	void Start()
     {
-        SuccessText = SuccessObjText;
-        ErrorText = ErrorObjText;
-        ErrorMessage = ErrorObjMessage;
+        s_successText = SuccessObjText;
+        s_errorText = ErrorObjText;
+        s_errorMessage = ErrorObjMessage;
     }
 
 	public static IEnumerator CreateUserFromPlayer(string userEmail, string userPwd, string userConfirmPwd)
@@ -40,19 +40,19 @@ public class RegisterHandler : MonoBehaviour
 					switch (createUser.responseCode)
 					{
 						case 0:
-							ErrorMessage.text = "No started\nserver was\nfound";
+							s_errorMessage.text = "No started\nserver was\nfound";
 							break;
 						default:
 							// Debug.Log(createUser.responseCode);
-							ErrorMessage.text = "Request\nfound\nan error";
+							s_errorMessage.text = "Request\nfound\nan error";
 							Debug.LogError("There was an error registering the user in: " + createUser.error);
 							break;
 					}
-					ErrorText.SetActive(true);
+					s_errorText.SetActive(true);
 				}
 				else
 				{
-					ErrorText.SetActive(false);
+					s_errorText.SetActive(false);
 					// Debug.Log("New user submitted");
 
 					JSONNode response = JSON.Parse(createUser.downloadHandler.text);
@@ -60,7 +60,7 @@ public class RegisterHandler : MonoBehaviour
 					JSONNode userObj = response["user"];
 					User newPlayer = new User(userObj["user_id"], userObj["email"], userObj["username"]);
 					
-					SuccessText.SetActive(true);
+					s_successText.SetActive(true);
 					
 					currentUserData.SetCurrentPlayer(newPlayer);
 					currentUserData.SetToken(response["access_token"]);
@@ -70,7 +70,7 @@ public class RegisterHandler : MonoBehaviour
 		ValidationRetry = true;
 	}
 
-	static int Validate(string email, string pass, string confirmPass)
+	private static int Validate(string email, string pass, string confirmPass)
 	{
 		int code = 1;
 
@@ -85,27 +85,27 @@ public class RegisterHandler : MonoBehaviour
 		return code;
 	}
 
-	static bool HandleErrorMessages(int validationCode)
+	private static bool HandleErrorMessages(int validationCode)
 	{
 		switch (validationCode)
 		{
 			case -1:
 				RegisterKeyboardManager.ToggleProcessWheel(false);
-				ErrorText.SetActive(true);
-				ErrorMessage.text = "Missing required fields";
+				s_errorText.SetActive(true);
+				s_errorMessage.text = "Missing required fields";
 				return false;				
 			case 0:
 				RegisterKeyboardManager.ToggleProcessWheel(false);
-				ErrorText.SetActive(true);
-				ErrorMessage.text = "Invalid email";
+				s_errorText.SetActive(true);
+				s_errorMessage.text = "Invalid email";
 				return false;
 			case -2:
 				RegisterKeyboardManager.ToggleProcessWheel(false);
-				ErrorText.SetActive(true);
-				ErrorMessage.text = "Passwords don't match!";
+				s_errorText.SetActive(true);
+				s_errorMessage.text = "Passwords don't match!";
 				return false;
 			default:
-				ErrorText.SetActive(false);
+				s_errorText.SetActive(false);
 				ValidationRetry = false;
 				return true;
 		}

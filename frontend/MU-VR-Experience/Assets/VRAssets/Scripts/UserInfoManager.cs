@@ -28,7 +28,7 @@ public static class UserInfoManager
 		PlayerPrefs.Save();
 	}
 
-	static void SavePlayerType(string str)
+	private static void SavePlayerType(string str)
 	{
 		PlayerPrefs.SetString("PlayerType", str);
 		PlayerPrefs.Save();

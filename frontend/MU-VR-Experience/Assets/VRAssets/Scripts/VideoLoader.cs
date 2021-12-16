@@ -5,8 +5,8 @@ using System.Collections;
 
 public class VideoLoader : MonoBehaviour
 {
-    VideoPlayer screenPlayer;
-	AudioSource screenAudio;
+    VideoPlayer _screenPlayer;
+	AudioSource _screenAudio;
 
     void Start()
     {
@@ -14,23 +14,23 @@ public class VideoLoader : MonoBehaviour
     	StartCoroutine(LoadVideo());
     }
 
-	IEnumerator LoadVideo()
+	private IEnumerator LoadVideo()
 	{
-		screenPlayer = GetComponent<VideoPlayer>();
-		screenAudio = screenPlayer.transform.Find("Video Sound").gameObject.GetComponent<AudioSource>();
+		_screenPlayer = GetComponent<VideoPlayer>();
+		_screenAudio = _screenPlayer.transform.Find("Video Sound").gameObject.GetComponent<AudioSource>();
 
-		screenPlayer.playOnAwake = false; 
-		screenAudio.playOnAwake = false;
+		_screenPlayer.playOnAwake = false; 
+		_screenAudio.playOnAwake = false;
 
-		screenPlayer.clip = Resources.Load<VideoClip>("videos/" + UserInfoManager.GetInt("VideoID")) as VideoClip;
+		_screenPlayer.clip = Resources.Load<VideoClip>("videos/" + UserInfoManager.GetInt("VideoID")) as VideoClip;
 
-		screenPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
-		screenPlayer.EnableAudioTrack(0, true);
-		screenPlayer.SetTargetAudioSource(0, screenAudio);
+		_screenPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
+		_screenPlayer.EnableAudioTrack(0, true);
+		_screenPlayer.SetTargetAudioSource(0, _screenAudio);
 
-		screenPlayer.Prepare();
+		_screenPlayer.Prepare();
 
-		while (!screenPlayer.isPrepared)
+		while (!_screenPlayer.isPrepared)
 		{
 			// Debug.Log("Preparing video... WAIT!");
 			yield return null;
@@ -38,13 +38,13 @@ public class VideoLoader : MonoBehaviour
 
 		// Debug.Log("Video was loaded.");
 
-		screenPlayer.Play();
-		screenAudio.Play();
+		_screenPlayer.Play();
+		_screenAudio.Play();
 
 		// Debug.Log("Playing Video");
-		while (screenPlayer.isPlaying)
+		while (_screenPlayer.isPlaying)
 		{
-			//// Debug.Log("Video Time: " + Mathf.FloorToInt((float)screenPlayer.time));
+			//// Debug.Log("Video Time: " + Mathf.FloorToInt((float)_screenPlayer.time));
 			yield return null;
 		}
 

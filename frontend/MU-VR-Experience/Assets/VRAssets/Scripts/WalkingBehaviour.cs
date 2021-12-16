@@ -3,47 +3,47 @@ using UnityEngine.InputSystem;
 
 public class WalkingBehaviour : MonoBehaviour
 {
-	Animator animator;
-	InputMaster controls;
-	Vector2 rawWASDInput, rawArrowsInput, horizontalInput;
+	Animator _animator;
+	InputMaster _controls;
+	Vector2 _rawWASDInput, _rawArrowsInput, _horizontalInput;
 
 	void Awake()
 	{
-		controls = new InputMaster();
-		controls.Enable();
-		controls.Player.MovementWASD.performed += ctx => rawWASDInput = ctx.ReadValue<Vector2>();
-		controls.Player.MovementArrows.performed += ctx => rawArrowsInput = ctx.ReadValue<Vector2>();
+		_controls = new InputMaster();
+		_controls.Enable();
+		_controls.Player.MovementWASD.performed += ctx => _rawWASDInput = ctx.ReadValue<Vector2>();
+		_controls.Player.MovementArrows.performed += ctx => _rawArrowsInput = ctx.ReadValue<Vector2>();
 	}
 
     void Start()
     {
-		animator = GetComponent<Animator>();
+		_animator = GetComponent<Animator>();
     }
 
     void Update()
     {
 		bool movementType = UserInfoManager.GetString(UserInfoManager.SaveType.SettingsMovement).Equals("WASD");
-		horizontalInput = movementType ? rawWASDInput : rawArrowsInput;
+		_horizontalInput = movementType ? _rawWASDInput : _rawArrowsInput;
 
 		if (!movementType)
 		{
 			var keyboard = Keyboard.current;
 			bool arrowPressed = keyboard.upArrowKey.isPressed || keyboard.leftArrowKey.isPressed || keyboard.rightArrowKey.isPressed || keyboard.downArrowKey.isPressed;
 
-			if (rawArrowsInput != new Vector2(0f, 0f) && arrowPressed) horizontalInput = rawArrowsInput;
-			else horizontalInput = new Vector2(0f, 0f);
+			if (_rawArrowsInput != new Vector2(0f, 0f) && arrowPressed) _horizontalInput = _rawArrowsInput;
+			else _horizontalInput = new Vector2(0f, 0f);
 		}
 			
-		HandleAnimation(horizontalInput);
+		HandleAnimation(_horizontalInput);
 	}
 
 	void HandleAnimation(Vector2 direction)
 	{
-		bool isWalking = animator.GetBool("isWalking");
-		float walkSpeed = animator.GetFloat("backwardsWalk");
+		bool isWalking = _animator.GetBool("isWalking");
+		float walkSpeed = _animator.GetFloat("backwardsWalk");
 
-		animator.SetBool("isWalking", direction.x != 0 || direction.y != 0 ? true : false);
-		animator.SetFloat("backwardsWalk", direction.x > 0 ? 1.5f : -1.5f);
-		animator.SetFloat("backwardsWalk", direction.x < 0 ? -1.5f : 1.5f);
+		_animator.SetBool("isWalking", direction.x != 0 || direction.y != 0 ? true : false);
+		_animator.SetFloat("backwardsWalk", direction.x > 0 ? 1.5f : -1.5f);
+		_animator.SetFloat("backwardsWalk", direction.x < 0 ? -1.5f : 1.5f);
 	}
 }

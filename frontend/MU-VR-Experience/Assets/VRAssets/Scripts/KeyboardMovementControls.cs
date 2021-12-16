@@ -4,73 +4,73 @@ using UnityEngine.InputSystem;
 public class KeyboardMovementControls : MonoBehaviour
 {
 	public enum Movement {WASD, Arrows}
-	public float speedMovement = 8f;
-	public float gravity = -9.81f;
-	public Transform groundCheck;
-	public float groundDistance = 0.4f;
-	public LayerMask groundMask;
+	public float SpeedMovement = 8f;
+	public float Gravity = -9.81f;
+	public Transform GroundCheck;
+	public float GroundDistance = 0.4f;
+	public LayerMask GroundMask;
 	public static bool IsInMenu = false;
-	public static Movement currentMovementType = Movement.WASD;
+	public static Movement CurrentMovementType = Movement.WASD;
 
-	Vector3 velocity;
-	bool isGrounded;
-	InputMaster controls;
-	CharacterController controller;
-	Vector2 rawWASDInput, rawArrowsInput, rawHorizontalInput, smoothInputVelocity, horizontalInput;
+	Vector3 _velocity;
+	bool _isGrounded;
+	InputMaster _controls;
+	CharacterController _controller;
+	Vector2 _rawWASDInput, _rawArrowsInput, _rawHorizontalInput, _smoothInputVelocity, _horizontalInput;
 
 	void Awake()
 	{
-		controls = new InputMaster();
-		controls.Enable();
-		controls.Player.MovementWASD.performed += ctx => rawWASDInput = ctx.ReadValue<Vector2>();
-		controls.Player.MovementArrows.performed += ctx => rawArrowsInput = ctx.ReadValue<Vector2>();
+		_controls = new InputMaster();
+		_controls.Enable();
+		_controls.Player.MovementWASD.performed += ctx => _rawWASDInput = ctx.ReadValue<Vector2>();
+		_controls.Player.MovementArrows.performed += ctx => _rawArrowsInput = ctx.ReadValue<Vector2>();
 	}
 
 	void Start()
 	{
-		controller = gameObject.GetComponent<CharacterController>();
+		_controller = gameObject.GetComponent<CharacterController>();
 	}
 
 	void Update()
 	{
 		HandleMovementType();
-		horizontalInput = Vector2.SmoothDamp(horizontalInput, rawHorizontalInput, ref smoothInputVelocity, .15f);
-		Move(horizontalInput);	
+		_horizontalInput = Vector2.SmoothDamp(_horizontalInput, _rawHorizontalInput, ref _smoothInputVelocity, .15f);
+		Move(_horizontalInput);	
 	}
 
-	void Move(Vector2 direction)
+	private void Move(Vector2 direction)
 	{
 		if (!IsInMenu)
 		{
-			isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+			_isGrounded = Physics.CheckSphere(GroundCheck.position, GroundDistance, GroundMask);
 
-			if (isGrounded && velocity.y < 0) velocity.y = -2f;
+			if (_isGrounded && _velocity.y < 0) _velocity.y = -2f;
 
 			float x = direction.x;
 			float z = direction.y;
 
 			Vector3 movementArrow = transform.right * x + transform.forward * z;
 
-			controller.Move(movementArrow * speedMovement * Time.deltaTime);
+			_controller.Move(movementArrow * SpeedMovement * Time.deltaTime);
 
-			velocity.y += gravity * Time.deltaTime;
+			_velocity.y += Gravity * Time.deltaTime;
 
-			controller.Move(velocity * Time.deltaTime);
+			_controller.Move(_velocity * Time.deltaTime);
 		}
 	}
 
-	void HandleMovementType()
+	private void HandleMovementType()
 	{
 		switch(UserInfoManager.GetString(UserInfoManager.SaveType.SettingsMovement))
 		{
 			case "WASD":
-				rawHorizontalInput = rawWASDInput;
+				_rawHorizontalInput = _rawWASDInput;
 				break;
 			case "Arrows":
 				var keyboard = Keyboard.current;
 				bool arrowPressed = keyboard.upArrowKey.isPressed || keyboard.leftArrowKey.isPressed || keyboard.rightArrowKey.isPressed || keyboard.downArrowKey.isPressed;
-				if (rawArrowsInput != new Vector2(0f, 0f) && arrowPressed) rawHorizontalInput = rawArrowsInput;
-				else rawHorizontalInput = new Vector2(0f, 0f);
+				if (_rawArrowsInput != new Vector2(0f, 0f) && arrowPressed) _rawHorizontalInput = _rawArrowsInput;
+				else _rawHorizontalInput = new Vector2(0f, 0f);
 				break;
 		}
 	}

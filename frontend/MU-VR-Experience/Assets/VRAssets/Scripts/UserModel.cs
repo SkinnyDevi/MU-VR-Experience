@@ -2,43 +2,43 @@ namespace UserModel
 {
 	public class User
 	{
-		private int id;
-		private string email;
+		private int _id;
+		private string _email;
 		private string username;
 		private bool isAdmin;
 
-		public User(int id, string email, string username)
+		public User(int _id, string _email, string username)
 		{
-			this.id = id;
-			this.email = email;
+			this._id = _id;
+			this._email = _email;
 			this.username = username;
 		}
 
 		public User()
 		{
-			this.id = 0;
-			this.email = "--";
+			this._id = 0;
+			this._email = "--";
 			this.username = "--";
 		}
 
 		public int GetId()
 		{
-			return this.id;
+			return this._id;
 		}
 
 		public void SetId(int id)
 		{
-			this.id = id;
+			this._id = id;
 		}
 
 		public string GetEmail()
 		{
-			return this.email;
+			return this._email;
 		}
 
 		public void SetEmail(string newEmail)
 		{
-			this.email = newEmail;
+			this._email = newEmail;
 		}
 
 		public string GetUsername()
@@ -53,9 +53,9 @@ namespace UserModel
 
 		public string UserToJson()
 		{
-			string uId = "\"user_id\": \"" + this.id + "\",";
+			string uId = "\"user_id\": \"" + this._id + "\",";
 			string uUsername = "\"username\": \"" + this.username + "\",";
-			string uEmail = "\"email\": \"" + this.email + "\"";
+			string uEmail = "\"email\": \"" + this._email + "\"";
 			return "{" + uId + uUsername + uEmail + "}";
 		}
 	}

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Networking;
+
 using System;
 using System.Collections;
 
@@ -11,13 +12,12 @@ public class ImageFramesSpawner : MonoBehaviour
 {
 	public GameObject ClipFrameObject, EnterButtonObject;
 
-    static readonly string API_URL = "http://localhost:6996/clips/";
-
-	UserDataReceiver userDataObj;
+    const string API_URL = "http://192.168.1.184:6996/clips/";
+	UserDataReceiver _userDataObj;
 
 	void Start()
 	{
-		userDataObj = GameObject.FindObjectOfType<UserDataReceiver>();
+		_userDataObj = GameObject.FindObjectOfType<UserDataReceiver>();
 	}
 
 	public void LoadImageFrames()
@@ -25,9 +25,9 @@ public class ImageFramesSpawner : MonoBehaviour
 		StartCoroutine(GetClipImages());
 	}
 
-	IEnumerator GetClipImages()
+	private IEnumerator GetClipImages()
 	{
-		using(UnityWebRequest getImages = createGetRequest(API_URL, userDataObj.GetToken()))
+		using(UnityWebRequest getImages = createGetRequest(API_URL, _userDataObj.GetToken()))
 		{
 			yield return getImages.SendWebRequest();
 
@@ -48,7 +48,7 @@ public class ImageFramesSpawner : MonoBehaviour
 						ClipFrameObject.transform.Find("Canvas/ClipName").GetComponent<TMP_Text>().text = clip["clip_name"];
 						baseXCoord += 2;
 						GameObject newFrame = Instantiate(ClipFrameObject, gameObject.transform);
-						newFrame.transform.Find("Canvas/Rating Text").GetComponent<RatingPercentageHandler>().SetRequestInfo(clip["clip_id"], userDataObj.GetToken());
+						newFrame.transform.Find("Canvas/Rating Text").GetComponent<RatingPercentageHandler>().SetRequestInfo(clip["clip_id"], _userDataObj.GetToken());
 						EnterButtonObject.name = "Enter-" + clip["clip_id"];
 						Instantiate(EnterButtonObject, newFrame.transform);
 						frameCounts++;

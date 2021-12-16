@@ -18,14 +18,14 @@ public class UserDataReceiver : MonoBehaviour
 	public GameObject Crosshair;
 	public TMP_Text SettingsUserText;
 
-	static readonly string userUrl = "http://localhost:6996/users/user/";
+	const string API_URL = "http://192.168.1.184:6996/users/user/";
 
-	string token = "";
-	User player = new User();
+	string _token = "";
+	User _player = new User();
 
 	void Start()
 	{
-		player = new User();
+		_player = new User();
 		UserInfoManager.LoadSettings();
 		if (!SceneManager.GetActiveScene().name.Equals(SceneLoader.Scene.MainHub.ToString()))
 		{
@@ -41,12 +41,12 @@ public class UserDataReceiver : MonoBehaviour
 
 	public User CurrentPlayer()
 	{
-		return this.player;
+		return this._player;
 	}
 
 	public void SetCurrentPlayer(User newPlayer)
 	{
-		this.player = newPlayer;
+		this._player = newPlayer;
 
 		if (SceneManager.GetActiveScene().name.Equals(SceneLoader.Scene.MainHub.ToString()))
 		{
@@ -56,13 +56,13 @@ public class UserDataReceiver : MonoBehaviour
 			else RegisterExitButton.onClick.Invoke();
 		}
 
-		SettingsUserText.text = "User: " + this.player.GetUsername();
+		SettingsUserText.text = "User: " + this._player.GetUsername();
 		SettingsUserText.gameObject.SetActive(true);
 	}
 
-	IEnumerator LoadNewPlayer()
+	private IEnumerator LoadNewPlayer()
 	{
-		using(UnityWebRequest getUser = createGetRequest(userUrl + UserInfoManager.GetInt("User"), UserInfoManager.GetString("TempTKN")))
+		using(UnityWebRequest getUser = CreateGetRequest(API_URL + UserInfoManager.GetInt("User"), UserInfoManager.GetString("TempTKN")))
 		{
 			yield return getUser.SendWebRequest();
 
@@ -85,18 +85,18 @@ public class UserDataReceiver : MonoBehaviour
 	
 	public void SetToken(string tkn)
 	{
-		token = tkn;
+		_token = tkn;
 		if (SceneManager.GetActiveScene().name.Equals(SceneLoader.Scene.MainHub.ToString()))
 			GameObject.Find("Environment/RegisterRoom/Walls/BillBoardEntry").SetActive(true);
-		UserInfoManager.SaveUser(this.player.GetId(), tkn);
+		UserInfoManager.SaveUser(this._player.GetId(), tkn);
 	}
 
 	public string GetToken()
 	{
-		return token;
+		return _token;
 	}
 
-	private UnityWebRequest createGetRequest(string requestUrl, string bearerToken)
+	private UnityWebRequest CreateGetRequest(string requestUrl, string bearerToken)
 	{
 		UnityWebRequest getUsers = UnityWebRequest.Get(requestUrl);
 		getUsers.SetRequestHeader("Content-Type", "application/json");
@@ -104,39 +104,4 @@ public class UserDataReceiver : MonoBehaviour
 
 		return getUsers;
 	}
-
-	/*
-	private UnityWebRequest createUserPostRequest(string requestUrl, string requestEmail, string requestPassword)
-	{	
-		UnityWebRequest postRequest = UnityWebRequest.Post(requestUrl, Authentication(requestEmail, requestPassword));
-		postRequest.SetRequestHeader("Authorization", Authentication(requestEmail, requestPassword));
-
-		return postRequest;
-	}
-
-	private UnityWebRequest createUserDeleteRequest(string requestUrl, string bearerToken)
-	{
-		UnityWebRequest deleteRequest = UnityWebRequest.Delete(requestUrl);
-		deleteRequest.SetRequestHeader("Authorization", "Bearer " + bearerToken);
-
-		return deleteRequest;
-	}
-
-	private UnityWebRequest createUserUpdateRequest(string requestUrl, string bearerToken, User updateUser)
-	{	
-		UnityWebRequest updateRequest = UnityWebRequest.Put(requestUrl, updateUser.UserToJson());
-		updateRequest.SetRequestHeader("Authorization", "Bearer " + bearerToken);
-		updateRequest.SetRequestHeader("Content-Type", "application/json");
-
-		return updateRequest;
-	}
-
-	private string Authentication(string email, string password)
-	{
-		string basicAuthUser = email + ":" + password;
-		basicAuthUser = System.Convert.ToBase64String(System.Text.Encoding.GetEncoding("ISO-8859-1").GetBytes(basicAuthUser));
-		basicAuthUser = "Basic " + basicAuthUser;
-		return basicAuthUser;
-	}
-	*/
 }

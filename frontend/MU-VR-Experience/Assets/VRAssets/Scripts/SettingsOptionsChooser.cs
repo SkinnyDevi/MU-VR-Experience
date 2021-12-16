@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+
 using TMPro;
 
 public class SettingsOptionsChooser : MonoBehaviour
@@ -38,7 +39,7 @@ public class SettingsOptionsChooser : MonoBehaviour
         Option2TextMesh.fontStyle = FontStyles.Normal;
     }
 
-	public void LoadConfig()
+	private void LoadConfig()
 	{
 		if (gameObject.name.Equals("Movement Choose"))
 		{

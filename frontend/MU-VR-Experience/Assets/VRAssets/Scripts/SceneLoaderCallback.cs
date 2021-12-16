@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SceneLoaderCallback : MonoBehaviour
 {
-    private bool firstUpdateOcurred = true;
+    bool _firstUpdateOcurred = true;
 
     void Update()
     {
-        if (firstUpdateOcurred)
+        if (_firstUpdateOcurred)
         {
-            firstUpdateOcurred = false;
+            _firstUpdateOcurred = false;
             SceneLoader.LoaderCallback();
         }
     }

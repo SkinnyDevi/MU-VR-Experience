@@ -2,71 +2,71 @@ namespace RatingModel
 {
 	public class Rating
 	{
-		private int rating_id, user_id, clip_id;
-		private string rating;
+		private int _ratingId, _userId, _clipId;
+		private string _rating;
 
 		public Rating()
 		{
-			this.rating_id = -1;
-			this.user_id = -1;
-			this.clip_id = -1;
-			this.rating = "";
+			this._ratingId = -1;
+			this._userId = -1;
+			this._clipId = -1;
+			this._rating = "";
 		}
 
-		public Rating(int rating_id, int user_id, int clip_id, string rating)
+		public Rating(int _ratingId, int _userId, int _clipId, string _rating)
 		{
-			this.rating_id = rating_id;
-			this.user_id = user_id;
-			this.clip_id = clip_id;
-			this.rating = rating;
+			this._ratingId = _ratingId;
+			this._userId = _userId;
+			this._clipId = _clipId;
+			this._rating = _rating;
 		}
 
 		public int GetRatingID()
 		{
-			return this.rating_id;
+			return this._ratingId;
 		}
 
 		public void SetRatingID(int num)
 		{
-			this.rating_id = num;
+			this._ratingId = num;
 		}
 
 		public int GetUserID()
 		{
-			return this.user_id;
+			return this._userId;
 		}
 
 		public void SetUserID(int num)
 		{
-			this.user_id = num;
+			this._userId = num;
 		}		
 
 		public int GetClipID()
 		{
-			return this.clip_id;
+			return this._clipId;
 		}
 
 		public void SetClipID(int num)
 		{
-			this.clip_id = num;
+			this._clipId = num;
 		}				
 
 		public string GetRating()
 		{
-			return this.rating;
+			return this._rating;
 		}
 
 		public void SetRating(string str)
 		{
-			this.rating = str;
+			this._rating = str;
 		}
 
 		public string RatingToJson()
 		{
-			string uratingID = "\"rating_id\": \"" + this.rating_id + "\",";
-			string uUserID = "\"user_id\": \"" + this.user_id + "\",";
-			string uClipID = "\"clip_id\": \"" + this.clip_id + "\",";
-			string uRating = "\"rating\": \"" + this.rating + "\"";
+			string uratingID = "\"rating_id\": \"" + this._ratingId + "\",";
+			string uUserID = "\"user_id\": \"" + this._userId + "\",";
+			string uClipID = "\"clip_id\": \"" + this._clipId + "\",";
+			string uRating = "\"rating\": \"" + this._rating + "\"";
 			return "{" + uratingID + uUserID + uClipID + uRating + "}";
 		}
 	}

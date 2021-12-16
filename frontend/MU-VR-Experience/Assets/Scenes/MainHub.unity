@@ -7552,13 +7552,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb239484631864751b884919b4307e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMovement: 9
-  gravity: -19.8
-  groundCheck: {fileID: 715645926}
-  groundDistance: 0.4
-  groundMask:
+  SpeedMovement: 8
+  Gravity: -9.81
+  GroundCheck: {fileID: 2034032690}
+  GroundDistance: 0.4
+  GroundMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
 --- !u!143 &700907917
 CharacterController:
   m_ObjectHideFlags: 0

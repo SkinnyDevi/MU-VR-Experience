@@ -13,37 +13,37 @@ public class SettingsMenu : MonoBehaviour
     public GameObject SettingsMenuObject, Crosshair, RemoveVRButton;
     public static bool InSettings;
 
-	string rootPath = "Settings Menu/Canvas/Pause Menu/";
-    bool vrOptionChanged, acceptedVRPopup = false;
-    PlayerVRHandler playerHandler;
-    InputMaster keyboardControls;
-	TMP_Text vrStateText;
-	Toggle vrToggler;
-	GameObject returnToReceptionBtn;
+	const string RootPath = "Settings Menu/Canvas/Pause Menu/";
+    bool _vrOptionChanged, _acceptedVRPopup = false;
+    PlayerVRHandler _playerHandler;
+    InputMaster _keyboardControls;
+	TMP_Text _vrStateText;
+	Toggle _vrToggler;
+	GameObject _returnToReceptionBtn;
 
     void Awake()
     {
-        keyboardControls = new InputMaster();
-        keyboardControls.Enable();
-        keyboardControls.Menus.Settings.performed += _ => OpenSettings();
+        _keyboardControls = new InputMaster();
+        _keyboardControls.Enable();
+        _keyboardControls.Menus.Settings.performed += _ => OpenSettings();
     }
 
     void Start()
     {
-        playerHandler = GameObject.FindObjectOfType<PlayerVRHandler>();
-		vrStateText = gameObject.transform.Find(rootPath + "Enable VR Checkbox/Toggle/Label").GetComponent<TMP_Text>();
-        vrToggler = gameObject.transform.Find(rootPath + "Enable VR Checkbox/Toggle").GetComponent<Toggle>();
-		returnToReceptionBtn = gameObject.transform.Find(rootPath + "ReturnReception").gameObject;
+        _playerHandler = GameObject.FindObjectOfType<PlayerVRHandler>();
+		_vrStateText = gameObject.transform.Find(RootPath + "Enable VR Checkbox/Toggle/Label").GetComponent<TMP_Text>();
+        _vrToggler = gameObject.transform.Find(RootPath + "Enable VR Checkbox/Toggle").GetComponent<Toggle>();
+		_returnToReceptionBtn = gameObject.transform.Find(RootPath + "ReturnReception").gameObject;
 
 		if (SceneManager.GetActiveScene().name.Equals("MainHub"))
-			returnToReceptionBtn.SetActive(false);
+			_returnToReceptionBtn.SetActive(false);
 		else
-			returnToReceptionBtn.SetActive(true);
+			_returnToReceptionBtn.SetActive(true);
 
 		SettingsMenuObject.SetActive(false);
     }
 
-    void OpenSettings()
+    private void OpenSettings()
     {
         if (!UserTransition.TransitionMade)
         {
@@ -58,7 +58,7 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
-	void SaveSettings()
+	private void SaveSettings()
     {
         Button wasd, arrows, leftclick, keye;
         TMP_Text sensitivityValue;
@@ -80,11 +80,11 @@ public class SettingsMenu : MonoBehaviour
         UserInfoManager.SaveString(UserInfoManager.SaveType.SettingsInteraction, interactionType);
         UserInfoManager.SaveFloat(UserInfoManager.SaveType.SettingsSensitivity, float.Parse(sensitivityValue.text));
         UserInfoManager.SaveFloat(UserInfoManager.SaveType.SettingsVolume, saveVolume);
-		if (vrOptionChanged && acceptedVRPopup) UserInfoManager.SavePlayerType(UserInfoManager.PlayerType.VR);
+		if (_vrOptionChanged && _acceptedVRPopup) UserInfoManager.SavePlayerType(UserInfoManager.PlayerType.VR);
 		else UserInfoManager.SavePlayerType(UserInfoManager.PlayerType.Mouse);
     }
 
-    void SetState(GameObject g, bool state)
+    private void SetState(GameObject g, bool state)
     {
         g.SetActive(state);
     }
@@ -106,31 +106,31 @@ public class SettingsMenu : MonoBehaviour
 			SetState(gameObject.transform.Find("Settings Menu/Canvas/Warning VR Popup").gameObject, false);
 			VRToggleHandler();
 		}
-        if (vrOptionChanged && acceptedVRPopup) playerHandler.ChangePlayerType(PlayerVRHandler.PlayerType.VR);
+        if (_vrOptionChanged && _acceptedVRPopup) _playerHandler.ChangePlayerType(PlayerVRHandler.PlayerType.VR);
 		ContinueResumingGame();
     }
 
-	void HandleVRPopup(bool acceptedPopup)
+	private void HandleVRPopup(bool acceptedPopup)
 	{
 		if (acceptedPopup)
 		{
-			acceptedVRPopup = true;
-			vrOptionChanged = true;
+			_acceptedVRPopup = true;
+			_vrOptionChanged = true;
 			UserInfoManager.SavePlayerType(UserInfoManager.PlayerType.VR);
 			GameObject.Find("Environment/RegisterRoom/Walls/BillBoardEntry/Canvas/Enter Billboard").gameObject.GetComponent<TMP_Text>().text = "Grab the handle to enter!";
 		}
 		else
 		{
-			acceptedVRPopup = false;
-			vrStateText.text = "Disabled";
-            vrOptionChanged = false;
-			vrToggler.isOn = false;
+			_acceptedVRPopup = false;
+			_vrStateText.text = "Disabled";
+            _vrOptionChanged = false;
+			_vrToggler.isOn = false;
 		}
 
 		SetState(gameObject.transform.Find("Settings Menu/Canvas/Warning VR Popup").gameObject, false);
 	}
 
-	void ContinueResumingGame()
+	private void ContinueResumingGame()
 	{
 		Time.timeScale = 1f;
         SaveSettings();
@@ -155,21 +155,21 @@ public class SettingsMenu : MonoBehaviour
 
     public void VRToggleHandler() // Only assigned in the UI
     {
-        if (vrStateText.text.Equals("Disabled") && vrToggler.isOn)
+        if (_vrStateText.text.Equals("Disabled") && _vrToggler.isOn)
         {
-            vrStateText.text = "Enabled";
-			if (!acceptedVRPopup) SetState(gameObject.transform.Find("Settings Menu/Canvas/Warning VR Popup").gameObject, true);
+            _vrStateText.text = "Enabled";
+			if (!_acceptedVRPopup) SetState(gameObject.transform.Find("Settings Menu/Canvas/Warning VR Popup").gameObject, true);
 			else 
 			{
-				vrOptionChanged = true;
-				acceptedVRPopup = true;
+				_vrOptionChanged = true;
+				_acceptedVRPopup = true;
 			}
         }
         else
         {
-            vrStateText.text = "Disabled";
-            vrOptionChanged = false;
-			vrToggler.isOn = false;
+            _vrStateText.text = "Disabled";
+            _vrOptionChanged = false;
+			_vrToggler.isOn = false;
         }
     }
 }

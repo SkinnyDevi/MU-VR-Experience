@@ -13,34 +13,34 @@ public class PointerControls : MonoBehaviour
 	public Camera PlayerCamera;
 	public GameObject SelectedCrosshair, ReplaceableWall, BillboardDoors;
 	public float RayLength;
-	public static bool canInteractAgain = true;
+	public static bool CanInteractAgain = true;
 
-	string currentObject, hoverObject;
-	InputMaster mouseControls;
-	bool mouseClick, eKey;
+	string _currentObject, _hoverObject;
+	InputMaster _mouseControls;
+	bool _mouseClick, _eKey;
 
 	void Awake()
 	{
-		mouseControls = new InputMaster();
-		mouseControls.Enable();
-		mouseControls.Player.MouseClick.performed += _ => mouseClick = true;;
-		mouseControls.Player.KeyE.performed += _ => eKey = true;
+		_mouseControls = new InputMaster();
+		_mouseControls.Enable();
+		_mouseControls.Player.MouseClick.performed += _ => _mouseClick = true;;
+		_mouseControls.Player.KeyE.performed += _ => _eKey = true;
 	}
 
 	void Start()
 	{
-		currentObject = "";
-		hoverObject = "";
-		mouseClick = false;
-		eKey = false;
+		_currentObject = "";
+		_hoverObject = "";
+		_mouseClick = false;
+		_eKey = false;
 	}
 
 	void Update()
 	{
 		if (!(SceneManager.GetActiveScene().name.Equals("TheatreCinema") && PlayerVRHandler.CurrentPlayerType == PlayerVRHandler.PlayerType.VR))
 		{
-			if (!((currentObject.Equals("Login") || currentObject.Equals("Register")) || (hoverObject.Equals("Login") || hoverObject.Equals("Register")))) canInteractAgain = true;
-			if (canInteractAgain) HandleInteractionKey();
+			if (!((_currentObject.Equals("Login") || _currentObject.Equals("Register")) || (_hoverObject.Equals("Login") || _hoverObject.Equals("Register")))) CanInteractAgain = true;
+			if (CanInteractAgain) HandleInteractionKey();
 
 			HighlightSelectable();
 			RemoveCrosshairOnScreen();
@@ -51,21 +51,21 @@ public class PointerControls : MonoBehaviour
 	{
 		if (UserInfoManager.GetString(UserInfoManager.SaveType.SettingsInteraction).Equals("LeftClick"))
 		{
-			if (mouseClick && !UserTransition.TransitionMade)
+			if (_mouseClick && !UserTransition.TransitionMade)
 			{
 				CurrentObjectHandler();
 			}
 		}
 		else
 		{
-			if (eKey)
+			if (_eKey)
 			{
 				CurrentObjectHandler();
 			}
 		}
 
-		mouseClick = false;
-		eKey = false;
+		_mouseClick = false;
+		_eKey = false;
 	}
 
 	void CurrentObjectHandler()
@@ -73,8 +73,8 @@ public class PointerControls : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out hit, RayLength))
 		{
-			currentObject = hit.transform.name;
-			// Debug.Log(currentObject);
+			_currentObject = hit.transform.name;
+			// Debug.Log(_currentObject);
 		}
 
 		EnterBillboard();
@@ -84,7 +84,7 @@ public class PointerControls : MonoBehaviour
 
 	void EnterBillboard()
 	{
-		if (currentObject.Equals("BillBoardDoors"))
+		if (_currentObject.Equals("BillBoardDoors"))
 		{
 			SceneLoader.LoadScene(SceneLoader.Scene.TheatreBillboard);
 		}
@@ -95,15 +95,15 @@ public class PointerControls : MonoBehaviour
 		RaycastHit hoverCast;
 		if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out hoverCast, RayLength))
 		{
-			hoverObject = hoverCast.transform.name;
+			_hoverObject = hoverCast.transform.name;
 		}
 		else
 		{
-			hoverObject = "Air";
+			_hoverObject = "Air";
 		}
 
 		Regex hoverableTest = new Regex(".*(Login|Register|Enter|BillBoardDoors|Like|Regular|Dislike|Remove VR).*$");
-		if (hoverableTest.Matches(hoverObject).Count > 0)
+		if (hoverableTest.Matches(_hoverObject).Count > 0)
 		{
 			SelectedCrosshair.SetActive(true);
 		}
@@ -125,36 +125,36 @@ public class PointerControls : MonoBehaviour
 
 	public string GetCurrentObject()
 	{
-		return currentObject;
+		return _currentObject;
 	}
 
 	public void SetCurrentObject(string str)
 	{
-		this.currentObject = str;
+		this._currentObject = str;
 	}
 
 	public void TransitionFinished()
 	{
-		currentObject += "Exited";
-		// Debug.Log(currentObject);
+		_currentObject += "Exited";
+		// Debug.Log(_currentObject);
 	}
 
 	public void HandleBillboardEnterButtons()
 	{
-		if (currentObject.Contains("Enter-"))
+		if (_currentObject.Contains("Enter-"))
 		{
-			UserInfoManager.SaveInt("VideoID", Int32.Parse(currentObject.Substring(6, 1)));
-			currentObject = "EnterButtonExit";
+			UserInfoManager.SaveInt("VideoID", Int32.Parse(_currentObject.Substring(6, 1)));
+			_currentObject = "EnterButtonExit";
 			SceneLoader.LoadScene(SceneLoader.Scene.TheatreCinema);
 		}
 	}
 
 	public void HandleRatingButtons()
 	{
-		if (currentObject.Contains("Cube"))
+		if (_currentObject.Contains("Cube"))
 		{
 			SubmitRatingHandler.UserID = UserInfoManager.GetInt("User");
-			StartCoroutine(SubmitRatingHandler.RatingSubmitTest(currentObject, ReplaceableWall, BillboardDoors));
+			StartCoroutine(SubmitRatingHandler.SubmitRating(_currentObject, ReplaceableWall, BillboardDoors));
 		}
 	}
 }

@@ -11,60 +11,60 @@ public class RegisterKeyboardManager : MonoBehaviour
     public TMP_InputField EmailTextField, PwdTextField, ConfirmPwdField;
     public Button SubmitButton;
 
-    EventSystem system;
-	InputMaster keyboardControls;
-	bool tabPress, shiftPress;
-	static GameObject processWheel;
+	static GameObject s_processWheel;
+    EventSystem _system;
+	InputMaster _keyboardControls;
+	bool _tabPress, _shiftPress;
 
 	void Awake()
 	{
-		keyboardControls = new InputMaster();
-		keyboardControls.Enable();
-		keyboardControls.Menus.FormInputMovement.performed += _ => tabPress = true;
-		keyboardControls.Menus.FormInputMovementRelease.performed += _ => tabPress = false;
-		keyboardControls.Menus.PreviousFormInputMovement.performed += _ => shiftPress = true;
-		keyboardControls.Menus.PreviousFormInputMovementRelease.performed += _ => shiftPress = false;
-		keyboardControls.Menus.Submit.performed += _ => SubmitForm();
+		_keyboardControls = new InputMaster();
+		_keyboardControls.Enable();
+		_keyboardControls.Menus.FormInputMovement.performed += _ => _tabPress = true;
+		_keyboardControls.Menus.FormInputMovementRelease.performed += _ => _tabPress = false;
+		_keyboardControls.Menus.PreviousFormInputMovement.performed += _ => _shiftPress = true;
+		_keyboardControls.Menus.PreviousFormInputMovementRelease.performed += _ => _shiftPress = false;
+		_keyboardControls.Menus.Submit.performed += _ => SubmitForm();
 	}
 
     void Start()
     {
-        system = EventSystem.current;
-		tabPress = false;
-		shiftPress = false;
-		processWheel = gameObject.transform.Find("ProcessWheel").gameObject;
-		processWheel.SetActive(false);
+        _system = EventSystem.current;
+		_tabPress = false;
+		_shiftPress = false;
+		s_processWheel = gameObject.transform.Find("ProcessWheel").gameObject;
+		s_processWheel.SetActive(false);
         EmailField.Select();
     }
 
     void Update()
 	{
-		if (tabPress && shiftPress) PreviousField();
-		else if (tabPress) NextField();
+		if (_tabPress && _shiftPress) PreviousField();
+		else if (_tabPress) NextField();
 	}
 
-	void NextField()
+	private void NextField()
 	{
-		Selectable next = system.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
+		Selectable next = _system.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
 		if (next != null) next.Select();
-		tabPress = false;
+		_tabPress = false;
 	}
 
-	void PreviousField()
+	private void PreviousField()
 	{
-		Selectable previous = system.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnUp();
+		Selectable previous = _system.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnUp();
         if (previous != null) previous.Select();
-		tabPress = false;
+		_tabPress = false;
 	}
 
-	void SubmitForm()
+	private void SubmitForm()
 	{
 		SendData();
 	}
 
 	public static void ToggleProcessWheel(bool toggle)
 	{
-		processWheel.SetActive(toggle);
+		s_processWheel.SetActive(toggle);
 	}
 
     public void SendData()

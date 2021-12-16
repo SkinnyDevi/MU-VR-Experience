@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Networking;
+
 using System.Collections;
 
 using TMPro;
@@ -8,21 +9,22 @@ using SimpleJSON;
 
 public class RatingPercentageHandler : MonoBehaviour
 {
-    static readonly string API_URL = "http://192.168.1.184:6996/ratings/by_type/";
-    public TMP_Text LikedPercentage, RegularPercentage, DislikedPercentage;
-    int clipId = -1;
-    string token = "";
+	public TMP_Text LikedPercentage, RegularPercentage, DislikedPercentage;
+
+    const string API_URL = "http://192.168.1.184:6996/ratings/by_type/";
+    int _clipId = -1;
+    string _token = "";
 
     public void SetRequestInfo(int id, string tkn)
     {
-        clipId = id;
-        token = tkn;
+        _clipId = id;
+        _token = tkn;
         StartCoroutine(CollectClipRatings());
     }
 
-    IEnumerator CollectClipRatings()
+    private IEnumerator CollectClipRatings()
     {
-        using(UnityWebRequest ratings = createGetRequest(API_URL + clipId, token))
+        using(UnityWebRequest ratings = createGetRequest(API_URL + _clipId, _token))
         {
             yield return ratings.SendWebRequest();
 
@@ -45,7 +47,7 @@ public class RatingPercentageHandler : MonoBehaviour
         }
     }
 
-    string GetPercentage(float x, float y)
+    private string GetPercentage(float x, float y)
     {
         return ((x/y)*100.0).ToString("0.0") + "%";
     }

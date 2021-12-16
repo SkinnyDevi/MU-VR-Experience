@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 using System;
 
 public static class SceneLoader
 {
     public enum Scene {MainHub, Loading, TheatreBillboard, TheatreCinema}
 
-    static Action onLoaderCallback;
+    static Action s_onLoaderCallback;
 
     public static void LoadScene(Scene scene)
     {
@@ -14,7 +15,7 @@ public static class SceneLoader
 
         if (!String.IsNullOrEmpty(userTkn))
         {
-            onLoaderCallback = () => {
+            s_onLoaderCallback = () => {
                 SceneManager.LoadScene(scene.ToString());
             };
 
@@ -24,10 +25,10 @@ public static class SceneLoader
 
     public static void LoaderCallback()
     {
-        if (onLoaderCallback != null)
+        if (s_onLoaderCallback != null)
         {
-            onLoaderCallback();
-            onLoaderCallback = null;
+            s_onLoaderCallback();
+            s_onLoaderCallback = null;
         }
     }
 }

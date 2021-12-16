@@ -15,52 +15,52 @@ public class LoginHandler : MonoBehaviour
     public TMP_Text ErrorObjMessage;
 	public static bool ValidationRetry = true;
 
-    static readonly string API_URL = "http://192.168.1.184:6996/users/signin";
-    static GameObject SuccessText, ErrorText;
-    static TMP_Text ErrorMessage;
+    const string API_URL = "http://192.168.1.184:6996/users/signin";
+    static GameObject s_successText, s_errorText;
+    static TMP_Text s_errorMessage;
 
     void Start()
     {
-        SuccessText = SuccessObjText;
-        ErrorText = ErrorObjText;
-        ErrorMessage = ErrorObjMessage;
+        s_successText = SuccessObjText;
+        s_errorText = ErrorObjText;
+        s_errorMessage = ErrorObjMessage;
     }
 
     public static IEnumerator SignIn(string userEmail, string userPassword)
     {
 		if (HandleErrorMessages(Validate(userEmail, userPassword)))
 		{
-			using(UnityWebRequest signin = createUserPostRequest(API_URL, userEmail, userPassword))
+			using(UnityWebRequest signin = CreateUserPostRequest(API_URL, userEmail, userPassword))
 			{
 				yield return signin.SendWebRequest(); 
 
 				LoginKeyboardManager.ToggleProcessWheel(false);
 				if (signin.result != UnityWebRequest.Result.Success)
 				{
-					ErrorMessage.text = "Password is Incorrect!";
+					s_errorMessage.text = "Password is Incorrect!";
 					switch (signin.responseCode)
 					{
 						case 404:
 							// Debug.Log("User not found!");
-							ErrorMessage.text = "User not found!";
+							s_errorMessage.text = "User not found!";
 							break;
 						case 401:
-							ErrorMessage.text = "Password is Incorrect!";
+							s_errorMessage.text = "Password is Incorrect!";
 							break;
 						case 0:
-							ErrorMessage.text = "No started\nserver was\nfound";
+							s_errorMessage.text = "No started\nserver was\nfound";
 							break;
 						default:
 							// Debug.Log(signin.responseCode);
-							ErrorMessage.text = "Request\nfound\nan error";
+							s_errorMessage.text = "Request\nfound\nan error";
 							Debug.LogError("There was an error signin in: " + signin.error);
 							break;
 					}
-					ErrorText.SetActive(true);
+					s_errorText.SetActive(true);
 				}
 				else
 				{
-					ErrorText.SetActive(false);
+					s_errorText.SetActive(false);
 					// Debug.Log("User signed in");
 					
 					JSONNode response = JSON.Parse(signin.downloadHandler.text);
@@ -68,7 +68,7 @@ public class LoginHandler : MonoBehaviour
 					JSONNode userObj = response["user"];
 					User newPlayer = new User(userObj["user_id"], userObj["email"], userObj["username"]);
 
-					SuccessText.SetActive(true);
+					s_successText.SetActive(true);
 
 					currentUserData.SetCurrentPlayer(newPlayer);
 					currentUserData.SetToken(response["access_token"]);
@@ -78,7 +78,7 @@ public class LoginHandler : MonoBehaviour
 		ValidationRetry = true;
     }
 
-	static int Validate(string email, string pass)
+	private static int Validate(string email, string pass)
 	{	
 		int code = 1;
 		Regex emailRx = new Regex("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$");
@@ -91,28 +91,28 @@ public class LoginHandler : MonoBehaviour
 		return code;
 	}
 
-	static bool HandleErrorMessages(int validationCode)
+	private static bool HandleErrorMessages(int validationCode)
 	{
 		switch (validationCode)
 		{
 			case -1:
 				LoginKeyboardManager.ToggleProcessWheel(false);
-				ErrorText.SetActive(true);
-				ErrorMessage.text = "Missing required fields";
+				s_errorText.SetActive(true);
+				s_errorMessage.text = "Missing required fields";
 				return false;				
 			case 0:
 				LoginKeyboardManager.ToggleProcessWheel(false);
-				ErrorText.SetActive(true);
-				ErrorMessage.text = "Invalid email";
+				s_errorText.SetActive(true);
+				s_errorMessage.text = "Invalid email";
 				return false;
 			default:
-				ErrorText.SetActive(false);
+				s_errorText.SetActive(false);
 				ValidationRetry = false;
 				return true;
 		}
 	}
 
-    private static UnityWebRequest createUserPostRequest(string requestUrl, string requestEmail, string requestPassword)
+    private static UnityWebRequest CreateUserPostRequest(string requestUrl, string requestEmail, string requestPassword)
 	{	
 		UnityWebRequest postRequest = UnityWebRequest.Post(requestUrl, Authentication(requestEmail, requestPassword));
 		postRequest.SetRequestHeader("Authorization", Authentication(requestEmail, requestPassword));

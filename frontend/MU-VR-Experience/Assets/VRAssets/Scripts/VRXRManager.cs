@@ -5,7 +5,7 @@ using System.Collections;
 
 public class VRXRManager : MonoBehaviour
 {
-	bool subsystemsStarted = false;
+	bool _subsystemsStarted = false;
 
 	void OnEnable()
 	{
@@ -17,11 +17,11 @@ public class VRXRManager : MonoBehaviour
 
 	void Update()
 	{
-		if (XRGeneralSettings.Instance.Manager.isInitializationComplete && !subsystemsStarted)
+		if (XRGeneralSettings.Instance.Manager.isInitializationComplete && !_subsystemsStarted)
 		{
 			// Debug.Log("Starting Subsystems");
 			XRGeneralSettings.Instance.Manager.StartSubsystems();
-			subsystemsStarted = true;
+			_subsystemsStarted = true;
 			OVRManager.display.RecenterPose();
 		}
 	}

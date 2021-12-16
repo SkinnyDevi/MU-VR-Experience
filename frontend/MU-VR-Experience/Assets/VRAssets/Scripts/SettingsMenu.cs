@@ -117,6 +117,7 @@ public class SettingsMenu : MonoBehaviour
 			acceptedVRPopup = true;
 			vrOptionChanged = true;
 			UserInfoManager.SavePlayerType(UserInfoManager.PlayerType.VR);
+			GameObject.Find("Environment/RegisterRoom/Walls/BillBoardEntry/Canvas/Enter Billboard").gameObject.GetComponent<TMP_Text>().text = "Grab the handle to enter!";
 		}
 		else
 		{

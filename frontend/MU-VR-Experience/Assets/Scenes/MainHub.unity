@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18329452, g: 0.22892544, b: 0.30628645, a: 1}
+  m_IndirectSpecularColor: {r: 0.17153707, g: 0.24619643, b: 0.37492472, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -23301,6 +23301,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1709295754}
     m_Modifications:
+    - target: {fileID: 7257775885095581754, guid: 9f00601222c636a449bbfd28aa1e31d8,
+        type: 3}
+      propertyPath: m_text
+      value: Click to enter the Billboard!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257775885095581754, guid: 9f00601222c636a449bbfd28aa1e31d8,
+        type: 3}
+      propertyPath: m_margin.x
+      value: -88.67618
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257775885095581755, guid: 9f00601222c636a449bbfd28aa1e31d8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257775885095581755, guid: 9f00601222c636a449bbfd28aa1e31d8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 42.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7257775885318157304, guid: 9f00601222c636a449bbfd28aa1e31d8,
         type: 3}
       propertyPath: m_Name

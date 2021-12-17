@@ -97,6 +97,8 @@ The planning went as follows:
 	2. The billboard room where a user would choose what short film to watch
 	3. The main cinema room to watch the short films
 
+If you wish to see more on how the project is being worked on, watch this [Trello](https://trello.com/b/VbXPA5k5/project-tasks) to see in what current stage the project is.
+
 <a name="how-it-works"/>
 
 ## How It Works And Basic Playthrough

@@ -7,7 +7,6 @@ function getCleanUser(user) {
 		user_id: user.user_id,
 		username: user.username,
 		email: user.email,
-		password: user.password,
 		isAdmin: user.isAdmin,
 	};
 }

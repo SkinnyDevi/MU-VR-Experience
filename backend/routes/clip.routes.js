@@ -2,7 +2,7 @@ module.exports = app => {
 	const clips = require("../controllers/clip.controller.js");
 	const auth = require("../controllers/auth.js");
 
-	var router = require("express").Router();
+	var router = require("./websocket.js");
 
 	router.post("/", auth.isAuthenticated, clips.create);
 

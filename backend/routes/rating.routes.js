@@ -2,7 +2,7 @@ module.exports = app => {
 	const ratings = require("../controllers/rating.controller.js");
 	const auth = require("../controllers/auth.js");
 
-	var router = require("express").Router();
+	var router = require("./websocket.js");
 
 	router.get("/", auth.isAuthenticated, ratings.findAll);
 

@@ -7,12 +7,11 @@ const bodyParser = require('body-parser');
 const db = require("./models");
 
 const app = express();
+const expressWs = require("express-ws")(app);
 const port = process.env.PORT || 6996;
 
 app.use(cors());
-
 app.use(bodyParser.json());
-
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
@@ -59,6 +58,4 @@ require("./routes/user.routes")(app);
 require("./routes/clip.routes")(app);
 require("./routes/rating.routes")(app);
 
-app.listen(port, () => {
-	console.log('Server listening on port: ' + port);
-});
+app.listen(port, () => console.log("Listening on port: " + port));

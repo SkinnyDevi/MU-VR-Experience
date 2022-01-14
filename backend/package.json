@@ -18,7 +18,6 @@
     "express-ws": "^5.0.2",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.1.0",
-    "query-string": "^7.1.0",
     "sequelize": "^5.21.6",
     "sequelize-cli": "^5.5.1"
   }

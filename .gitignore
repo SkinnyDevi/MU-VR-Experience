@@ -46,6 +46,11 @@ frontend/MU-VR-Experience/[Aa]ssets/ADG_Textures/walls_vol1/wall*.meta
 !frontend/MU-VR-Experience/[Aa]ssets/ADG_Textures/walls_vol1/wall07.meta
 frontend/MU-VR-Experience/Assets/Resources/videos
 frontend/MU-VR-Experience/Assets/Resources/videos.meta
+frontend/MU-VR-Experience/Assets/NuGet
+frontend/MU-VR-Experience/Assets/NuGet.meta
+frontend/MU-VR-Experience/Assets/Packages/WebSocketSharp-netstandard.1.0.1
+frontend/MU-VR-Experience/Assets/Packages/WebSocketSharp-netstandard.1.0.1.meta
+
 
 
 ## Other

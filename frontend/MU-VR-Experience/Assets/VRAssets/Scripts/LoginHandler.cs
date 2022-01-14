@@ -15,7 +15,7 @@ public class LoginHandler : MonoBehaviour
     public TMP_Text ErrorObjMessage;
 	public static bool ValidationRetry = true;
 
-    const string API_URL = "http://192.168.1.184:6996/users/signin";
+    const string API_URL = "http://localhost:6996/users/signin";
     static GameObject s_successText, s_errorText;
     static TMP_Text s_errorMessage;
 

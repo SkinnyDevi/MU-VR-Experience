@@ -12,7 +12,7 @@ public class ImageFramesSpawner : MonoBehaviour
 {
 	public GameObject ClipFrameObject, EnterButtonObject;
 
-    const string API_URL = "http://192.168.1.184:6996/clips/";
+    const string API_URL = "http://localhost:6996/clips/";
 	UserDataReceiver _userDataObj;
 
 	void Start()

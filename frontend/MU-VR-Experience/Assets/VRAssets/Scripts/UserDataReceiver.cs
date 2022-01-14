@@ -18,7 +18,7 @@ public class UserDataReceiver : MonoBehaviour
 	public GameObject Crosshair;
 	public TMP_Text SettingsUserText;
 
-	const string API_URL = "http://192.168.1.184:6996/users/user/";
+	const string API_URL = "http://localhost:6996/users/user/";
 
 	string _token = "";
 	User _player = new User();

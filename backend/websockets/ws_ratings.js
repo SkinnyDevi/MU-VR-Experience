@@ -24,7 +24,10 @@ exports.getWSRouter = (expressApp) => {
 							if (Array.from(findData)[0] != undefined) {
 								formattedInfo = {
 									return_event: "newRatingReturn",
-									returned_payload: utils.generateSplitRatingTypeJSON(findData)
+									returned_payload: {
+										clip_id: msg.payload.clipId,
+										updated_ratings: utils.generateSplitRatingTypeJSON(findData)
+									}
 								}
 								expressWs.getWss("/").clients.forEach(client => {
 									client.send(JSON.stringify(formattedInfo));

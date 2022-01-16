@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Networking;
 
+using WebSocketSharp;
+
 using System.Collections;
 
 using RatingModel;
@@ -10,16 +12,25 @@ public class SubmitRatingHandler : MonoBehaviour
 {
 	public static int UserID = -1;
 
-	const string API_URL = "http://192.168.1.184:6996/ratings/";
+	const string API_URL = "http://localhost:6996/ratings/";
+	const string WS_URL = "ws://localhost:6996/ratings";
 	static string s_requestToken;
 	static UserDataReceiver s_playerData;
 	static Rating s_ratingPayload;
+	static WebSocket _ws;
 
 	void Start()
 	{
 		s_playerData = GameObject.FindObjectOfType<UserDataReceiver>();
 		s_playerData.SetToken(UserInfoManager.GetString("TempTKN"));
 		s_requestToken = s_playerData.GetToken();
+
+		_ws = new WebSocket(WS_URL);
+        _ws.Connect();
+        _ws.OnMessage += (sender, e) =>
+        {
+            Debug.Log("SRH - "+((WebSocket)sender).Url+", Data : "+e.Data);
+        };
 	}
 
 	public static IEnumerator SubmitRating(string objName, GameObject Wall, GameObject Doors)
@@ -61,6 +72,9 @@ public class SubmitRatingHandler : MonoBehaviour
 			{
 				Wall.SetActive(false);
 				Doors.SetActive(true);
+
+				string ws_event = "{\"event\": \"newRating\",\n\"payload\": {\n\"clipId\": \"" + s_ratingPayload.GetUserID() + "\"\n}}";
+				_ws.Send(ws_event);
 			}
 		}
 	}

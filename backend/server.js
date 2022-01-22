@@ -5,9 +5,11 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require("./models");
+const fs = require("fs");
 
 const app = express();
 const expressWs = require("express-ws")(app);
+const jsreportInstance = require("./jsreport/jsreport-init");
 const port = process.env.PORT || 6996;
 
 app.use(cors());
@@ -58,4 +60,6 @@ require("./routes/user.routes")(app);
 require("./routes/clip.routes")(app);
 require("./routes/rating.routes")(app);
 
-app.listen(port, () => console.log("Listening on port: " + port));
+const server = app.listen(port, () => console.log("Listening on port: " + port));
+
+jsreportInstance.jsreport_init(app, server);

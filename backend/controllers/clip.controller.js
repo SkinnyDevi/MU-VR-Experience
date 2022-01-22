@@ -1,6 +1,14 @@
 const db = require("../models");
+const ClipService = require("../services/clip.service");
 const Clip = db.clip;
 const utils = require("../utils");
+
+let clipService = new ClipService();
+
+function handleResponse(serviceRes, res) {
+	if (!serviceRes.error) res.send(serviceRes);
+	else res.status(500).send(serviceRes);
+}
 
 exports.create = (req, res) => {
 	if (!req.body.clip_name || !req.body.clip_duration) {
@@ -16,28 +24,15 @@ exports.create = (req, res) => {
 		clip_trailer_img: req.body.clip_trailer_img
 	}
 
-	Clip.findOne({ where: { clip_name: req.body.clip_name } }).then(findData => {
-		if (findData) {
-			return res.send(utils.getCleanClip(findData));
-		}
-
-		Clip.create(clip).then(createData => {
-			return res.send(utils.getCleanClip(createData));
-		});
-	}).catch(err => {
-		res.status(500).send({
-			message: "Couldn't find an existing clip: " + err.message
-		});
+	clipService.createClip(clip).then(r => {
+		console.log("\n", r, "\n")
+		handleResponse(r, res);
 	});
 }
 
 exports.findAll = (req, res) => {
-	Clip.findAll().then(data => {
-		res.send(data);
-	}).catch(err => {
-		res.status(500).send({
-			message: "Some error occurred while retrieving all clips: " + err.message
-		});
+	clipService.findAll().then(r => {
+		handleResponse(r, res);
 	});
 }
 
@@ -92,7 +87,7 @@ exports.delete = (req, res) => {
 			});
 		} else {
 			res.status(404).send({
-				message: "Cannot delete the clip with id: " + id + "Maybe the clip was not found."
+				message: "Cannot delete the clip with id: " + id + ". Maybe the clip was not found."
 			});
 		}
 	}).catch(err => {

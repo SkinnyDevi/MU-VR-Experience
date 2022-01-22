@@ -2,6 +2,13 @@
 backend/unity-receiver
 backend/.env
 backend/node_modules
+backend/jsreport/data
+backend/jsreport/logs
+backend/jsreport/monitoring
+backend/jsreport/profiles
+backend/jsreport/settings
+backend/jsreport/fs*
+backend/jsreport/storage
 
 ## Frontend
 frontend/unity-external-assets
@@ -50,7 +57,6 @@ frontend/MU-VR-Experience/Assets/NuGet
 frontend/MU-VR-Experience/Assets/NuGet.meta
 frontend/MU-VR-Experience/Assets/Packages/WebSocketSharp-netstandard.1.0.1
 frontend/MU-VR-Experience/Assets/Packages/WebSocketSharp-netstandard.1.0.1.meta
-
 
 
 ## Other

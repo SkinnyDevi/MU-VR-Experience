@@ -1,6 +1,5 @@
 const db = require("../models");
 const Clip = db.clip;
-const utils = require("../utils");
 
 class ClipService {
 	async createClip(clip) {

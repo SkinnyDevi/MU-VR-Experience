@@ -27,10 +27,14 @@ class ClipController {
 						createData.clip_id = sendData.clip_id;
 						res.send(utils.getCleanClip(createData));
 					}).catch(err => {
-						error: "Couldn't retrieve newly created clip: " + err.message
+						res.status(500).send({
+							error: "Couldn't retrieve newly created clip: " + err.message
+						});
 					});
 				}).catch(err => {
-					error: "Something happened while creating the clip: " + err.message
+					res.status(500).send({
+						error: "Something happened while creating the clip: " + err.message
+					});
 				});
 			}
 		}).catch(err => {

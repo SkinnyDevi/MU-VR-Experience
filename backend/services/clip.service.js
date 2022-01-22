@@ -4,29 +4,23 @@ const utils = require("../utils");
 
 class ClipService {
 	async createClip(clip) {
-		let exists;
-		
-		try {
-			exists = await Clip.findOne({ where: { clip_name: clip.clip_name } });
-		} catch (err) {
-			return { error : "Couldn't find an existing clip: " + err.message}
-		}
-
-		if (exists) return utils.getCleanClip(exists);
-		else {
-			Clip.create(clip).then(createData => {
-				return utils.getCleanClip(createData);
-			}).catch(err => {
-				return { error : "Couldn't find an existing clip: " + err.message}
-			});
-		} 
+		return Clip.create(clip);
 	}
 
 	async findAll() {
-		let allClips = Clip.findAll();
+		return Clip.findAll();
+	}
 
-		if (allClips) return allClips;
-		else return { error: "Some error occurred while retrieving all clips: " + err.message};
+	async findOne(searchQuery) {
+		return Clip.findOne({ where: searchQuery });
+	}
+
+	async deleteClip(id) {
+		return Clip.destroy({ where: { clip_id: id } });
+	}
+
+	async updateClip(updatedClip, id) {
+		return Clip.update(updatedClip, { where: { clip_id: id } });
 	}
 }
 

@@ -19,7 +19,9 @@ module.exports = app => {
 
 	router.get("/user/:id", auth.isAuthenticated, ratingController.findAllUserRatings);
 
-	router.get("/report", reportController.gatherReport);
+	router.get("/report", auth.isAuthenticated, reportController.gatherReport);
+
+	router.post("/report", auth.isAuthenticated, reportController.sendReportThroughEmail);
 
 	router.put("/rating/", auth.isAuthenticated, ratingController.updateRating);
 

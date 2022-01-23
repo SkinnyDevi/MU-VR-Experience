@@ -10,6 +10,7 @@ backend/jsreport/settings
 backend/jsreport/fs*
 backend/jsreport/storage
 backend/jsreport/rendered-report/config.json
+backend/jsreport/rendered-report/report.html
 
 ## Frontend
 frontend/unity-external-assets

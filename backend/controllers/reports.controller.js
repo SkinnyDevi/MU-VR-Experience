@@ -14,6 +14,23 @@ class ReportController {
 			})
 		});
 	}
+
+
+	sendReportThroughEmail = (req, res) => {
+		if (!req.body.email) res.status(400).send({
+				error: "There is no sender email present."
+		});
+
+		this.reportService.sendPdfThroughEmail(req.body.email).then(data => {
+			res.send({
+				message: "Email has been sent to: " + req.body.email + "!"
+			});
+		}).catch(err => {
+			res.status(500).send({
+				error: "Something ocurred while the controller tried to send the email: " + err.message
+			});
+		});
+	}
 }
 
 module.exports = ReportController;

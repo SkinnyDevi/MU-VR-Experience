@@ -1,9 +1,11 @@
 module.exports = app => {
-	const RatingController = require("../controllers/rating.controller.js");
+	const RatingController = require("../controllers/rating.controller");
+	const ReportController = require("../controllers/reports.controller");
 	const auth = require("../controllers/auth.js");
 
 	var router = require("../websockets/ws_ratings.js").getWSRouter(app);
 	const ratingController = new RatingController();
+	const reportController = new ReportController();
 
 	router.get("/", auth.isAuthenticated, ratingController.findAll);
 
@@ -16,6 +18,8 @@ module.exports = app => {
 	router.get("/clip/:id", auth.isAuthenticated, ratingController.findAllClipRatings);
 
 	router.get("/user/:id", auth.isAuthenticated, ratingController.findAllUserRatings);
+
+	router.get("/report", reportController.gatherReport);
 
 	router.put("/rating/", auth.isAuthenticated, ratingController.updateRating);
 

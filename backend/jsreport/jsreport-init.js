@@ -1,18 +1,20 @@
 const express = require("express");
 const reportingApp = express();
+exports.hasInitialized = false;
 
 exports.jsreport_init = (mainApp, server) => {
 	mainApp.use("/reporting", reportingApp);
 
-	const jsreport = require("jsreport")({
+	const jsreportInstance = require("jsreport")({
 		extensions: {
-			express: {app: reportingApp, server: server}
+			express: { app: reportingApp, server: server }
 		},
 		appPath: "/reporting"
 	});
-	
-	jsreport.init().then(() => {
+
+	jsreportInstance.init().then(() => {
 		console.log("JSReport Server Started");
+		this.hasInitialized = true;
 	}).catch(e => {
 		console.error("JSReport Error: \n" + e);
 	});

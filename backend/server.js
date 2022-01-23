@@ -9,7 +9,7 @@ const fs = require("fs");
 
 const app = express();
 const expressWs = require("express-ws")(app);
-const jsreportInstance = require("./jsreport/jsreport-init");
+const jsreportInstance = require("./jsreport/jsreport-init.js");
 const port = process.env.PORT || 6996;
 
 app.use(cors());

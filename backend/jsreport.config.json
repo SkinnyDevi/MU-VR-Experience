@@ -44,6 +44,6 @@
     }
   },
   "sandbox": { 
-		"allowedModules": ["https", "mysql2"] 
+		"allowedModules": ["https"] 
 	}
 }

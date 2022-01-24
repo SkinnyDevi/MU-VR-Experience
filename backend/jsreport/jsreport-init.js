@@ -1,6 +1,5 @@
 const express = require("express");
 const reportingApp = express();
-exports.hasInitialized = false;
 
 exports.jsreport_init = (mainApp, server) => {
 	mainApp.use("/reporting", reportingApp);

@@ -11,6 +11,7 @@ backend/jsreport/fs*
 backend/jsreport/storage
 backend/jsreport/rendered-report/config.json
 backend/jsreport/rendered-report/report.html
+backend/jsreport/rendered-report/report.pdf
 
 ## Frontend
 frontend/unity-external-assets
@@ -24,6 +25,7 @@ frontend/MU-VR-Experience/[Bb]uilds/
 frontend/MU-VR-Experience/[Ll]ogs/
 frontend/MU-VR-Experience/[Uu]ser[Ss]ettings/
 frontend/MU-VR-Experience/[Mm]emoryCaptures/
+frontend/MU-VR-Experience/ProjectSettings/QualitySettings.asset
 frontend/MU-VR-Experience/[Aa]ssets/AssetStoreTools*
 frontend/MU-VR-Experience/Assets/AssetStoreOriginals/_SNAPS_PrototypingAssets/About
 frontend/MU-VR-Experience/Assets/AssetStoreOriginals/_SNAPS_PrototypingAssets/ModernOffice_Interior/Prefabs

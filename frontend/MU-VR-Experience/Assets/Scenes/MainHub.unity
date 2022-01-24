@@ -1893,6 +1893,7 @@ MonoBehaviour:
   LoginExitButton: {fileID: 95721742}
   RegisterExitButton: {fileID: 2017089154}
   Crosshair: {fileID: 349326714}
+  GenerateReportObj: {fileID: 413260692}
   SettingsUserText: {fileID: 2112466190}
 --- !u!1 &193342510
 GameObject:
@@ -5122,6 +5123,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4516215191552552, guid: d70a27546822c004b81f0b6ce1dda5aa,
     type: 3}
   m_PrefabInstance: {fileID: 396474933}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &413260692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 93358244605834765, guid: e22a6e0c174bd486f87036c65ced19ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 2534699010033928543}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &414556021
 PrefabInstance:
@@ -20998,6 +21005,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2534699008068346963, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2534699008337523346, guid: e22a6e0c174bd486f87036c65ced19ca,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -21101,7 +21113,7 @@ PrefabInstance:
     - target: {fileID: 2534699008772830215, guid: e22a6e0c174bd486f87036c65ced19ca,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2534699008814208740, guid: e22a6e0c174bd486f87036c65ced19ca,
         type: 3}
@@ -21147,6 +21159,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711402318611907065, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 193965901}
+    - target: {fileID: 8711402318611907065, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GenerateReport
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711402318611907065, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsMenu, Scripts
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e22a6e0c174bd486f87036c65ced19ca, type: 3}

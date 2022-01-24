@@ -15,7 +15,7 @@ public class UserDataReceiver : MonoBehaviour
 {
 	public Button LoginExitButton;
 	public Button RegisterExitButton;
-	public GameObject Crosshair;
+	public GameObject Crosshair, GenerateReportObj;
 	public TMP_Text SettingsUserText;
 
 	const string API_URL = "http://localhost:6996/users/user/";
@@ -58,6 +58,7 @@ public class UserDataReceiver : MonoBehaviour
 
 		SettingsUserText.text = "User: " + this._player.GetUsername();
 		SettingsUserText.gameObject.SetActive(true);
+		GenerateReportObj.SetActive(true);
 	}
 
 	private IEnumerator LoadNewPlayer()

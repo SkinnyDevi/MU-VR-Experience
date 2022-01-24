@@ -17,7 +17,7 @@ class ReportController {
 
 
 	sendReportThroughEmail = (req, res) => {
-		if (!req.body.email) res.status(400).send({
+		if (!req.body.email) return res.status(400).send({
 				error: "There is no sender email present."
 		});
 

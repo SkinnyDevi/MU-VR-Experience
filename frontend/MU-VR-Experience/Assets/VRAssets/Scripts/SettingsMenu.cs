@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.Management;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 using System;
 using System.Collections;
@@ -13,6 +14,7 @@ public class SettingsMenu : MonoBehaviour
     public GameObject SettingsMenuObject, Crosshair, RemoveVRButton;
     public static bool InSettings;
 
+	const string API_URL = "http://localhost:6996/ratings/report/";
 	const string RootPath = "Settings Menu/Canvas/Pause Menu/";
     bool _vrOptionChanged, _acceptedVRPopup = false;
     PlayerVRHandler _playerHandler;
@@ -20,6 +22,7 @@ public class SettingsMenu : MonoBehaviour
 	TMP_Text _vrStateText;
 	Toggle _vrToggler;
 	GameObject _returnToReceptionBtn;
+	UserDataReceiver _playerDataObject;
 
     void Awake()
     {
@@ -34,6 +37,7 @@ public class SettingsMenu : MonoBehaviour
 		_vrStateText = gameObject.transform.Find(RootPath + "Enable VR Checkbox/Toggle/Label").GetComponent<TMP_Text>();
         _vrToggler = gameObject.transform.Find(RootPath + "Enable VR Checkbox/Toggle").GetComponent<Toggle>();
 		_returnToReceptionBtn = gameObject.transform.Find(RootPath + "ReturnReception").gameObject;
+		_playerDataObject = GameObject.FindObjectOfType<UserDataReceiver>();
 
 		if (SceneManager.GetActiveScene().name.Equals("MainHub"))
 			_returnToReceptionBtn.SetActive(false);
@@ -137,12 +141,12 @@ public class SettingsMenu : MonoBehaviour
         InSettings = false;
 	}
 
-	public void ClickYes()
+	public void ClickYes() // Only assigned in the UI
 	{
 		HandleVRPopup(true);
 	}
 
-	public void ClickNo()
+	public void ClickNo() // Only assigned in the UI
 	{
 		HandleVRPopup(false);
 	}
@@ -172,4 +176,48 @@ public class SettingsMenu : MonoBehaviour
 			_vrToggler.isOn = false;
         }
     }
+
+	public void GenerateReport() // Only assigned in the UI
+	{
+		StartCoroutine(RequestReport());
+	}
+
+	private IEnumerator RequestReport()
+	{
+		Debug.Log("Sent request to download pdf");
+		using(UnityWebRequest getReport = CreatePostRequest(API_URL, _playerDataObject.CurrentPlayer().GetEmail(), _playerDataObject.GetToken()))
+		{
+			yield return getReport.SendWebRequest();
+
+			if (getReport.result != UnityWebRequest.Result.Success)
+			{
+				Debug.LogError("Couldn't download pdf: " + getReport.error);
+			}
+			else
+			{
+				Debug.Log(Application.persistentDataPath);
+				/*
+				string path = Application.persistentDataPath.Substring(0, Application.persistentDataPath.IndexOf("Android",System.StringComparison.Ordinal));   //pdf saving path
+				string savePath =  path + "/MyDocs/";
+				if(!Directory.Exists(savePath))
+				{
+					Directory.CreateDirectory(savePath);
+				}      
+				string[] temp = pdfUrl.Split('/');
+				string x = Path.Combine(savePath,temp[temp.Length-1]);
+				System.IO.File.WriteAllBytes (x, request.downloadHandler.data);
+				*/
+			}
+		}
+	}
+
+	private UnityWebRequest CreatePostRequest(string requestUrl, string userEmail, string bearerToken)
+	{	
+		string emailBody = "{\"email\": \"" + userEmail + "\"}";
+		UnityWebRequest postRequest = UnityWebRequest.Post(requestUrl, emailBody);
+		postRequest.SetRequestHeader("Authorization", "Bearer " + bearerToken);
+		postRequest.SetRequestHeader("Content-Type", "application/json");
+
+		return postRequest;
+	}
 }

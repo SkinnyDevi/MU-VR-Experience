@@ -11875,6 +11875,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1294268356}
     m_Modifications:
+    - target: {fileID: 2534699008337523346, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534699008337523346, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534699008337523346, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2534699008579764387, guid: e22a6e0c174bd486f87036c65ced19ca,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -11945,6 +11960,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Settings Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 2534699008772830215, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534699008814208740, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534699008814208740, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2534699008965589278, guid: e22a6e0c174bd486f87036c65ced19ca,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -11954,6 +11984,46 @@ PrefabInstance:
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: VRToggleHandler
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534699009154645581, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534699009154645581, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534699009395848671, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534699009395848671, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534699009395848671, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711402318611907065, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1294268355}
+    - target: {fileID: 8711402318611907065, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GenerateReport
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711402318611907065, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsMenu, Scripts
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e22a6e0c174bd486f87036c65ced19ca, type: 3}
@@ -11996,6 +12066,12 @@ MonoBehaviour:
 --- !u!224 &1398606886 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2534699008592268332, guid: e22a6e0c174bd486f87036c65ced19ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1398606881}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1398606887 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 93358244605834765, guid: e22a6e0c174bd486f87036c65ced19ca,
     type: 3}
   m_PrefabInstance: {fileID: 1398606881}
   m_PrefabAsset: {fileID: 0}
@@ -19701,6 +19777,7 @@ MonoBehaviour:
   LoginExitButton: {fileID: 0}
   RegisterExitButton: {fileID: 0}
   Crosshair: {fileID: 1495503212533627492}
+  GenerateReportObj: {fileID: 1398606887}
   SettingsUserText: {fileID: 1398606882}
 --- !u!1 &1495503212549415492
 GameObject:

@@ -12,6 +12,8 @@ backend/jsreport/storage
 backend/jsreport/rendered-report/config.json
 backend/jsreport/rendered-report/report.html
 backend/jsreport/rendered-report/report.pdf
+backend/support/*/vendors
+backend/support/*/css/theme*
 
 ## Frontend
 frontend/unity-external-assets

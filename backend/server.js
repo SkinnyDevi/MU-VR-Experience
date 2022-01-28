@@ -59,6 +59,7 @@ app.use(function (req, res, next) {
 require("./routes/user.routes")(app);
 require("./routes/clip.routes")(app);
 require("./routes/rating.routes")(app);
+require("./routes/support.routes")(app);
 
 const server = app.listen(port, () => console.log("Listening on port: " + port));
 

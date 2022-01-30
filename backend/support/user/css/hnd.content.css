@@ -1,149 +1,241 @@
 /* ========== Text Styles ========== */
-hr { color: #000000}
-.main-content, .main-content table span.rvts0 /* Normal text */
-{
- font-size: 10pt;
- font-family: 'Arial', 'Helvetica', sans-serif;
- font-style: normal;
- font-weight: normal;
- color: #000000;
- text-decoration: none;
+@font-face {
+	font-family: Riffic;
+	src: url("./fonts/riffic-regular.otf");
 }
-span.rvts1 /* Heading */
-{
- font-weight: bold;
- color: #0000ff;
+
+@font-face {
+	font-family: Riffic-Bold;
+	src: url("./fonts/riffic-bold.ttf");
+	font-weight: bold;
 }
-span.rvts2 /* Subheading */
-{
- font-weight: bold;
- color: #000080;
+
+h1 {
+	font-family: Riffic;
+	letter-spacing: 2px;
+	padding-top: 4px;
 }
-span.rvts3 /* Keywords */
-{
- font-style: italic;
- color: #800000;
+
+input {
+	font-family: Riffic;
+	letter-spacing: 2px;
 }
-a.rvts4, span.rvts4 /* Jump 1 */
-{
- color: #008000;
- text-decoration: underline;
+
+li {
+	font-family: Riffic;
+	letter-spacing: 2px;
 }
-a.rvts5, span.rvts5 /* Jump 2 */
-{
- color: #008000;
- text-decoration: underline;
+
+#search-info {
+	font-family: Riffic;
+	letter-spacing: 2px;
 }
-span.rvts6
-{
+
+hr {
+	color: #000000
 }
-span.rvts7
-{
- font-weight: bold;
- color: #0000ff;
+
+.main-content,
+.main-content table span.rvts0
+
+/* Normal text */
+	{
+	font-size: 10pt;
+	font-family: Riffic;
+	font-style: normal;
+	font-weight: normal;
+	color: #000000;
+	text-decoration: none;
 }
-span.rvts8
-{
- font-weight: bold;
- color: #000080;
+
+span.rvts1
+
+/* Heading */
+	{
+	font-weight: bold;
+	color: #0000ff;
 }
-span.rvts9
-{
- font-style: italic;
- color: #800000;
+
+span.rvts2
+
+/* Subheading */
+	{
+	font-weight: bold;
+	color: #000080;
 }
-a.rvts10, span.rvts10
-{
- color: #008000;
- text-decoration: underline;
+
+span.rvts3
+
+/* Keywords */
+	{
+	font-style: italic;
+	color: #800000;
 }
-span.rvts11
-{
- font-size: 12pt;
- font-family: 'Riffic';
- color: #808080;
+
+a.rvts4,
+span.rvts4
+
+/* Jump 1 */
+	{
+	color: #008000;
+	text-decoration: underline;
 }
-span.rvts12
-{
- font-size: 15pt;
- font-family: 'Riffic Free Medium';
- font-weight: bold;
- color: #24292f;
+
+a.rvts5,
+span.rvts5
+
+/* Jump 2 */
+	{
+	color: #008000;
+	text-decoration: underline;
 }
-span.rvts13 /* Font Style */
-{
- font-family: 'Tahoma', 'Geneva', sans-serif;
- font-style: italic;
- color: #c0c0c0;
+
+span.rvts7 {
+	font-weight: bold;
+	color: #0000ff;
 }
-a.rvts14, span.rvts14 /* Font Style */
-{
- font-family: 'Tahoma', 'Geneva', sans-serif;
- font-style: italic;
- color: #6666ff;
- text-decoration: underline;
+
+span.rvts8 {
+	font-weight: bold;
+	color: #000080;
 }
-span.rvts15
-{
- font-size: 12pt;
- font-family: 'Riffic';
- color: #24292f;
+
+span.rvts9 {
+	font-style: italic;
+	color: #800000;
 }
+
+a.rvts10,
+span.rvts10 {
+	color: #008000;
+	text-decoration: underline;
+}
+
+span.rvts11 {
+	font-size: 12pt;
+	font-family: Riffic;
+	letter-spacing: 2px;
+	color: #808080;
+}
+
+span.rvts12 {
+	font-size: 15pt;
+	font-family: Riffic-Bold;
+	font-weight: bold;
+	letter-spacing: 2px;
+	color: #24292f;
+}
+
+span.rvts13
+
+/* Font Style */
+	{
+	font-family: 'Tahoma', 'Geneva', sans-serif;
+	font-style: italic;
+	color: #c0c0c0;
+}
+
+a.rvts14,
+span.rvts14
+
+/* Font Style */
+	{
+	font-family: 'Tahoma', 'Geneva', sans-serif;
+	font-style: italic;
+	color: #6666ff;
+	text-decoration: underline;
+}
+
+span.rvts15 {
+	font-size: 12pt;
+	font-family: Riffic;
+	letter-spacing: 2px;
+	color: #24292f;
+}
+
 /* ========== Para Styles ========== */
-p,ul,ol /* Paragraph Style */
-{
- text-align: left;
- text-indent: 0px;
- padding: 0px 0px 0px 0px;
- margin: 0px 0px 0px 0px;
+p,
+ul,
+ol
+
+/* Paragraph Style */
+	{
+	text-align: left;
+	text-indent: 0px;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
 }
-.rvps1 /* Centered */
-{
- text-align: center;
+
+.rvps1
+
+/* Centered */
+	{
+	text-align: center;
 }
-.rvps2
-{
+
+.rvps3 {
+	text-align: center;
 }
-.rvps3
-{
- text-align: center;
+
+.rvps4 {
+	background: #ffffff;
+	padding: 0px 0px 0px 32px;
 }
-.rvps4
-{
- background: #ffffff;
- padding: 0px 0px 0px 32px;
+
+.rvps5 {
+	text-align: left;
+	text-indent: 0px;
+	background: #ffffff;
+	padding: 0px 0px 0px 0px;
+	margin: 24px 0px 16px 0px;
 }
-.rvps5
-{
- text-align: left;
- text-indent: 0px;
- background: #ffffff;
- padding: 0px 0px 0px 0px;
- margin: 24px 0px 16px 0px;
+
+.rvps6
+
+/* Paragraph Style */
+	{
+	text-align: center;
+	border-color: #c0c0c0;
+	border-style: solid;
+	border-width: 1px;
+	border-right: none;
+	border-left: none;
+	padding: 2px 0px 2px 0px;
+	margin: 7px 0px 7px 0px;
 }
-.rvps6 /* Paragraph Style */
-{
- text-align: center;
- border-color: #c0c0c0;
- border-style: solid;
- border-width: 1px;
- border-right: none;
- border-left: none;
- padding: 2px 0px 2px 0px;
- margin: 7px 0px 7px 0px;
+
+.rvps7 {
+	background: #ffffff;
+	margin: 0px 0px 16px 0px;
 }
-.rvps7
-{
- background: #ffffff;
- margin: 0px 0px 16px 0px;
+
+.rvps8 {
+	background: #ffffff;
+	padding: 0px 0px 0px 32px;
+	margin: 4px 0px 0px 0px;
 }
-.rvps8
-{
- background: #ffffff;
- padding: 0px 0px 0px 32px;
- margin: 4px 0px 0px 0px;
-}
+
 /* ========== Lists ========== */
-.list0 {text-indent: 0px; padding: 0; margin: 0 0 0 32px; list-style-position: outside; list-style-type: disc;}
-.list1 {text-indent: 0px; padding: 0; margin: 0 0 0 32px; list-style-position: outside; list-style-type: circle;}
-.list2 {text-indent: 0px; padding: 0; margin: 0 0 0 32px; list-style-position: outside; list-style-type: square;}
+.list0 {
+	text-indent: 0px;
+	padding: 0;
+	margin: 0 0 0 32px;
+	list-style-position: outside;
+	list-style-type: disc;
+}
+
+.list1 {
+	text-indent: 0px;
+	padding: 0;
+	margin: 0 0 0 32px;
+	list-style-position: outside;
+	list-style-type: circle;
+}
+
+.list2 {
+	text-indent: 0px;
+	padding: 0;
+	margin: 0 0 0 32px;
+	list-style-position: outside;
+	list-style-type: square;
+}

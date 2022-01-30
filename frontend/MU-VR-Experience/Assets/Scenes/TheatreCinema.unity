@@ -12010,6 +12010,21 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7032073335259361024, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1294268355}
+    - target: {fileID: 7032073335259361024, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenSupport
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032073335259361024, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsMenu, Scripts
+      objectReference: {fileID: 0}
     - target: {fileID: 8711402318611907065, guid: e22a6e0c174bd486f87036c65ced19ca,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

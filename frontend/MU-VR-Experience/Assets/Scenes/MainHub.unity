@@ -20995,6 +20995,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 193965900}
     m_Modifications:
+    - target: {fileID: 93358244605834765, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 827730766291352979, guid: e22a6e0c174bd486f87036c65ced19ca,
         type: 3}
       propertyPath: m_RootOrder
@@ -21159,6 +21164,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032073335259361024, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 193965901}
+    - target: {fileID: 7032073335259361024, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenSupport
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032073335259361024, guid: e22a6e0c174bd486f87036c65ced19ca,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsMenu, Scripts
       objectReference: {fileID: 0}
     - target: {fileID: 8711402318611907065, guid: e22a6e0c174bd486f87036c65ced19ca,
         type: 3}

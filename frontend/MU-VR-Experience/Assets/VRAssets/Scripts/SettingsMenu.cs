@@ -11,31 +11,31 @@ using TMPro;
 
 public class SettingsMenu : MonoBehaviour
 {
-    public GameObject SettingsMenuObject, Crosshair, RemoveVRButton;
-    public static bool InSettings;
+	public GameObject SettingsMenuObject, Crosshair, RemoveVRButton;
+	public static bool InSettings;
 
 	const string API_URL = "http://localhost:6996/ratings/report/";
 	const string RootPath = "Settings Menu/Canvas/Pause Menu/";
-    bool _vrOptionChanged, _acceptedVRPopup = false;
-    PlayerVRHandler _playerHandler;
-    InputMaster _keyboardControls;
+	bool _vrOptionChanged, _acceptedVRPopup = false;
+	PlayerVRHandler _playerHandler;
+	InputMaster _keyboardControls;
 	TMP_Text _vrStateText;
 	Toggle _vrToggler;
 	GameObject _returnToReceptionBtn;
 	UserDataReceiver _playerDataObject;
 
-    void Awake()
-    {
-        _keyboardControls = new InputMaster();
-        _keyboardControls.Enable();
-        _keyboardControls.Menus.Settings.performed += _ => OpenSettings();
-    }
+	void Awake()
+	{
+		_keyboardControls = new InputMaster();
+		_keyboardControls.Enable();
+		_keyboardControls.Menus.Settings.performed += _ => OpenSettings();
+	}
 
-    void Start()
-    {
-        _playerHandler = GameObject.FindObjectOfType<PlayerVRHandler>();
+	void Start()
+	{
+		_playerHandler = GameObject.FindObjectOfType<PlayerVRHandler>();
 		_vrStateText = gameObject.transform.Find(RootPath + "Enable VR Checkbox/Toggle/Label").GetComponent<TMP_Text>();
-        _vrToggler = gameObject.transform.Find(RootPath + "Enable VR Checkbox/Toggle").GetComponent<Toggle>();
+		_vrToggler = gameObject.transform.Find(RootPath + "Enable VR Checkbox/Toggle").GetComponent<Toggle>();
 		_returnToReceptionBtn = gameObject.transform.Find(RootPath + "ReturnReception").gameObject;
 		_playerDataObject = GameObject.FindObjectOfType<UserDataReceiver>();
 
@@ -45,74 +45,74 @@ public class SettingsMenu : MonoBehaviour
 			_returnToReceptionBtn.SetActive(true);
 
 		SettingsMenuObject.SetActive(false);
-    }
+	}
 
-    private void OpenSettings()
-    {
-        if (!UserTransition.TransitionMade)
-        {
-            if (InSettings)
-            {
-                ResumeGame();
-            }
-            else
-            {
-                PauseGame();
-            }
-        }
-    }
+	private void OpenSettings()
+	{
+		if (!UserTransition.TransitionMade)
+		{
+			if (InSettings)
+			{
+				ResumeGame();
+			}
+			else
+			{
+				PauseGame();
+			}
+		}
+	}
 
 	private void SaveSettings()
-    {
-        Button wasd, arrows, leftclick, keye;
-        TMP_Text sensitivityValue;
+	{
+		Button wasd, arrows, leftclick, keye;
+		TMP_Text sensitivityValue;
 
-        string settingsPath = "Settings Menu/Canvas/Pause Menu";
+		string settingsPath = "Settings Menu/Canvas/Pause Menu";
 
-        wasd = gameObject.transform.Find(settingsPath + "/Movement Choose/WASD").GetComponent<Button>();
-        arrows = gameObject.transform.Find(settingsPath + "/Movement Choose/Arrows").GetComponent<Button>();
-        leftclick = gameObject.transform.Find(settingsPath + "/Interaction Choose/LeftClick").GetComponent<Button>();
-        keye = gameObject.transform.Find(settingsPath + "/Interaction Choose/KeyE").GetComponent<Button>();
-        sensitivityValue = gameObject.transform.Find(settingsPath + "/Sensitivity Slider/Sensitivity Value").GetComponent<TMP_Text>();
+		wasd = gameObject.transform.Find(settingsPath + "/Movement Choose/WASD").GetComponent<Button>();
+		arrows = gameObject.transform.Find(settingsPath + "/Movement Choose/Arrows").GetComponent<Button>();
+		leftclick = gameObject.transform.Find(settingsPath + "/Interaction Choose/LeftClick").GetComponent<Button>();
+		keye = gameObject.transform.Find(settingsPath + "/Interaction Choose/KeyE").GetComponent<Button>();
+		sensitivityValue = gameObject.transform.Find(settingsPath + "/Sensitivity Slider/Sensitivity Value").GetComponent<TMP_Text>();
 
-        string movementType = !wasd.IsInteractable() ? wasd.gameObject.name : arrows.gameObject.name;
-        string interactionType = !leftclick.IsInteractable() ? leftclick.gameObject.name : keye.gameObject.name;
-        float saveVolume = VolumeSlider.RawVolume;
+		string movementType = !wasd.IsInteractable() ? wasd.gameObject.name : arrows.gameObject.name;
+		string interactionType = !leftclick.IsInteractable() ? leftclick.gameObject.name : keye.gameObject.name;
+		float saveVolume = VolumeSlider.RawVolume;
 
-        // Debug.Log($"SETTINGS TO SAVE: {movementType}, {interactionType}, {sensitivityValue.text}, {saveVolume}");
-        UserInfoManager.SaveString(UserInfoManager.SaveType.SettingsMovement, movementType);
-        UserInfoManager.SaveString(UserInfoManager.SaveType.SettingsInteraction, interactionType);
-        UserInfoManager.SaveFloat(UserInfoManager.SaveType.SettingsSensitivity, float.Parse(sensitivityValue.text));
-        UserInfoManager.SaveFloat(UserInfoManager.SaveType.SettingsVolume, saveVolume);
+		// Debug.Log($"SETTINGS TO SAVE: {movementType}, {interactionType}, {sensitivityValue.text}, {saveVolume}");
+		UserInfoManager.SaveString(UserInfoManager.SaveType.SettingsMovement, movementType);
+		UserInfoManager.SaveString(UserInfoManager.SaveType.SettingsInteraction, interactionType);
+		UserInfoManager.SaveFloat(UserInfoManager.SaveType.SettingsSensitivity, float.Parse(sensitivityValue.text));
+		UserInfoManager.SaveFloat(UserInfoManager.SaveType.SettingsVolume, saveVolume);
 		if (_vrOptionChanged && _acceptedVRPopup) UserInfoManager.SavePlayerType(UserInfoManager.PlayerType.VR);
 		else UserInfoManager.SavePlayerType(UserInfoManager.PlayerType.Mouse);
-    }
+	}
 
-    private void SetState(GameObject g, bool state)
-    {
-        g.SetActive(state);
-    }
+	private void SetState(GameObject g, bool state)
+	{
+		g.SetActive(state);
+	}
 
-    public void PauseGame()
-    {
-        SetState(Crosshair, false);
-        SetState(SettingsMenuObject, true);
-        Time.timeScale = 0f;
-        InSettings = true;
-    }
+	public void PauseGame()
+	{
+		SetState(Crosshair, false);
+		SetState(SettingsMenuObject, true);
+		Time.timeScale = 0f;
+		InSettings = true;
+	}
 
-    public void ResumeGame()
-    {
-        SetState(Crosshair, true);
-        SetState(SettingsMenuObject, false);
+	public void ResumeGame()
+	{
+		SetState(Crosshair, true);
+		SetState(SettingsMenuObject, false);
 		if (gameObject.transform.Find("Settings Menu/Canvas/Warning VR Popup").gameObject.activeSelf)
 		{
 			SetState(gameObject.transform.Find("Settings Menu/Canvas/Warning VR Popup").gameObject, false);
 			VRToggleHandler();
 		}
-        if (_vrOptionChanged && _acceptedVRPopup) _playerHandler.ChangePlayerType(PlayerVRHandler.PlayerType.VR);
+		if (_vrOptionChanged && _acceptedVRPopup) _playerHandler.ChangePlayerType(PlayerVRHandler.PlayerType.VR);
 		ContinueResumingGame();
-    }
+	}
 
 	private void HandleVRPopup(bool acceptedPopup)
 	{
@@ -127,7 +127,7 @@ public class SettingsMenu : MonoBehaviour
 		{
 			_acceptedVRPopup = false;
 			_vrStateText.text = "Disabled";
-            _vrOptionChanged = false;
+			_vrOptionChanged = false;
 			_vrToggler.isOn = false;
 		}
 
@@ -137,8 +137,8 @@ public class SettingsMenu : MonoBehaviour
 	private void ContinueResumingGame()
 	{
 		Time.timeScale = 1f;
-        SaveSettings();
-        InSettings = false;
+		SaveSettings();
+		InSettings = false;
 	}
 
 	public void ClickYes() // Only assigned in the UI
@@ -157,25 +157,30 @@ public class SettingsMenu : MonoBehaviour
 		SceneLoader.LoadScene(SceneLoader.Scene.MainHub);
 	}
 
-    public void VRToggleHandler() // Only assigned in the UI
-    {
-        if (_vrStateText.text.Equals("Disabled") && _vrToggler.isOn)
-        {
-            _vrStateText.text = "Enabled";
+	public void VRToggleHandler() // Only assigned in the UI
+	{
+		if (_vrStateText.text.Equals("Disabled") && _vrToggler.isOn)
+		{
+			_vrStateText.text = "Enabled";
 			if (!_acceptedVRPopup) SetState(gameObject.transform.Find("Settings Menu/Canvas/Warning VR Popup").gameObject, true);
-			else 
+			else
 			{
 				_vrOptionChanged = true;
 				_acceptedVRPopup = true;
 			}
-        }
-        else
-        {
-            _vrStateText.text = "Disabled";
-            _vrOptionChanged = false;
+		}
+		else
+		{
+			_vrStateText.text = "Disabled";
+			_vrOptionChanged = false;
 			_vrToggler.isOn = false;
-        }
-    }
+		}
+	}
+
+	public void OpenSupport() // Only assigned in the UI
+	{
+		Application.OpenURL("http://localhost:6996/support/user");
+	}
 
 	public void GenerateReport() // Only assigned in the UI
 	{
@@ -185,7 +190,7 @@ public class SettingsMenu : MonoBehaviour
 	private IEnumerator RequestReport()
 	{
 		Debug.Log("Sent request to download pdf");
-		using(UnityWebRequest getReport = CreatePostRequest(API_URL, _playerDataObject.CurrentPlayer().GetEmail(), _playerDataObject.GetToken()))
+		using (UnityWebRequest getReport = CreatePostRequest(API_URL, _playerDataObject.CurrentPlayer().GetEmail(), _playerDataObject.GetToken()))
 		{
 			yield return getReport.SendWebRequest();
 
@@ -212,7 +217,7 @@ public class SettingsMenu : MonoBehaviour
 	}
 
 	private UnityWebRequest CreatePostRequest(string requestUrl, string userEmail, string bearerToken)
-	{	
+	{
 		string emailBody = "{\"email\": \"" + userEmail + "\"}";
 		UnityWebRequest postRequest = UnityWebRequest.Post(requestUrl, emailBody);
 		postRequest.SetRequestHeader("Authorization", "Bearer " + bearerToken);
